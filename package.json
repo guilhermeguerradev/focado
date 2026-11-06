@@ -4,6 +4,7 @@
   "main": "expo-router/entry",
   "dependencies": {
     "@expo/ui": "~58.0.27",
+    "@supabase/supabase-js": "^2.119.0",
     "expo": "~58.0.23",
     "expo-constants": "~58.0.15",
     "expo-device": "~58.0.5",
@@ -33,6 +34,7 @@
     "eslint-config-expo": "~58.0.4",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.9.10",
+    "supabase": "^3.0.0",
     "typescript": "~6.0.3",
     "vitest": "^5.1.0"
   },
