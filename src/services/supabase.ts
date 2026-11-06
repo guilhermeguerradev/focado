@@ -1,4 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createClient } from '@supabase/supabase-js';
+import { AppState } from 'react-native';
 
 // Único lugar do app que cria a conexão com o Supabase.
 // Os valores vêm do arquivo .env (que não vai para o Git).
@@ -19,8 +21,28 @@ const chavePublica = lerVariavel(
   process.env.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
 );
 
-// Na Etapa 1 (login) vamos configurar aqui onde a sessão do usuário fica salva.
-export const supabase = createClient(url, chavePublica);
+export const supabase = createClient(url, chavePublica, {
+  auth: {
+    // Guarda a sessão (o "crachá" de login) no armário do celular,
+    // para o usuário continuar logado depois de fechar o app.
+    storage: AsyncStorage,
+    persistSession: true,
+    // Renova o crachá sozinho antes de ele vencer.
+    autoRefreshToken: true,
+    // Isso é para login pelo navegador (web); no celular não se aplica.
+    detectSessionInUrl: false,
+  },
+});
+
+// Só renova o crachá enquanto o app está na tela (aberto e em uso).
+// Com o app em segundo plano, a renovação pausa para não gastar bateria/rede.
+AppState.addEventListener('change', (estado) => {
+  if (estado === 'active') {
+    supabase.auth.startAutoRefresh();
+  } else {
+    supabase.auth.stopAutoRefresh();
+  }
+});
 
 // Pergunta ao servidor de autenticação se ele está de pé.
 // Devolve true se respondeu, false se não deu para falar com ele.
