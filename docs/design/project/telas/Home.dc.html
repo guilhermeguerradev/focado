@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#14C4CE">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#14C4CE"/><circle cx="600" cy="400" r="180" fill="none" stroke="#fff" stroke-width="26"/><text x="600" y="440" font-family="sans-serif" font-size="120" font-weight="700" fill="#fff" text-anchor="middle">25:00</text></svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#F4F8F9;font-family:'Nunito',system-ui,sans-serif}
+  *{box-sizing:border-box}
+  h3{font-family:'Fredoka',sans-serif;margin:0}
+  .ph{width:384px;height:832px;background:#F4F8F9;overflow:hidden;position:relative;display:flex;flex-direction:column}
+  .sbar{display:flex;align-items:center;justify-content:space-between;padding:14px 26px 4px;font:700 14px 'Nunito';color:#1A1D1F;flex:none}
+  .sbar .dots{display:flex;gap:5px;align-items:center}
+  .body{flex:1;overflow:hidden;padding:8px 20px 0;display:flex;flex-direction:column;gap:16px}
+  .card{background:#fff;border-radius:24px;box-shadow:0 8px 24px -12px rgba(20,60,65,.2)}
+  .nav{flex:none;display:flex;justify-content:space-between;align-items:center;padding:12px 18px 26px;background:#fff;border-top:1px solid #eef1f2}
+  .nit{display:flex;flex-direction:column;align-items:center;gap:5px;font:600 10px 'Nunito';color:#9aa4a8;flex:1}
+  .nit svg{width:24px;height:24px;stroke-width:2}
+</style>
+</helmet>
+<div class="ph">
+  <div class="sbar"><span>9:41</span><div class="dots">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="#1A1D1F"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="4.5" y="5" width="3" height="7" rx="1"></rect><rect x="9" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1"></rect></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#1A1D1F" stroke-width="1.6"><path d="M1 4.5a10 10 0 0 1 14 0M3.5 7a6.5 6.5 0 0 1 9 0"></path><circle cx="8" cy="10" r="1" fill="#1A1D1F" stroke="none"></circle></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#1A1D1F" stroke-width="1.4"></rect><rect x="3" y="3" width="14" height="6" rx="1.5" fill="#1A1D1F"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="#1A1D1F"></rect></svg>
+  </div></div>
+  <div class="body" style="justify-content: space-between; padding-bottom: 26px; gap: 0px">
+    <!-- header w/ streak -->
+    <div style="display: flex; align-items: center; gap: 11px">
+      <div style="width:48px;height:48px;border-radius:50%;background:#14C4CE;flex:none;overflow:hidden;display:flex;align-items:flex-end;justify-content:center">
+        <svg width="42" height="42" viewBox="0 0 100 100"><circle cx="28" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="72" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="50" cy="54" r="33" fill="#fff"></circle><ellipse cx="37" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><ellipse cx="63" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><circle cx="38" cy="51" r="3.3" fill="#fff"></circle><circle cx="62" cy="51" r="3.3" fill="#fff"></circle><ellipse cx="50" cy="67" rx="4.6" ry="3.2" fill="#1A1D1F"></ellipse><path d="M44 74 Q50 79 56 74" stroke="#1A1D1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+      <div style="flex:1"><div style="font:600 12px 'Nunito';color:#9aa4a8">Bom dia,</div><div style="font:700 17px 'Fredoka';color:#1A1D1F">Ana Beatriz</div></div>
+      <div style="display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:14px;background:#FFF1E6"><span style="font-size:15px">🔥</span><span style="font:800 15px 'Nunito';color:#FF7A24">7</span></div>
+      <div style="width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px -8px rgba(20,60,65,.3)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1A1D1F" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg><span style="position:absolute;margin:-18px 0 0 16px;width:8px;height:8px;border-radius:50%;background:#FF7A59;border:2px solid #fff"></span></div>
+    </div>
+    <!-- modo toggle: cronômetro / pomodoro -->
+    <div style="display:flex;gap:5px;background:#E4EBEC;border-radius:16px;padding:5px">
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 0;border-radius:12px;background:#fff;box-shadow:0 4px 10px -6px rgba(20,60,65,.35)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#14C4CE" stroke-width="2.2"><circle cx="12" cy="13" r="8"></circle><path d="M12 13V9"></path><path d="M9 2h6"></path></svg><span style="font:700 13px 'Nunito';color:#1A1D1F">Pomodoro</span></div>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 0;border-radius:12px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9aa4a8" stroke-width="2.2"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15 14"></polyline></svg><span style="font:700 13px 'Nunito';color:#9aa4a8">Cronômetro</span></div>
+    </div>
+    <!-- timer card -->
+    <div class="card" style="padding:22px 20px 18px;display:flex;flex-direction:column;align-items:center;gap:14px">
+      <div style="width:210px;height:210px;border-radius:50%;background:conic-gradient(#7C6BF5 0 68%,#F0EDFF 68% 100%);display:flex;align-items:center;justify-content:center">
+        <div style="width:172px;height:172px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px">
+          <div style="width:34px;height:34px;border-radius:50%;background:#F0EDFF;display:flex;align-items:center;justify-content:center;margin-bottom:2px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7C6BF5" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><polyline points="12 8 12 12 15 13"></polyline></svg></div>
+          <div style="font:600 46px 'Fredoka';color:#1A1D1F;letter-spacing:1px">24:35</div>
+          <div style="font:700 13px 'Nunito';color:#7C6BF5">Concentre-se!</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:24px">
+        <div style="width:46px;height:46px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c666b" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg></div>
+        <div style="width:66px;height:66px;border-radius:50%;background:#7C6BF5;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 22px -8px rgba(124,107,245,.7)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="1.5"></rect><rect x="14" y="5" width="4" height="14" rx="1.5"></rect></svg></div>
+        <div style="width:46px;height:46px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5c666b"><polygon points="5 4 15 12 5 20"></polygon><rect x="17" y="4" width="3" height="16" rx="1.5"></rect></svg></div>
+      </div>
+    </div>
+    <!-- tempo do dia -->
+    <div class="card" style="padding: 14px 16px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:9px"><span style="font:700 12px 'Nunito';color:#9aa4a8">Tempo estudado hoje</span><span style="font:600 15px 'Fredoka';color:#1A1D1F">2h 10min <span style="font:600 11px 'Nunito';color:#9aa4a8">/ 4h</span></span></div>
+      <div style="height:9px;border-radius:6px;background:#EDF1F2;overflow:hidden"><div style="width:54%;height:100%;border-radius:6px;background:linear-gradient(90deg,#14C4CE,#0FA6B0)"></div></div>
+    </div>
+    <!-- matérias coloridas -->
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><h3 style="font:600 15px 'Fredoka';color:#1A1D1F">Matérias</h3><span style="font:700 12px 'Nunito';color:#14C4CE">Ver todas</span></div>
+      <div style="display:flex;gap:9px;overflow:hidden">
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#7C6BF5"><span style="width:8px;height:8px;border-radius:50%;background:#fff"></span><span style="font:700 13px 'Nunito';color:#fff">Programação</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#E7FAFB"><span style="width:8px;height:8px;border-radius:50%;background:#14C4CE"></span><span style="font:700 13px 'Nunito';color:#0FA6B0">Inglês</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#FFEEE8"><span style="width:8px;height:8px;border-radius:50%;background:#FF7A59"></span><span style="font:700 13px 'Nunito';color:#FF7A59">Port.</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#FFF6E3"><span style="width:8px;height:8px;border-radius:50%;background:#F5A623"></span><span style="font:700 13px 'Nunito';color:#E0910F">Hist.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="nav" style="gap: 0px">
+    <div class="nit" style="color: #14C4CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Estudar</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>Estatísticas</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Amigos</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Baralho</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Perfil</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:384,&quot;height&quot;:832}}"></script>
+</body>
+</html>

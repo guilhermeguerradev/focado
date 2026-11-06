@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@400;600;700;800&amp;family=Baloo+2:wght@500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;family=Poppins:wght@500;600;700&amp;family=DM+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#eef3f4;font-family:'Nunito',system-ui,sans-serif}
+  *{box-sizing:border-box}
+  .dv-turn{padding:48px 48px 40px;scroll-margin-top:16px}
+  .dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 26px}
+  .dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#14C4CE;color:#fff;border-radius:4px;text-decoration:none}
+  .dv-tname{font:700 14px/1.2 'Nunito',sans-serif;color:#1A1D1F}
+  .dv-opts{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start}
+  .dv-opt{flex:none;display:flex;flex-direction:column;gap:12px;scroll-margin-top:16px}
+  .dv-olabel{display:flex;align-items:center;gap:9px;font:600 12px/1.3 'Nunito',sans-serif;color:#5c666b}
+  .dv-oid{font:700 11px ui-monospace,Menlo,monospace;padding:3px 8px;background:rgba(0,0,0,.07);color:#1A1D1F;border-radius:6px;text-decoration:none}
+  .dv-opt:target .dv-oid{background:#14C4CE;color:#fff}
+  .dv-next{margin:30px 0 0;font:13px/1.6 'Nunito',sans-serif;color:#5c666b}
+  /* phone */
+  .ph{width:384px;height:832px;background:#F4F8F9;border-radius:44px;border:9px solid #1A1D1F;overflow:hidden;position:relative;display:flex;flex-direction:column;box-shadow:0 30px 60px -20px rgba(20,50,55,.35)}
+  .sbar{display:flex;align-items:center;justify-content:space-between;padding:14px 26px 4px;font:700 14px 'Nunito';color:#1A1D1F;flex:none}
+  .sbar .dots{display:flex;gap:5px;align-items:center}
+  .body{flex:1;overflow:hidden;padding:8px 20px 0;display:flex;flex-direction:column;gap:16px}
+  .card{background:#fff;border-radius:24px;box-shadow:0 8px 24px -12px rgba(20,60,65,.2)}
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0}
+  /* bottom nav */
+  .nav{flex:none;display:flex;justify-content:space-between;align-items:center;padding:12px 18px 26px;background:#fff;border-top:1px solid #eef1f2}
+  .nit{display:flex;flex-direction:column;align-items:center;gap:5px;font:600 10px 'Nunito';color:#9aa4a8;flex:1}
+  .nit svg{width:24px;height:24px;stroke-width:2}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Variações de estilo sobre a <a class="dv-oid" href="#2a">2a</a> — tipografia &amp; formas</span></div>
+<div class="dv-opts">
+
+<!-- ============ 3a — BUBBLE / SOFT ============ -->
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Bubble · Baloo 2 · squircles e creme</div>
+<div class="ph" style="background:#FFF7EC;border-color:#2B2A28">
+  <div class="sbar"><span>9:41</span><div class="dots">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="#2B2A28"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="4.5" y="5" width="3" height="7" rx="1"></rect><rect x="9" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1"></rect></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#2B2A28" stroke-width="1.6"><path d="M1 4.5a10 10 0 0 1 14 0M3.5 7a6.5 6.5 0 0 1 9 0"></path><circle cx="8" cy="10" r="1" fill="#2B2A28" stroke="none"></circle></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#2B2A28" stroke-width="1.4"></rect><rect x="3" y="3" width="14" height="6" rx="1.5" fill="#2B2A28"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="#2B2A28"></rect></svg>
+  </div></div>
+  <div class="body" style="gap:15px">
+    <div style="display:flex;align-items:center;gap:11px">
+      <div style="width:50px;height:50px;border-radius:19px;background:#14C4CE;flex:none;overflow:hidden;display:flex;align-items:flex-end;justify-content:center">
+        <svg width="44" height="44" viewBox="0 0 100 100"><circle cx="28" cy="26" r="13" fill="#2B2A28"></circle><circle cx="72" cy="26" r="13" fill="#2B2A28"></circle><circle cx="50" cy="54" r="33" fill="#fff"></circle><ellipse cx="37" cy="50" rx="8.5" ry="11" fill="#2B2A28"></ellipse><ellipse cx="63" cy="50" rx="8.5" ry="11" fill="#2B2A28"></ellipse><circle cx="38" cy="51" r="3.3" fill="#fff"></circle><circle cx="62" cy="51" r="3.3" fill="#fff"></circle><ellipse cx="50" cy="67" rx="4.6" ry="3.2" fill="#2B2A28"></ellipse><path d="M44 74 Q50 79 56 74" stroke="#2B2A28" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+      <div style="flex:1"><div style="font:600 12px 'Baloo 2';color:#B4A48C">Bom dia,</div><div style="font:700 19px 'Baloo 2';color:#2B2A28;line-height:1.1">Ana Beatriz</div></div>
+      <div style="display:flex;align-items:center;gap:5px;padding:8px 13px;border-radius:16px;background:#FFE1C4"><span style="font-size:15px">🔥</span><span style="font:800 15px 'Baloo 2';color:#F0872E">7</span></div>
+      <div style="width:46px;height:46px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px -8px rgba(90,70,40,.4)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg><span style="position:absolute;margin:-18px 0 0 16px;width:8px;height:8px;border-radius:50%;background:#FF7A59;border:2px solid #fff"></span></div>
+    </div>
+    <div style="background:#fff;border-radius:32px;padding:22px 20px 18px;display:flex;flex-direction:column;align-items:center;gap:14px;box-shadow:0 10px 26px -14px rgba(90,70,40,.3)">
+      <div style="width:212px;height:212px;border-radius:50%;background:conic-gradient(#14C4CE 0 68%,#EAF7EF 68% 100%);display:flex;align-items:center;justify-content:center">
+        <div style="width:176px;height:176px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+          <div style="width:36px;height:36px;border-radius:14px;background:#E7FAFB;display:flex;align-items:center;justify-content:center;margin-bottom:3px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0FA6B0" stroke-width="2.2"><circle cx="12" cy="12" r="9"></circle><polyline points="12 8 12 12 15 13"></polyline></svg></div>
+          <div style="font:700 48px 'Baloo 2';color:#2B2A28;line-height:1">24:35</div>
+          <div style="font:700 13px 'Baloo 2';color:#14C4CE">Concentre-se!</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:22px">
+        <div style="width:48px;height:48px;border-radius:17px;background:#F4EFE6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8C7B63" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg></div>
+        <div style="width:70px;height:70px;border-radius:24px;background:#14C4CE;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 22px -8px rgba(20,196,206,.7)"><svg width="27" height="27" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="2"></rect><rect x="14" y="5" width="4" height="14" rx="2"></rect></svg></div>
+        <div style="width:48px;height:48px;border-radius:17px;background:#F4EFE6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#8C7B63"><polygon points="5 4 15 12 5 20"></polygon><rect x="17" y="4" width="3" height="16" rx="1.5"></rect></svg></div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:15px 17px;box-shadow:0 8px 20px -14px rgba(90,70,40,.3)">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:9px"><span style="font:600 12px 'Baloo 2';color:#B4A48C">Tempo estudado hoje</span><span style="font:700 16px 'Baloo 2';color:#2B2A28">2h 10min <span style="font:600 11px 'Nunito';color:#B4A48C">/ 4h</span></span></div>
+      <div style="height:11px;border-radius:8px;background:#F4EFE6;overflow:hidden"><div style="width:54%;height:100%;border-radius:8px;background:linear-gradient(90deg,#14C4CE,#0FA6B0)"></div></div>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><h3 style="font:700 17px 'Baloo 2';color:#2B2A28">Matérias</h3><span style="font:700 12px 'Baloo 2';color:#14C4CE">Ver todas</span></div>
+      <div style="display:flex;gap:9px;overflow:hidden">
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:10px 16px;border-radius:16px;background:#7C6BF5"><span style="width:8px;height:8px;border-radius:50%;background:#fff"></span><span style="font:700 13px 'Baloo 2';color:#fff">Programação</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:10px 16px;border-radius:16px;background:#E7FAFB"><span style="width:8px;height:8px;border-radius:50%;background:#14C4CE"></span><span style="font:700 13px 'Baloo 2';color:#0FA6B0">Inglês</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:10px 16px;border-radius:16px;background:#FFEEE8"><span style="width:8px;height:8px;border-radius:50%;background:#FF7A59"></span><span style="font:700 13px 'Baloo 2';color:#FF7A59">Port.</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:10px 16px;border-radius:16px;background:#FFF6E3"><span style="width:8px;height:8px;border-radius:50%;background:#F5A623"></span><span style="font:700 13px 'Baloo 2';color:#E0910F">Hist.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="nit" style="color:#14C4CE;font-family:'Baloo 2'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Estudar</div>
+    <div class="nit" style="font-family:'Baloo 2'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>Estatísticas</div>
+    <div class="nit" style="font-family:'Baloo 2'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Amigos</div>
+    <div class="nit" style="font-family:'Baloo 2'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Perfil</div>
+    <div class="nit" style="font-family:'Baloo 2'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Baralho</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ 3b — EDITORIAL / GEOMETRIC ============ -->
+<div class="dv-opt" id="3b">
+<div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>Editorial · Space Grotesk · cantos sóbrios e tempo monoespaçado</div>
+<div class="ph" style="background:#F3F5F4;border-color:#0E2F31">
+  <div class="sbar" style="color:#0E2F31"><span style="font-family:'Space Grotesk'">9:41</span><div class="dots">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="#0E2F31"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="4.5" y="5" width="3" height="7" rx="1"></rect><rect x="9" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1"></rect></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#0E2F31" stroke-width="1.6"><path d="M1 4.5a10 10 0 0 1 14 0M3.5 7a6.5 6.5 0 0 1 9 0"></path><circle cx="8" cy="10" r="1" fill="#0E2F31" stroke="none"></circle></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#0E2F31" stroke-width="1.4"></rect><rect x="3" y="3" width="14" height="6" rx="1.5" fill="#0E2F31"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="#0E2F31"></rect></svg>
+  </div></div>
+  <div class="body" style="gap:15px">
+    <div style="display:flex;align-items:center;gap:11px">
+      <div style="width:48px;height:48px;border-radius:13px;background:#0E2F31;flex:none;overflow:hidden;display:flex;align-items:flex-end;justify-content:center">
+        <svg width="42" height="42" viewBox="0 0 100 100"><circle cx="28" cy="26" r="13" fill="#0E2F31"></circle><circle cx="72" cy="26" r="13" fill="#0E2F31"></circle><circle cx="50" cy="54" r="33" fill="#fff"></circle><ellipse cx="37" cy="50" rx="8.5" ry="11" fill="#0E2F31"></ellipse><ellipse cx="63" cy="50" rx="8.5" ry="11" fill="#0E2F31"></ellipse><circle cx="38" cy="51" r="3.3" fill="#fff"></circle><circle cx="62" cy="51" r="3.3" fill="#fff"></circle><ellipse cx="50" cy="67" rx="4.6" ry="3.2" fill="#0E2F31"></ellipse><path d="M44 74 Q50 79 56 74" stroke="#0E2F31" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+      <div style="flex:1"><div style="font:600 11px 'Space Grotesk';color:#7E9698;letter-spacing:1px;text-transform:uppercase">Bom dia</div><div style="font:700 18px 'Space Grotesk';color:#0E2F31;letter-spacing:-.5px">Ana Beatriz</div></div>
+      <div style="display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:11px;background:#0E2F31"><span style="font-size:14px">🔥</span><span style="font:700 15px 'Space Grotesk';color:#5FE0C6">7</span></div>
+      <div style="width:44px;height:44px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px -10px rgba(14,47,49,.4)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#0E2F31" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg><span style="position:absolute;margin:-18px 0 0 16px;width:8px;height:8px;border-radius:50%;background:#FF7A59;border:2px solid #fff"></span></div>
+    </div>
+    <div style="background:#fff;border-radius:20px;padding:20px 20px 18px;display:flex;flex-direction:column;align-items:center;gap:14px;border:1px solid #E4E9E8">
+      <div style="align-self:stretch;display:flex;align-items:center;justify-content:space-between"><span style="font:600 11px 'Space Grotesk';color:#7E9698;letter-spacing:1.5px;text-transform:uppercase">Sessão de foco</span><span style="font:600 11px 'Space Grotesk';color:#14C4CE;letter-spacing:1px">POMODORO 3/4</span></div>
+      <div style="width:206px;height:206px;border-radius:50%;background:conic-gradient(#0E2F31 0 68%,#DDE6E5 68% 100%);display:flex;align-items:center;justify-content:center">
+        <div style="width:172px;height:172px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+          <div style="font:500 50px 'DM Mono';color:#0E2F31;letter-spacing:-1px">24:35</div>
+          <div style="font:600 11px 'Space Grotesk';color:#14C4CE;letter-spacing:2px;text-transform:uppercase">Concentre-se</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:22px">
+        <div style="width:46px;height:46px;border-radius:14px;background:#EEF2F1;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5B7375" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg></div>
+        <div style="width:66px;height:66px;border-radius:20px;background:#0E2F31;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 22px -10px rgba(14,47,49,.6)"><svg width="25" height="25" viewBox="0 0 24 24" fill="#5FE0C6"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></div>
+        <div style="width:46px;height:46px;border-radius:14px;background:#EEF2F1;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5B7375"><polygon points="5 4 15 12 5 20"></polygon><rect x="17" y="4" width="3" height="16" rx="1"></rect></svg></div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:15px 17px;border:1px solid #E4E9E8">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:9px"><span style="font:600 11px 'Space Grotesk';color:#7E9698;letter-spacing:1px;text-transform:uppercase">Estudado hoje</span><span style="font:500 16px 'DM Mono';color:#0E2F31">2h10 <span style="font:600 11px 'Space Grotesk';color:#7E9698">/ 4h</span></span></div>
+      <div style="height:8px;border-radius:2px;background:#EEF2F1;overflow:hidden"><div style="width:54%;height:100%;background:#14C4CE"></div></div>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><h3 style="font:700 16px 'Space Grotesk';color:#0E2F31;letter-spacing:-.3px">Matérias</h3><span style="font:600 11px 'Space Grotesk';color:#14C4CE;letter-spacing:.5px">VER TODAS</span></div>
+      <div style="display:flex;gap:8px;overflow:hidden">
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 14px;border-radius:10px;background:#7C6BF5"><span style="width:7px;height:7px;background:#fff"></span><span style="font:600 12px 'Space Grotesk';color:#fff">Programação</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 14px;border-radius:10px;background:#fff;border:1px solid #E4E9E8"><span style="width:7px;height:7px;background:#14C4CE"></span><span style="font:600 12px 'Space Grotesk';color:#0E2F31">Inglês</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 14px;border-radius:10px;background:#fff;border:1px solid #E4E9E8"><span style="width:7px;height:7px;background:#FF7A59"></span><span style="font:600 12px 'Space Grotesk';color:#0E2F31">Port.</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 14px;border-radius:10px;background:#fff;border:1px solid #E4E9E8"><span style="width:7px;height:7px;background:#F5A623"></span><span style="font:600 12px 'Space Grotesk';color:#0E2F31">Hist.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="nit" style="color:#14C4CE;font-family:'Space Grotesk';font-weight:600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Estudar</div>
+    <div class="nit" style="font-family:'Space Grotesk';font-weight:600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>Estatísticas</div>
+    <div class="nit" style="font-family:'Space Grotesk';font-weight:600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Amigos</div>
+    <div class="nit" style="font-family:'Space Grotesk';font-weight:600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Perfil</div>
+    <div class="nit" style="font-family:'Space Grotesk';font-weight:600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Baralho</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ 3c — BOLD / POP ============ -->
+<div class="dv-opt" id="3c">
+<div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a>Pop · Bricolage Grotesque · contornos fortes e sombra sólida</div>
+<div class="ph" style="background:#EAFBFC;border-color:#101820">
+  <div class="sbar"><span style="font-family:'Bricolage Grotesque'">9:41</span><div class="dots">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="#101820"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="4.5" y="5" width="3" height="7" rx="1"></rect><rect x="9" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1"></rect></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#101820" stroke-width="1.6"><path d="M1 4.5a10 10 0 0 1 14 0M3.5 7a6.5 6.5 0 0 1 9 0"></path><circle cx="8" cy="10" r="1" fill="#101820" stroke="none"></circle></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#101820" stroke-width="1.4"></rect><rect x="3" y="3" width="14" height="6" rx="1.5" fill="#101820"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="#101820"></rect></svg>
+  </div></div>
+  <div class="body" style="gap:15px">
+    <div style="display:flex;align-items:center;gap:11px">
+      <div style="width:50px;height:50px;border-radius:16px;background:#14C4CE;border:2.5px solid #101820;flex:none;overflow:hidden;display:flex;align-items:flex-end;justify-content:center">
+        <svg width="42" height="42" viewBox="0 0 100 100"><circle cx="28" cy="26" r="13" fill="#101820"></circle><circle cx="72" cy="26" r="13" fill="#101820"></circle><circle cx="50" cy="54" r="33" fill="#fff"></circle><ellipse cx="37" cy="50" rx="8.5" ry="11" fill="#101820"></ellipse><ellipse cx="63" cy="50" rx="8.5" ry="11" fill="#101820"></ellipse><circle cx="38" cy="51" r="3.3" fill="#fff"></circle><circle cx="62" cy="51" r="3.3" fill="#fff"></circle><ellipse cx="50" cy="67" rx="4.6" ry="3.2" fill="#101820"></ellipse><path d="M44 74 Q50 79 56 74" stroke="#101820" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+      <div style="flex:1"><div style="font:600 12px 'Bricolage Grotesque';color:#5B7376">Bom dia,</div><div style="font:800 19px 'Bricolage Grotesque';color:#101820;line-height:1.05">Ana Beatriz</div></div>
+      <div style="display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:12px;background:#FFD84D;border:2.5px solid #101820"><span style="font-size:14px">🔥</span><span style="font:800 15px 'Bricolage Grotesque';color:#101820">7</span></div>
+      <div style="width:46px;height:46px;border-radius:14px;background:#fff;border:2.5px solid #101820;display:flex;align-items:center;justify-content:center"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#101820" stroke-width="2.2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg><span style="position:absolute;margin:-19px 0 0 16px;width:9px;height:9px;border-radius:50%;background:#FF7A59;border:2px solid #fff"></span></div>
+    </div>
+    <div style="background:#fff;border-radius:26px;padding:20px 20px 18px;display:flex;flex-direction:column;align-items:center;gap:14px;border:2.5px solid #101820;box-shadow:5px 6px 0 #101820">
+      <div style="width:208px;height:208px;border-radius:50%;background:conic-gradient(#14C4CE 0 68%,#D6F3F5 68% 100%);border:2.5px solid #101820;display:flex;align-items:center;justify-content:center">
+        <div style="width:168px;height:168px;border-radius:50%;background:#fff;border:2.5px solid #101820;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px">
+          <div style="font:800 50px 'Bricolage Grotesque';color:#101820;line-height:1;letter-spacing:-1px">24:35</div>
+          <div style="font:700 13px 'Bricolage Grotesque';color:#0FA6B0">Concentre-se!</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:22px">
+        <div style="width:48px;height:48px;border-radius:15px;background:#fff;border:2.5px solid #101820;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101820" stroke-width="2.2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg></div>
+        <div style="width:70px;height:70px;border-radius:22px;background:#FFD84D;border:2.5px solid #101820;display:flex;align-items:center;justify-content:center;box-shadow:3px 4px 0 #101820"><svg width="26" height="26" viewBox="0 0 24 24" fill="#101820"><rect x="6" y="5" width="4" height="14" rx="1.5"></rect><rect x="14" y="5" width="4" height="14" rx="1.5"></rect></svg></div>
+        <div style="width:48px;height:48px;border-radius:15px;background:#fff;border:2.5px solid #101820;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#101820"><polygon points="5 4 15 12 5 20"></polygon><rect x="17" y="4" width="3" height="16" rx="1.5"></rect></svg></div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:18px;padding:14px 16px;border:2.5px solid #101820">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:9px"><span style="font:700 12px 'Bricolage Grotesque';color:#5B7376">Tempo estudado hoje</span><span style="font:800 16px 'Bricolage Grotesque';color:#101820">2h 10min <span style="font:600 11px 'Nunito';color:#8A9A9C">/ 4h</span></span></div>
+      <div style="height:12px;border-radius:8px;background:#EAF3F3;border:2px solid #101820;overflow:hidden"><div style="width:54%;height:100%;background:#14C4CE;border-right:2px solid #101820"></div></div>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><h3 style="font:800 17px 'Bricolage Grotesque';color:#101820">Matérias</h3><span style="font:700 12px 'Bricolage Grotesque';color:#0FA6B0">Ver todas</span></div>
+      <div style="display:flex;gap:9px;overflow:hidden">
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:13px;background:#7C6BF5;border:2.5px solid #101820"><span style="width:8px;height:8px;border-radius:50%;background:#fff"></span><span style="font:700 13px 'Bricolage Grotesque';color:#fff">Programação</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:13px;background:#fff;border:2.5px solid #101820"><span style="width:8px;height:8px;border-radius:50%;background:#14C4CE"></span><span style="font:700 13px 'Bricolage Grotesque';color:#101820">Inglês</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:13px;background:#fff;border:2.5px solid #101820"><span style="width:8px;height:8px;border-radius:50%;background:#FF7A59"></span><span style="font:700 13px 'Bricolage Grotesque';color:#101820">Port.</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:13px;background:#fff;border:2.5px solid #101820"><span style="width:8px;height:8px;border-radius:50%;background:#F5A623"></span><span style="font:700 13px 'Bricolage Grotesque';color:#101820">Hist.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="nav" style="border-top:2.5px solid #101820">
+    <div class="nit" style="color:#101820;font-family:'Bricolage Grotesque';font-weight:700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Estudar</div>
+    <div class="nit" style="font-family:'Bricolage Grotesque';font-weight:700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>Estatísticas</div>
+    <div class="nit" style="font-family:'Bricolage Grotesque';font-weight:700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Amigos</div>
+    <div class="nit" style="font-family:'Bricolage Grotesque';font-weight:700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Perfil</div>
+    <div class="nit" style="font-family:'Bricolage Grotesque';font-weight:700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Baralho</div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Peça a seguir: "seguir com a <a class="dv-oid" href="#3a">3a</a>" · "misture a fonte da <a class="dv-oid" href="#3b">3b</a> com as cores da <a class="dv-oid" href="#3c">3c</a>" · "trocar o panda pelo mascote real"</p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Header com foguinho + tempo do dia · matérias coloridas · timers no modelo <a class="dv-oid" href="#1a">1a</a></span></div>
+<div class="dv-opts">
+
+<!-- ============ 2a ============ -->
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Ring clássico · card de tempo do dia · chips coloridos</div>
+<div class="ph">
+  <div class="sbar"><span>9:41</span><div class="dots">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="#1A1D1F"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="4.5" y="5" width="3" height="7" rx="1"></rect><rect x="9" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1"></rect></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#1A1D1F" stroke-width="1.6"><path d="M1 4.5a10 10 0 0 1 14 0M3.5 7a6.5 6.5 0 0 1 9 0"></path><circle cx="8" cy="10" r="1" fill="#1A1D1F" stroke="none"></circle></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#1A1D1F" stroke-width="1.4"></rect><rect x="3" y="3" width="14" height="6" rx="1.5" fill="#1A1D1F"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="#1A1D1F"></rect></svg>
+  </div></div>
+  <div class="body" style="justify-content: space-between; padding-bottom: 26px; gap: 0px">
+    <!-- header w/ streak -->
+    <div style="display: flex; align-items: center; gap: 11px">
+      <div style="width:48px;height:48px;border-radius:50%;background:#14C4CE;flex:none;overflow:hidden;display:flex;align-items:flex-end;justify-content:center">
+        <svg width="42" height="42" viewBox="0 0 100 100"><circle cx="28" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="72" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="50" cy="54" r="33" fill="#fff"></circle><ellipse cx="37" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><ellipse cx="63" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><circle cx="38" cy="51" r="3.3" fill="#fff"></circle><circle cx="62" cy="51" r="3.3" fill="#fff"></circle><ellipse cx="50" cy="67" rx="4.6" ry="3.2" fill="#1A1D1F"></ellipse><path d="M44 74 Q50 79 56 74" stroke="#1A1D1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+      <div style="flex:1"><div style="font:600 12px 'Nunito';color:#9aa4a8">Bom dia,</div><div style="font:700 17px 'Fredoka';color:#1A1D1F">Ana Beatriz</div></div>
+      <div style="display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:14px;background:#FFF1E6"><span style="font-size:15px">🔥</span><span style="font:800 15px 'Nunito';color:#FF7A24">7</span></div>
+      <div style="width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px -8px rgba(20,60,65,.3)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1A1D1F" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg><span style="position:absolute;margin:-18px 0 0 16px;width:8px;height:8px;border-radius:50%;background:#FF7A59;border:2px solid #fff"></span></div>
+    </div>
+    <!-- modo toggle: cronômetro / pomodoro -->
+    <div style="display:flex;gap:5px;background:#E4EBEC;border-radius:16px;padding:5px">
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 0;border-radius:12px;background:#fff;box-shadow:0 4px 10px -6px rgba(20,60,65,.35)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#14C4CE" stroke-width="2.2"><circle cx="12" cy="13" r="8"></circle><path d="M12 13V9"></path><path d="M9 2h6"></path></svg><span style="font:700 13px 'Nunito';color:#1A1D1F">Pomodoro</span></div>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 0;border-radius:12px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9aa4a8" stroke-width="2.2"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15 14"></polyline></svg><span style="font:700 13px 'Nunito';color:#9aa4a8">Cronômetro</span></div>
+    </div>
+    <!-- timer card -->
+    <div class="card" style="padding:22px 20px 18px;display:flex;flex-direction:column;align-items:center;gap:14px">
+      <div style="width:210px;height:210px;border-radius:50%;background:conic-gradient(#7C6BF5 0 68%,#F0EDFF 68% 100%);display:flex;align-items:center;justify-content:center">
+        <div style="width:172px;height:172px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px">
+          <div style="width:34px;height:34px;border-radius:50%;background:#F0EDFF;display:flex;align-items:center;justify-content:center;margin-bottom:2px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7C6BF5" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><polyline points="12 8 12 12 15 13"></polyline></svg></div>
+          <div style="font:600 46px 'Fredoka';color:#1A1D1F;letter-spacing:1px">24:35</div>
+          <div style="font:700 13px 'Nunito';color:#7C6BF5">Concentre-se!</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:24px">
+        <div style="width:46px;height:46px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c666b" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg></div>
+        <div style="width:66px;height:66px;border-radius:50%;background:#7C6BF5;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 22px -8px rgba(124,107,245,.7)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="1.5"></rect><rect x="14" y="5" width="4" height="14" rx="1.5"></rect></svg></div>
+        <div style="width:46px;height:46px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5c666b"><polygon points="5 4 15 12 5 20"></polygon><rect x="17" y="4" width="3" height="16" rx="1.5"></rect></svg></div>
+      </div>
+    </div>
+    <!-- tempo do dia -->
+    <div class="card" style="padding: 14px 16px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:9px"><span style="font:700 12px 'Nunito';color:#9aa4a8">Tempo estudado hoje</span><span style="font:600 15px 'Fredoka';color:#1A1D1F">2h 10min <span style="font:600 11px 'Nunito';color:#9aa4a8">/ 4h</span></span></div>
+      <div style="height:9px;border-radius:6px;background:#EDF1F2;overflow:hidden"><div style="width:54%;height:100%;border-radius:6px;background:linear-gradient(90deg,#14C4CE,#0FA6B0)"></div></div>
+    </div>
+    <!-- matérias coloridas -->
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><h3 style="font:600 15px 'Fredoka';color:#1A1D1F">Matérias</h3><span style="font:700 12px 'Nunito';color:#14C4CE">Ver todas</span></div>
+      <div style="display:flex;gap:9px;overflow:hidden">
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#7C6BF5"><span style="width:8px;height:8px;border-radius:50%;background:#fff"></span><span style="font:700 13px 'Nunito';color:#fff">Programação</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#E7FAFB"><span style="width:8px;height:8px;border-radius:50%;background:#14C4CE"></span><span style="font:700 13px 'Nunito';color:#0FA6B0">Inglês</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#FFEEE8"><span style="width:8px;height:8px;border-radius:50%;background:#FF7A59"></span><span style="font:700 13px 'Nunito';color:#FF7A59">Port.</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#FFF6E3"><span style="width:8px;height:8px;border-radius:50%;background:#F5A623"></span><span style="font:700 13px 'Nunito';color:#E0910F">Hist.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="nav" style="gap: 0px">
+    <div class="nit" style="color: #14C4CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Estudar</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>Estatísticas</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Amigos</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Perfil</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Baralho</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ 2b ============ -->
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Timer com marcações (ticks) · tempo em mini-stats</div>
+<div class="ph">
+  <div class="sbar"><span>9:41</span><div class="dots">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="#1A1D1F"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="4.5" y="5" width="3" height="7" rx="1"></rect><rect x="9" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1"></rect></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#1A1D1F" stroke-width="1.6"><path d="M1 4.5a10 10 0 0 1 14 0M3.5 7a6.5 6.5 0 0 1 9 0"></path><circle cx="8" cy="10" r="1" fill="#1A1D1F" stroke="none"></circle></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#1A1D1F" stroke-width="1.4"></rect><rect x="3" y="3" width="14" height="6" rx="1.5" fill="#1A1D1F"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="#1A1D1F"></rect></svg>
+  </div></div>
+  <div class="body">
+    <div style="display:flex;align-items:center;gap:11px">
+      <div style="width:48px;height:48px;border-radius:50%;background:#14C4CE;flex:none;overflow:hidden;display:flex;align-items:flex-end;justify-content:center">
+        <svg width="42" height="42" viewBox="0 0 100 100"><circle cx="28" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="72" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="50" cy="54" r="33" fill="#fff"></circle><ellipse cx="37" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><ellipse cx="63" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><circle cx="38" cy="51" r="3.3" fill="#fff"></circle><circle cx="62" cy="51" r="3.3" fill="#fff"></circle><ellipse cx="50" cy="67" rx="4.6" ry="3.2" fill="#1A1D1F"></ellipse><path d="M44 74 Q50 79 56 74" stroke="#1A1D1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+      <div style="flex:1"><div style="font:600 12px 'Nunito';color:#9aa4a8">Bom dia,</div><div style="font:700 17px 'Fredoka';color:#1A1D1F">Ana Beatriz</div></div>
+      <div style="display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:14px;background:#FFF1E6"><span style="font-size:15px">🔥</span><span style="font:800 15px 'Nunito';color:#FF7A24">7</span></div>
+      <div style="width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px -8px rgba(20,60,65,.3)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1A1D1F" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg><span style="position:absolute;margin:-18px 0 0 16px;width:8px;height:8px;border-radius:50%;background:#FF7A59;border:2px solid #fff"></span></div>
+    </div>
+    <div class="card" style="padding:20px 20px 18px;display:flex;flex-direction:column;align-items:center;gap:14px">
+      <div style="width:214px;height:214px;border-radius:50%;background:conic-gradient(#14C4CE 0 64%,#E7FAFB 64% 100%);display:flex;align-items:center;justify-content:center">
+        <div style="width:188px;height:188px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center">
+          <div style="width:166px;height:166px;border-radius:50%;background:repeating-conic-gradient(#C9E9EB 0deg 1.4deg,transparent 1.4deg 15deg);display:flex;align-items:center;justify-content:center">
+            <div style="width:136px;height:136px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+              <div style="font:600 40px 'Fredoka';color:#1A1D1F;letter-spacing:1px">24:35</div>
+              <div style="font:700 12px 'Nunito';color:#14C4CE">Concentre-se!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:24px">
+        <div style="width:46px;height:46px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c666b" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg></div>
+        <div style="width:66px;height:66px;border-radius:50%;background:#14C4CE;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 22px -8px rgba(20,196,206,.7)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="1.5"></rect><rect x="14" y="5" width="4" height="14" rx="1.5"></rect></svg></div>
+        <div style="width:46px;height:46px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5c666b"><polygon points="5 4 15 12 5 20"></polygon><rect x="17" y="4" width="3" height="16" rx="1.5"></rect></svg></div>
+      </div>
+    </div>
+    <!-- tempo mini stats -->
+    <div style="display:flex;gap:11px">
+      <div class="card" style="flex:1;padding:13px 14px;display:flex;align-items:center;gap:10px"><div style="width:34px;height:34px;border-radius:11px;background:#E7FAFB;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0FA6B0" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><polyline points="12 8 12 12 15 13"></polyline></svg></div><div><div style="font:600 16px 'Fredoka';color:#1A1D1F">2h 10min</div><div style="font:600 10px 'Nunito';color:#9aa4a8">estudado hoje</div></div></div>
+      <div class="card" style="flex:1;padding:13px 14px;display:flex;align-items:center;gap:10px"><div style="width:34px;height:34px;border-radius:11px;background:#FFF1E6;display:flex;align-items:center;justify-content:center;font-size:16px">🔥</div><div><div style="font:600 16px 'Fredoka';color:#1A1D1F">7 dias</div><div style="font:600 10px 'Nunito';color:#9aa4a8">de sequência</div></div></div>
+    </div>
+    <!-- matérias -->
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><h3 style="font:600 15px 'Fredoka';color:#1A1D1F">Matérias</h3><span style="font:700 12px 'Nunito';color:#14C4CE">Ver todas</span></div>
+      <div style="display:flex;gap:9px;overflow:hidden">
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#14C4CE"><span style="width:8px;height:8px;border-radius:50%;background:#fff"></span><span style="font:700 13px 'Nunito';color:#fff">Inglês</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#F0EDFF"><span style="width:8px;height:8px;border-radius:50%;background:#7C6BF5"></span><span style="font:700 13px 'Nunito';color:#7C6BF5">Program.</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#FFEEE8"><span style="width:8px;height:8px;border-radius:50%;background:#FF7A59"></span><span style="font:700 13px 'Nunito';color:#FF7A59">Port.</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#FFF6E3"><span style="width:8px;height:8px;border-radius:50%;background:#F5A623"></span><span style="font:700 13px 'Nunito';color:#E0910F">Hist.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="nit" style="color:#14C4CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Estudar</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>Estatísticas</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Amigos</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Perfil</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Baralho</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ 2c ============ -->
+<div class="dv-opt" id="2c">
+<div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Ring com progresso de ciclos · tempo do dia em destaque</div>
+<div class="ph">
+  <div class="sbar"><span>9:41</span><div class="dots">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="#1A1D1F"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="4.5" y="5" width="3" height="7" rx="1"></rect><rect x="9" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1"></rect></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#1A1D1F" stroke-width="1.6"><path d="M1 4.5a10 10 0 0 1 14 0M3.5 7a6.5 6.5 0 0 1 9 0"></path><circle cx="8" cy="10" r="1" fill="#1A1D1F" stroke="none"></circle></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#1A1D1F" stroke-width="1.4"></rect><rect x="3" y="3" width="14" height="6" rx="1.5" fill="#1A1D1F"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="#1A1D1F"></rect></svg>
+  </div></div>
+  <div class="body">
+    <div style="display:flex;align-items:center;gap:11px">
+      <div style="width:48px;height:48px;border-radius:50%;background:#14C4CE;flex:none;overflow:hidden;display:flex;align-items:flex-end;justify-content:center">
+        <svg width="42" height="42" viewBox="0 0 100 100"><circle cx="28" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="72" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="50" cy="54" r="33" fill="#fff"></circle><ellipse cx="37" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><ellipse cx="63" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><circle cx="38" cy="51" r="3.3" fill="#fff"></circle><circle cx="62" cy="51" r="3.3" fill="#fff"></circle><ellipse cx="50" cy="67" rx="4.6" ry="3.2" fill="#1A1D1F"></ellipse><path d="M44 74 Q50 79 56 74" stroke="#1A1D1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+      <div style="flex:1"><div style="font:600 12px 'Nunito';color:#9aa4a8">Bom dia,</div><div style="font:700 17px 'Fredoka';color:#1A1D1F">Ana Beatriz</div></div>
+      <div style="display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:14px;background:#FFF1E6"><span style="font-size:15px">🔥</span><span style="font:800 15px 'Nunito';color:#FF7A24">7</span></div>
+      <div style="width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px -8px rgba(20,60,65,.3)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1A1D1F" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg><span style="position:absolute;margin:-18px 0 0 16px;width:8px;height:8px;border-radius:50%;background:#FF7A59;border:2px solid #fff"></span></div>
+    </div>
+    <div class="card" style="padding:20px 20px 18px;display:flex;flex-direction:column;align-items:center;gap:12px">
+      <div style="width:210px;height:210px;border-radius:50%;background:conic-gradient(#FF7A59 0 58%,#FFC9BA 58% 66%,#FFEEE8 66% 100%);display:flex;align-items:center;justify-content:center">
+        <div style="width:172px;height:172px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px">
+          <div style="font:600 12px 'Nunito';color:#9aa4a8;letter-spacing:1px">PORTUGUÊS</div>
+          <div style="font:600 46px 'Fredoka';color:#1A1D1F;letter-spacing:1px">24:35</div>
+          <div style="display:flex;gap:5px;margin-top:2px"><span style="width:7px;height:7px;border-radius:50%;background:#FF7A59"></span><span style="width:7px;height:7px;border-radius:50%;background:#FF7A59"></span><span style="width:7px;height:7px;border-radius:50%;background:#FF7A59"></span><span style="width:7px;height:7px;border-radius:50%;background:#FFD3C7"></span></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:24px">
+        <div style="width:46px;height:46px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c666b" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg></div>
+        <div style="width:66px;height:66px;border-radius:50%;background:#FF7A59;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 22px -8px rgba(255,122,89,.7)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="1.5"></rect><rect x="14" y="5" width="4" height="14" rx="1.5"></rect></svg></div>
+        <div style="width:46px;height:46px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5c666b"><polygon points="5 4 15 12 5 20"></polygon><rect x="17" y="4" width="3" height="16" rx="1.5"></rect></svg></div>
+      </div>
+    </div>
+    <!-- tempo do dia destaque -->
+    <div class="card" style="padding:15px 17px;display:flex;align-items:center;gap:13px;background:linear-gradient(120deg,#14C4CE,#0FA6B0)">
+      <div style="width:40px;height:40px;border-radius:13px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><polyline points="12 8 12 12 15 13"></polyline></svg></div>
+      <div style="flex:1"><div style="font:600 11px 'Nunito';color:rgba(255,255,255,.85)">Tempo estudado hoje</div><div style="font:600 22px 'Fredoka';color:#fff">2h 10min</div></div>
+      <div style="text-align:right"><div style="font:700 13px 'Nunito';color:#fff">54%</div><div style="font:600 10px 'Nunito';color:rgba(255,255,255,.8)">da meta</div></div>
+    </div>
+    <!-- matérias -->
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><h3 style="font:600 15px 'Fredoka';color:#1A1D1F">Matérias</h3><span style="font:700 12px 'Nunito';color:#14C4CE">Ver todas</span></div>
+      <div style="display:flex;gap:9px;overflow:hidden">
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#FF7A59"><span style="width:8px;height:8px;border-radius:50%;background:#fff"></span><span style="font:700 13px 'Nunito';color:#fff">Português</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#E7FAFB"><span style="width:8px;height:8px;border-radius:50%;background:#14C4CE"></span><span style="font:700 13px 'Nunito';color:#0FA6B0">Inglês</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#F0EDFF"><span style="width:8px;height:8px;border-radius:50%;background:#7C6BF5"></span><span style="font:700 13px 'Nunito';color:#7C6BF5">Program.</span></div>
+        <div style="flex:none;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:14px;background:#FFF6E3"><span style="width:8px;height:8px;border-radius:50%;background:#F5A623"></span><span style="font:700 13px 'Nunito';color:#E0910F">Hist.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="nit" style="color:#14C4CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Estudar</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>Estatísticas</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Amigos</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Perfil</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Baralho</div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Peça a seguir: "seguir com a <a class="dv-oid" href="#2b">2b</a>" · "usar as cores por matéria numa prévia de estatísticas" · "trocar o panda pelo mascote real" · "juntar o tempo do dia da <a class="dv-oid" href="#2c">2c</a> com o timer da <a class="dv-oid" href="#2a">2a</a>"</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Tela inicial — timer, matérias e menu inferior (3 direções)</span></div>
+<div class="dv-opts">
+
+<!-- ============ 1a ============ -->
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Fiel à referência · turquesa · chips de matéria</div>
+<div class="ph">
+  <div class="sbar"><span>9:41</span><div class="dots">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="#1A1D1F"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="4.5" y="5" width="3" height="7" rx="1"></rect><rect x="9" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1"></rect></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#1A1D1F" stroke-width="1.6"><path d="M1 4.5a10 10 0 0 1 14 0M3.5 7a6.5 6.5 0 0 1 9 0"></path><circle cx="8" cy="10" r="1" fill="#1A1D1F" stroke="none"></circle></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#1A1D1F" stroke-width="1.4"></rect><rect x="3" y="3" width="14" height="6" rx="1.5" fill="#1A1D1F"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="#1A1D1F"></rect></svg>
+  </div></div>
+  <div class="body">
+    <!-- greeting -->
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:48px;height:48px;border-radius:50%;background:#14C4CE;flex:none;overflow:hidden;display:flex;align-items:flex-end;justify-content:center">
+        <svg width="42" height="42" viewBox="0 0 100 100"><circle cx="28" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="72" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="50" cy="54" r="33" fill="#fff"></circle><ellipse cx="37" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><ellipse cx="63" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><circle cx="38" cy="51" r="3.3" fill="#fff"></circle><circle cx="62" cy="51" r="3.3" fill="#fff"></circle><ellipse cx="50" cy="67" rx="4.6" ry="3.2" fill="#1A1D1F"></ellipse><path d="M44 74 Q50 79 56 74" stroke="#1A1D1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+      </div>
+      <div style="flex:1">
+        <div style="font:600 12px 'Nunito';color:#9aa4a8">Bom dia,</div>
+        <div style="font:700 17px 'Fredoka';color:#1A1D1F">Ana Beatriz</div>
+      </div>
+      <div style="width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px -8px rgba(20,60,65,.3)">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1A1D1F" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg>
+        <span style="position:absolute;margin:-18px 0 0 16px;width:8px;height:8px;border-radius:50%;background:#FF7A59;border:2px solid #fff"></span>
+      </div>
+    </div>
+    <!-- current subject dropdown -->
+    <div class="card" style="display:flex;align-items:center;gap:13px;padding:15px 16px">
+      <div style="width:42px;height:42px;border-radius:14px;background:#E7FAFB;display:flex;align-items:center;justify-content:center;flex:none">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0FA6B0" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+      </div>
+      <div style="flex:1">
+        <div style="font:700 15px 'Fredoka';color:#1A1D1F">Programação</div>
+        <div style="font:600 11px 'Nunito';color:#9aa4a8;margin-top:2px">3 / 8 tarefas · 90 / 200 min</div>
+      </div>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa4a8" stroke-width="2.4"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+    <!-- timer card -->
+    <div class="card" style="padding:22px 20px 18px;display:flex;flex-direction:column;align-items:center;gap:14px">
+      <div style="width:210px;height:210px;border-radius:50%;background:conic-gradient(#14C4CE 0 68%,#E7FAFB 68% 100%);display:flex;align-items:center;justify-content:center">
+        <div style="width:172px;height:172px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px">
+          <div style="width:34px;height:34px;border-radius:50%;background:#E7FAFB;display:flex;align-items:center;justify-content:center;margin-bottom:2px">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0FA6B0" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><polyline points="12 8 12 12 15 13"></polyline></svg>
+          </div>
+          <div style="font:600 46px 'Fredoka';color:#1A1D1F;letter-spacing:1px">24:35</div>
+          <div style="font:700 13px 'Nunito';color:#14C4CE">Concentre-se!</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:24px">
+        <div style="width:46px;height:46px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c666b" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg></div>
+        <div style="width:66px;height:66px;border-radius:50%;background:#14C4CE;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 22px -8px rgba(20,196,206,.7)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="1.5"></rect><rect x="14" y="5" width="4" height="14" rx="1.5"></rect></svg></div>
+        <div style="width:46px;height:46px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5c666b"><polygon points="5 4 15 12 5 20"></polygon><rect x="17" y="4" width="3" height="16" rx="1.5"></rect></svg></div>
+      </div>
+    </div>
+    <!-- matérias chips -->
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <h3 style="font:600 15px 'Fredoka';color:#1A1D1F">Matérias</h3>
+        <span style="font:700 12px 'Nunito';color:#14C4CE">Ver todas</span>
+      </div>
+      <div style="display:flex;gap:9px;overflow:hidden">
+        <div style="flex:none;padding:9px 16px;border-radius:14px;background:#14C4CE;font:700 13px 'Nunito';color:#fff">Programação</div>
+        <div style="flex:none;padding:9px 16px;border-radius:14px;background:#fff;font:700 13px 'Nunito';color:#5c666b;box-shadow:0 4px 12px -8px rgba(20,60,65,.3)">Inglês</div>
+        <div style="flex:none;padding:9px 16px;border-radius:14px;background:#fff;font:700 13px 'Nunito';color:#5c666b;box-shadow:0 4px 12px -8px rgba(20,60,65,.3)">Português</div>
+        <div style="flex:none;padding:9px 16px;border-radius:14px;background:#fff;font:700 13px 'Nunito';color:#5c666b;box-shadow:0 4px 12px -8px rgba(20,60,65,.3)">Hist</div>
+      </div>
+    </div>
+  </div>
+  <!-- nav -->
+  <div class="nav">
+    <div class="nit" style="color:#14C4CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Estudar</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>Estatísticas</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Amigos</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Perfil</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Baralho</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ 1b ============ -->
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Mascote em destaque · header colorido · grade de matérias</div>
+<div class="ph">
+  <div class="sbar" style="color:#fff"><span>9:41</span><div class="dots">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="#fff"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="4.5" y="5" width="3" height="7" rx="1"></rect><rect x="9" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1"></rect></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#fff" stroke-width="1.6"><path d="M1 4.5a10 10 0 0 1 14 0M3.5 7a6.5 6.5 0 0 1 9 0"></path><circle cx="8" cy="10" r="1" fill="#fff" stroke="none"></circle></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#fff" stroke-width="1.4"></rect><rect x="3" y="3" width="14" height="6" rx="1.5" fill="#fff"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="#fff"></rect></svg>
+  </div></div>
+  <div class="body" style="padding:0;gap:0;background:#F4F8F9">
+    <!-- colored header -->
+    <div style="background:linear-gradient(160deg,#17C9D3,#0FA6B0);padding:6px 22px 56px;border-radius:0 0 34px 34px;position:relative">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="flex:1">
+          <div style="font:600 13px 'Nunito';color:rgba(255,255,255,.85)">Olá, Ana! 🐼</div>
+          <div style="font:600 21px 'Fredoka';color:#fff">Bora focar hoje?</div>
+        </div>
+        <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg>
+        </div>
+      </div>
+      <!-- streak pill -->
+      <div style="display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:7px 13px;border-radius:14px;background:rgba(255,255,255,.16)">
+        <span style="font-size:14px">🔥</span><span style="font:700 12px 'Nunito';color:#fff">7 dias seguidos · 2h 10min hoje</span>
+      </div>
+    </div>
+    <div style="padding:0 20px 12px;margin-top:-46px;display:flex;flex-direction:column;gap:11px">
+      <!-- timer card with panda -->
+      <div class="card" style="padding:14px 18px 15px;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative">
+        <div style="position:absolute;top:-40px;right:14px;width:74px;height:74px">
+          <svg width="74" height="74" viewBox="0 0 100 100"><circle cx="28" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="72" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="50" cy="54" r="33" fill="#fff" stroke="#eef1f2" stroke-width="1"></circle><ellipse cx="37" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><ellipse cx="63" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><circle cx="38" cy="51" r="3.3" fill="#fff"></circle><circle cx="62" cy="51" r="3.3" fill="#fff"></circle><ellipse cx="50" cy="67" rx="4.6" ry="3.2" fill="#1A1D1F"></ellipse><path d="M44 74 Q50 79 56 74" stroke="#1A1D1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+        </div>
+        <div style="align-self:flex-start;font:700 12px 'Nunito';color:#9aa4a8">Sessão de foco · Programação</div>
+        <div style="width:182px;height:182px;border-radius:50%;background:conic-gradient(#14C4CE 0 62%,#C4F135 62% 70%,#EDF1F2 70% 100%);display:flex;align-items:center;justify-content:center;margin:0">
+          <div style="width:146px;height:146px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <div style="font:600 44px 'Fredoka';color:#1A1D1F">24:35</div>
+            <div style="font:700 12px 'Nunito';color:#14C4CE">Você consegue! 💪</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:22px">
+          <div style="width:44px;height:44px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#5c666b" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg></div>
+          <div style="padding:14px 30px;border-radius:20px;background:#C4F135;display:flex;align-items:center;gap:9px;box-shadow:0 12px 22px -10px rgba(150,190,20,.8)"><svg width="20" height="20" viewBox="0 0 24 24" fill="#1A1D1F"><rect x="6" y="5" width="4" height="14" rx="1.5"></rect><rect x="14" y="5" width="4" height="14" rx="1.5"></rect></svg><span style="font:700 14px 'Nunito';color:#1A1D1F">Pausar</span></div>
+          <div style="width:44px;height:44px;border-radius:50%;background:#F1F5F6;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="#5c666b"><polygon points="5 4 15 12 5 20"></polygon><rect x="17" y="4" width="3" height="16" rx="1.5"></rect></svg></div>
+        </div>
+      </div>
+      <!-- matérias grid -->
+      <div>
+        <h3 style="font:600 15px 'Fredoka';color:#1A1D1F;margin-bottom:9px">Escolha uma matéria</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+          <div style="padding:12px;border-radius:20px;background:#fff;box-shadow:0 8px 20px -14px rgba(20,60,65,.3);border:2px solid #14C4CE">
+            <div style="width:36px;height:36px;border-radius:12px;background:#E7FAFB;display:flex;align-items:center;justify-content:center;margin-bottom:8px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0FA6B0" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+            <div style="font:700 14px 'Fredoka';color:#1A1D1F">Programação</div>
+            <div style="font:600 11px 'Nunito';color:#9aa4a8;margin-top:2px">90 / 200 min</div>
+          </div>
+          <div style="padding:12px;border-radius:20px;background:#fff;box-shadow:0 8px 20px -14px rgba(20,60,65,.3)">
+            <div style="width:36px;height:36px;border-radius:12px;background:#F0EDFF;display:flex;align-items:center;justify-content:center;margin-bottom:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C6BF5" stroke-width="2"><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"></path><circle cx="12" cy="12" r="10"></circle></svg></div>
+            <div style="font:700 14px 'Fredoka';color:#1A1D1F">Inglês</div>
+            <div style="font:600 11px 'Nunito';color:#9aa4a8;margin-top:2px">40 / 120 min</div>
+          </div>
+          <div style="padding:12px;border-radius:20px;background:#fff;box-shadow:0 8px 20px -14px rgba(20,60,65,.3)">
+            <div style="width:36px;height:36px;border-radius:12px;background:#FFEEE8;display:flex;align-items:center;justify-content:center;margin-bottom:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7A59" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
+            <div style="font:700 14px 'Fredoka';color:#1A1D1F">Português</div>
+            <div style="font:600 11px 'Nunito';color:#9aa4a8;margin-top:2px">60 / 150 min</div>
+          </div>
+          <div style="padding:12px;border-radius:20px;background:#fff;box-shadow:0 8px 20px -14px rgba(20,60,65,.3)">
+            <div style="width:36px;height:36px;border-radius:12px;background:#FFF6E3;display:flex;align-items:center;justify-content:center;margin-bottom:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2"><path d="M3 21h18M6 21V9l6-5 6 5v12M9 21v-6h6v6"></path></svg></div>
+            <div style="font:700 14px 'Fredoka';color:#1A1D1F">História</div>
+            <div style="font:600 11px 'Nunito';color:#9aa4a8;margin-top:2px">25 / 100 min</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="nit" style="color:#14C4CE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Estudar</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>Estatísticas</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Amigos</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Perfil</div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Baralho</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ 1c ============ -->
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Foco minimalista · segmentos · panda discreto</div>
+<div class="ph" style="background:#fff">
+  <div class="sbar"><span>9:41</span><div class="dots">
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="#1A1D1F"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="4.5" y="5" width="3" height="7" rx="1"></rect><rect x="9" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1"></rect></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#1A1D1F" stroke-width="1.6"><path d="M1 4.5a10 10 0 0 1 14 0M3.5 7a6.5 6.5 0 0 1 9 0"></path><circle cx="8" cy="10" r="1" fill="#1A1D1F" stroke="none"></circle></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="3" stroke="#1A1D1F" stroke-width="1.4"></rect><rect x="3" y="3" width="14" height="6" rx="1.5" fill="#1A1D1F"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="#1A1D1F"></rect></svg>
+  </div></div>
+  <div class="body" style="background:#fff;gap:22px;padding:14px 22px 0">
+    <!-- minimal header -->
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:40px;height:40px;border-radius:50%;background:#E7FAFB;overflow:hidden;display:flex;align-items:flex-end;justify-content:center">
+          <svg width="34" height="34" viewBox="0 0 100 100"><circle cx="28" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="72" cy="26" r="13" fill="#1A1D1F"></circle><circle cx="50" cy="54" r="33" fill="#fff"></circle><ellipse cx="37" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><ellipse cx="63" cy="50" rx="8.5" ry="11" fill="#1A1D1F"></ellipse><circle cx="38" cy="51" r="3.3" fill="#fff"></circle><circle cx="62" cy="51" r="3.3" fill="#fff"></circle><ellipse cx="50" cy="67" rx="4.6" ry="3.2" fill="#1A1D1F"></ellipse><path d="M44 74 Q50 79 56 74" stroke="#1A1D1F" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+        </div>
+        <div style="font:600 15px 'Fredoka';color:#1A1D1F">Ana Beatriz</div>
+      </div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A1D1F" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg>
+    </div>
+    <!-- segmented subject selector -->
+    <div style="display:flex;gap:6px;background:#F4F8F9;padding:5px;border-radius:16px">
+      <div style="flex:1;text-align:center;padding:9px 0;border-radius:12px;background:#1A1D1F;font:700 12px 'Nunito';color:#fff">Program.</div>
+      <div style="flex:1;text-align:center;padding:9px 0;border-radius:12px;font:700 12px 'Nunito';color:#9aa4a8">Inglês</div>
+      <div style="flex:1;text-align:center;padding:9px 0;border-radius:12px;font:700 12px 'Nunito';color:#9aa4a8">Portug.</div>
+      <div style="flex:1;text-align:center;padding:9px 0;border-radius:12px;font:700 12px 'Nunito';color:#9aa4a8">Hist.</div>
+    </div>
+    <!-- big minimal timer -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:6px">
+      <div style="width:250px;height:250px;border-radius:50%;background:conic-gradient(#14C4CE 0 68%,#EDF1F2 68% 100%);display:flex;align-items:center;justify-content:center">
+        <div style="width:234px;height:234px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+          <div style="font:600 12px 'Nunito';color:#9aa4a8;letter-spacing:2px;text-transform:uppercase">Pomodoro 3 de 4</div>
+          <div style="font:500 62px 'Fredoka';color:#1A1D1F;letter-spacing:1px">24:35</div>
+          <div style="font:700 13px 'Nunito';color:#14C4CE">Concentre-se</div>
+        </div>
+      </div>
+    </div>
+    <!-- controls -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:20px">
+      <div style="width:52px;height:52px;border-radius:50%;border:1.5px solid #eef1f2;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c666b" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg></div>
+      <div style="flex:1;max-width:170px;height:56px;border-radius:18px;background:#1A1D1F;display:flex;align-items:center;justify-content:center;gap:9px"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="1.5"></rect><rect x="14" y="5" width="4" height="14" rx="1.5"></rect></svg><span style="font:700 14px 'Nunito';color:#fff">Pausar</span></div>
+      <div style="width:52px;height:52px;border-radius:50%;border:1.5px solid #eef1f2;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5c666b"><polygon points="5 4 15 12 5 20"></polygon><rect x="17" y="4" width="3" height="16" rx="1.5"></rect></svg></div>
+    </div>
+    <!-- tiny stat row -->
+    <div style="display:flex;gap:12px;margin-top:2px">
+      <div style="flex:1;padding:14px;border-radius:18px;background:#F4F8F9;text-align:center"><div style="font:600 22px 'Fredoka';color:#1A1D1F">2h10</div><div style="font:600 11px 'Nunito';color:#9aa4a8">hoje</div></div>
+      <div style="flex:1;padding:14px;border-radius:18px;background:#F4F8F9;text-align:center"><div style="font:600 22px 'Fredoka';color:#1A1D1F">🔥 7</div><div style="font:600 11px 'Nunito';color:#9aa4a8">dias</div></div>
+      <div style="flex:1;padding:14px;border-radius:18px;background:#F4F8F9;text-align:center"><div style="font:600 22px 'Fredoka';color:#1A1D1F">3/4</div><div style="font:600 11px 'Nunito';color:#9aa4a8">ciclos</div></div>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="nit" style="color:#1A1D1F"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="width:4px;height:4px;border-radius:50%;background:#14C4CE;margin-top:-2px"></span></div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg></div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+    <div class="nit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Peça a seguir: "seguir com a <a class="dv-oid" href="#1b">1b</a>" · "misture o timer da <a class="dv-oid" href="#1c">1c</a> com a grade da <a class="dv-oid" href="#1b">1b</a>" · "usar o panda de verdade (mande o PNG recortado)" · "adicionar tarefas recentes"</p>
+</section>
+
+</x-dc>
+</body>
+</html>

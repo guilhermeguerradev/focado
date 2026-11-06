@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#eef3f4">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#eef3f4"/><rect x="280" y="260" width="150" height="280" rx="24" fill="#14C4CE"/><rect x="470" y="260" width="150" height="280" rx="24" fill="#7C6BF5"/><rect x="660" y="260" width="150" height="280" rx="24" fill="#FF7A59"/><rect x="850" y="260" width="70" height="280" rx="20" fill="#F5A623"/></svg>
+</template>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#eef3f4;font-family:'Nunito',system-ui,sans-serif}
+  *{box-sizing:border-box}
+  .wrap{padding:56px 56px 72px}
+  .frame{width:384px;height:832px;border-radius:40px;border:9px solid #1A1D1F;overflow:hidden;background:#F4F8F9;box-shadow:0 30px 60px -20px rgba(20,50,55,.35)}
+  .frame iframe{width:100%;height:100%;border:0;display:block}
+  .slot{display:flex;flex-direction:column;gap:14px;flex:none}
+  .slot .tag{display:flex;align-items:center;gap:10px}
+  .num{font:700 12px ui-monospace,Menlo,monospace;color:#fff;background:#14C4CE;padding:4px 9px;border-radius:7px}
+  .num.soon{background:#c3ccd0}
+  .nm{font:700 17px 'Fredoka',sans-serif;color:#1A1D1F}
+  .sub{font:600 12px 'Nunito';color:#7a858a}
+  .soonframe{width:384px;height:832px;border-radius:40px;border:3px dashed #c3ccd0;background:repeating-linear-gradient(135deg,#f4f7f8 0 14px,#eef3f4 14px 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#9aa4a8}
+  .soonframe .ico{width:64px;height:64px;border-radius:20px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px -12px rgba(20,60,65,.3)}
+</style>
+</helmet>
+<div class="wrap">
+  <!-- board header -->
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:8px;flex-wrap:wrap">
+    <div>
+      <div style="font:700 13px 'Nunito';color:#14C4CE;letter-spacing:2px;text-transform:uppercase">FocusPanda · Mapa do App</div>
+      <h1 style="font:700 40px 'Fredoka',sans-serif;color:#1A1D1F;margin:6px 0 0">Telas do aplicativo</h1>
+      <div style="font:600 14px 'Nunito';color:#7a858a;margin-top:6px;max-width:520px">Cada tela final vive em <b>telas/</b>. As rodadas de variação ficam em <b>exploracoes/</b>. Este quadro é a visão geral do fluxo.</div>
+    </div>
+    <!-- color system legend -->
+    <div style="background:#fff;border-radius:22px;padding:18px 22px;box-shadow:0 12px 30px -18px rgba(20,60,65,.35)">
+      <div style="font:700 12px 'Nunito';color:#9aa4a8;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">Cores por matéria</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px 26px">
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:16px;height:16px;border-radius:6px;background:#7C6BF5"></span><span style="font:700 13px 'Nunito';color:#1A1D1F">Programação</span><span style="font:600 11px ui-monospace,Menlo,monospace;color:#9aa4a8">#7C6BF5</span></div>
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:16px;height:16px;border-radius:6px;background:#14C4CE"></span><span style="font:700 13px 'Nunito';color:#1A1D1F">Inglês</span><span style="font:600 11px ui-monospace,Menlo,monospace;color:#9aa4a8">#14C4CE</span></div>
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:16px;height:16px;border-radius:6px;background:#FF7A59"></span><span style="font:700 13px 'Nunito';color:#1A1D1F">Português</span><span style="font:600 11px ui-monospace,Menlo,monospace;color:#9aa4a8">#FF7A59</span></div>
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:16px;height:16px;border-radius:6px;background:#F5A623"></span><span style="font:700 13px 'Nunito';color:#1A1D1F">História</span><span style="font:600 11px ui-monospace,Menlo,monospace;color:#9aa4a8">#F5A623</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- screens row -->
+  <div style="display:flex;gap:44px;margin-top:36px;align-items:flex-start;flex-wrap:nowrap">
+
+    <div class="slot">
+      <div class="tag"><span class="num">01</span><div><div class="nm">Home · Estudar</div><div class="sub">telas/Home.dc.html</div></div></div>
+      <div class="frame"><iframe src="telas/Home.dc.html" title="Home"></iframe></div>
+    </div>
+
+    <div class="slot">
+      <div class="tag"><span class="num">02</span><div><div class="nm">Estatísticas</div><div class="sub">telas/Estatisticas.dc.html</div></div></div>
+      <div class="frame"><iframe src="telas/Estatisticas.dc.html" title="Estatísticas"></iframe></div>
+    </div>
+
+    <div class="slot">
+      <div class="tag"><span class="num">03</span><div><div class="nm">Amigos</div><div class="sub">telas/Amigos.dc.html</div></div></div>
+      <div class="frame"><iframe src="telas/Amigos.dc.html" title="Amigos"></iframe></div>
+    </div>
+
+    <div class="slot">
+      <div class="tag"><span class="num">04</span><div><div class="nm">Perfil</div><div class="sub">telas/Perfil.dc.html</div></div></div>
+      <div class="frame"><iframe src="telas/Perfil.dc.html" title="Perfil"></iframe></div>
+    </div>
+
+    <div class="slot">
+      <div class="tag"><span class="num">05</span><div><div class="nm">Baralho</div><div class="sub">telas/Baralho.dc.html</div></div></div>
+      <div class="frame"><iframe src="telas/Baralho.dc.html" title="Baralho"></iframe></div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:40px;font:600 13px 'Nunito';color:#9aa4a8">Explorações anteriores: <b>exploracoes/Explorações — Tela Inicial.dc.html</b> (rodadas 1, 2 e 3)</div>
+</div>
+</x-dc>
+</body>
+</html>

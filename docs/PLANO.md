@@ -1,0 +1,141 @@
+# PLANO — Focado
+
+O cronograma da obra. Uma etapa por vez, na ordem. Cada etapa termina com algo **funcionando e testado**.
+Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" for verdade.
+
+**Etapa atual:** 0
+
+---
+
+## Marco 1 — App pessoal funcionando (só você, sem amigos e sem pagamento)
+
+### Etapa 0 — Preparar a obra
+- [ ] Instalar ferramentas: Node.js (LTS), Git, Docker Desktop, Supabase CLI, app Expo Go no celular
+- [ ] Criar conta no GitHub e no Supabase
+- [ ] Criar o projeto Expo com TypeScript (`strict`) e Expo Router
+- [ ] Criar a estrutura de pastas do `CLAUDE.md` e mover `prd-focado.md`, `PLANO.md` e o design para `docs/`
+- [ ] Configurar ESLint, Prettier e os scripts `lint`, `typecheck`, `test`
+- [ ] Configurar Vitest com um teste de exemplo passando
+- [ ] Subir o Supabase local (`supabase start`) e conectar o app a ele
+- [ ] `.env` + `.gitignore` corretos (nenhuma chave no Git)
+- [ ] Repositório no GitHub + primeiro commit
+- [ ] GitHub Actions rodando `lint`, `typecheck` e `test` a cada push
+
+**Pronto quando:** o app abre no celular com uma tela "Olá, Focado", e o GitHub mostra o check verde.
+
+### Etapa 1 — Login e perfil básico
+- [ ] Cadastro e login com e-mail e senha (Supabase Auth)
+- [ ] Tabela `perfil` (nome, avatar, meta diária padrão 30 min, fuso IANA) criada automaticamente no cadastro
+- [ ] Fuso detectado pelo celular e salvo no perfil
+- [ ] RLS: cada um só lê/edita o próprio perfil
+- [ ] Teste de integração: usuário B **não** consegue ler nem editar o perfil do usuário A
+- [ ] Tab bar com as 5 abas (telas vazias por enquanto)
+
+**Pronto quando:** você cria conta, sai, entra de novo e vê seu nome; o teste de RLS passa.
+
+### Etapa 2 — Matérias
+- [ ] Tabela `materia` (nome, cor, dono) com RLS
+- [ ] Função no servidor para criar matéria com limite Free de 4 (checagem + inserção na mesma transação)
+- [ ] Telas: listar, criar, editar e excluir matéria, com seletor de cor
+- [ ] Testes de integração: 5ª matéria recusada; duas criações simultâneas não furam o limite; usuário B não vê matérias de A
+
+**Pronto quando:** você cadastra suas matérias com cores e o limite funciona mesmo tentando burlar.
+
+### Etapa 3 — Cronômetro (só no celular)
+- [ ] `src/domain/cronometro.ts`: estados rodando/pausado/finalizado, reconstrução do tempo, teto de 12h
+- [ ] Testes unitários do domínio (pausar, retomar, app fechado e reaberto, passar de 12h)
+- [ ] Espelhar o estado em AsyncStorage a cada mudança
+- [ ] Tela Estudar: escolher matéria, iniciar, pausar, retomar, finalizar (seguindo o design)
+- Modo Pomodoro: **fora do v1** (ver PRD seção 9). Não implementar; a tela mostra só o cronômetro.
+
+**Pronto quando:** você inicia uma sessão, fecha o app à força, reabre e o tempo está certo.
+
+### Etapa 4 — Salvar sessões no servidor
+- [ ] Tabela `sessao_estudo` com `session_id` UNIQUE e RLS
+- [ ] Função `finalizar_sessao` no servidor: idempotente, aplica teto de 12h, atribui ao dia de início no fuso do usuário
+- [ ] Fila offline no AsyncStorage: guarda sessões finalizadas sem internet e envia depois; só remove após confirmação
+- [ ] Testes de integração: mesma sessão 2× conta 1×; sessão de 20h vira 12h; usuário não grava sessão em nome de outro
+
+**Pronto quando:** você finaliza uma sessão em modo avião, liga a internet e ela aparece no banco uma vez só.
+
+### Etapa 5 — Estatísticas
+- [ ] `src/domain/periodos.ts`: cortes de dia/semana (domingo)/mês/ano no fuso do usuário + testes unitários (incluindo virada de semana e fusos diferentes)
+- [ ] Função no servidor que devolve as métricas do período: total, sessões, média, matéria mais estudada, tempo por matéria
+- [ ] Tela Estatísticas: abas Diário/Semanal/Mensal/Anual, navegação entre períodos, gráfico de barras e pizza com as cores das matérias
+- [ ] Comparação com o período anterior + mensagem motivacional
+- [ ] Testes de integração das métricas
+
+**Pronto quando:** os números da tela batem com as sessões que você fez.
+
+### Etapa 6 — Meta diária e ofensiva
+- [ ] Meta diária editável (mudança vale a partir do dia seguinte)
+- [ ] Ofensiva calculada no servidor a partir das sessões
+- [ ] Barra "Tempo estudado hoje" e foguinho 🔥 na Home
+- [ ] Testes de integração: bater a meta soma; dia sem meta zera; mudar a hora do celular não altera nada
+
+**Pronto quando:** a ofensiva sobe e zera corretamente nos testes.
+
+### Etapa 7 — Perfil e configurações
+- [ ] Avatares pré-definidos (pandas)
+- [ ] Tela Perfil: avatar, nome, amigos, ofensiva, matérias com horas
+- Nível ("Nível 7 · Panda Focado"): **fora do v1** (ver PRD seção 9). Não implementar.
+- [ ] Configurações: meta diária, fuso, sair, **excluir conta** (as lojas exigem)
+
+**Pronto quando:** você usa o app no dia a dia sozinho. 🎉 **Fim do Marco 1.**
+
+---
+
+## Marco 2 — Flashcards
+
+### Etapa 8 — Baralhos e cartões
+- [ ] Tabelas `baralho` (matéria opcional) e `flashcard` com RLS
+- [ ] Funções de criação com limites Free (3 baralhos, 50 cards) em transação
+- [ ] Telas: lista de baralhos (como no design), criar/editar baralho e cards
+- [ ] Testes de integração de limites e RLS
+
+### Etapa 9 — Revisão com FSRS
+- [ ] Integrar `ts-fsrs` (sem reimplementar o algoritmo)
+- [ ] Mapear estados FSRS → Novo / Aprendendo / Revisar
+- [ ] Tela de revisão: frente, verso, botões de resposta; "Revisão de hoje" e "Revisar tudo"
+- [ ] Testes: card respondido agenda a próxima revisão; resposta repetida não agenda duas vezes
+
+**Pronto quando:** você revisa seus cards e eles voltam nos dias certos. 🎉 **Fim do Marco 2.**
+
+---
+
+## Marco 3 — Social
+
+### Etapa 10 — Convite e amizade
+- [ ] Tabelas `convite_amizade` (token, criador, expira em 5 min pelo relógio do servidor) e `amizade` (par UNIQUE)
+- [ ] Gerar link e QR Code; abrir link/escanear QR cria a amizade
+- [ ] Função de aceitar em transação: token válido, não expirado, limite de 20 amigos para os dois
+- [ ] Testes de integração: token expirado recusado; dois usos simultâneos não duplicam; limite de 20 respeitado; não dá para ser amigo de si mesmo
+
+### Etapa 11 — Ranking semanal
+- [ ] Função no servidor: horas da semana de cada amigo (no fuso de cada um), a partir das sessões
+- [ ] Tela Amigos: pódio top 3 + lista + card "Você está em Xº lugar"
+- [ ] Testes: ranking ignora qualquer total enviado pelo app; usuário só vê dados mínimos dos amigos
+
+### Etapa 12 — Presença em tempo real
+- [ ] Realtime Presence: online/offline e "estudando X agora"
+- [ ] Atualiza ao iniciar/pausar/finalizar sessão
+
+**Pronto quando:** dois celulares se veem estudando em tempo real. 🎉 **Fim do Marco 3.**
+
+---
+
+## Marco 4 — Lançamento
+
+### Etapa 13 — Pagamento
+- [ ] Contas de desenvolvedor Apple/Google, produtos de assinatura nas lojas
+- [ ] RevenueCat no app + webhook para o Supabase (validado e idempotente)
+- [ ] Status Premium só vem do servidor; limites Free/Premium validados no servidor
+- [ ] Regra de downgrade: leitura liberada, criação bloqueada acima do limite
+- [ ] Testes de integração com webhook simulado (incluindo evento repetido)
+
+### Etapa 14 — Publicação
+- [ ] Revisão geral de segurança (todas as tabelas com RLS, nenhuma chave exposta)
+- [ ] Ícone, splash, nome nas lojas, política de privacidade
+- [ ] Build com EAS, teste fechado com amigos, envio às lojas
+
+**Pronto quando:** o Focado está na loja. 🚀
