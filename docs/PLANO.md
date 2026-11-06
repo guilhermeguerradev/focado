@@ -3,7 +3,7 @@
 O cronograma da obra. Uma etapa por vez, na ordem. Cada etapa termina com algo **funcionando e testado**.
 Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" for verdade.
 
-**Etapa atual:** 2
+**Etapa atual:** 3
 
 ---
 
