@@ -1,6 +1,6 @@
 # PRD — Focado
 
-**Versão:** 1.3 (regras de matérias; v1.2: cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
+**Versão:** 1.4 (cronômetro ao atingir 12h; v1.3: regras de matérias; v1.2: cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
 **Objetivo deste documento:** servir como fonte única de verdade sobre o produto para orientar desenvolvimento, modelagem de dados e criação de endpoints em etapas futuras. Este documento descreve o **quê** e o **porquê**; modelagem técnica detalhada (schemas, endpoints, contratos de API) fica para uma etapa posterior.
 
 ---
@@ -94,6 +94,9 @@ Esse mecanismo garante que o app consiga **recalcular** o tempo correto mesmo se
 Para evitar sessões "esquecidas" em background por dias distorcerem as estatísticas, existe um **teto máximo de duração de 12 horas** por sessão (valor mantido como configuração do sistema, para poder ser ajustado sem mudar código). Se o tempo decorrido calculado ultrapassar o teto:
 - A sessão é **truncada** em 12h ao ser salva (não descartada por completo, para não perder o estudo real feito).
 - O teto é validado **também no servidor**: uma sessão recebida com duração acima de 12h é gravada com 12h.
+- **Na tela:** ao atingir 12h, o cronômetro para em 12:00:00 e avisa "Teto de 12h atingido — finalize a sessão". A sessão **não** é finalizada sozinha: o usuário finaliza quando voltar.
+
+> Nota técnica: além dos campos de 3.3, o estado local guarda `iniciadaEm` (o momento do **primeiro** início). `horaInicio` muda a cada retomada, e a sessão é atribuída ao dia em que **começou** (3.6).
 
 ### 3.6 Finalizar sessão sem internet (fila offline)
 Se o usuário finalizar uma sessão sem conexão:
@@ -288,6 +291,7 @@ Apenas para dar contexto — o schema detalhado fica para a etapa de modelagem:
 
 ## 12. Histórico de versões
 
+- **1.4** — Cronômetro na tela ao atingir 12h (3.4): para em 12:00:00 e avisa, sem finalizar sozinho; estado local guarda `iniciadaEm`.
 - **1.3** — Matérias (3.5): regras de nome (1–40, sem repetir entre ativas), paleta de 8 cores, excluir = arquivar, gerenciamento na aba Estudar.
 - **1.2** — Cadastro e login (1.4): nome + e-mail + senha (mín. 8), sem confirmação de e-mail no v1 (movida para a seção 9), pop-up de meta diária após o primeiro login (opções, pode pular, vale no mesmo dia), login com Google/Apple planejado para antes da publicação.
 - **1.1** — Stack confirmada (Expo + TypeScript, Supabase, RevenueCat, `ts-fsrs`); regra de fuso horário por usuário (1.3); fila offline para sessões (3.6); teto de sessão fixado em 12h; meta diária padrão de 30 min; ofensiva, ranking e limites calculados no servidor; Pomodoro e sistema de nível movidos para fora do v1.
