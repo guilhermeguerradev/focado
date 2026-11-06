@@ -29,6 +29,19 @@ describe('lerSessaoSalva', () => {
     expect(lerSessaoSalva({ ...rodando, iniciadaEm: 'ontem' })).toBeNull();
   });
 
+  it('aceita sessão salva por versão ANTIGA do app (sem o campo saiuEm)', () => {
+    const { saiuEm: _semCampo, ...versaoAntiga } = rodando;
+
+    expect(lerSessaoSalva(idaEVolta(versaoAntiga))).toEqual({ ...rodando, saiuEm: null });
+  });
+
+  it('aceita saiuEm com data válida e recusa saiuEm estragado', () => {
+    const fora = { ...rodando, saiuEm: '2026-07-22T14:30:00.000Z' };
+
+    expect(lerSessaoSalva(idaEVolta(fora))).toEqual(fora);
+    expect(lerSessaoSalva({ ...rodando, saiuEm: 'ontem' })).toBeNull();
+  });
+
   it('ignora status desconhecido ou incoerente com horaInicio', () => {
     expect(lerSessaoSalva({ ...rodando, status: 'finalizado' })).toBeNull();
     expect(lerSessaoSalva({ ...rodando, horaInicio: null })).toBeNull();

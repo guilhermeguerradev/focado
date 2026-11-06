@@ -21,17 +21,22 @@ export function lerSessaoSalva(valor: unknown): SessaoEmAndamento | null {
   if (typeof valor !== 'object' || valor === null) return null;
 
   // Seguro: só diz "objeto com campos de tipo DESCONHECIDO"; cada campo é conferido abaixo.
-  const { sessionId, materiaId, iniciadaEm, saldoAcumulado, status, horaInicio } = valor as Record<
-    string,
-    unknown
-  >;
+  const { sessionId, materiaId, iniciadaEm, saldoAcumulado, status, horaInicio, saiuEm } =
+    valor as Record<string, unknown>;
 
   if (!ehTexto(sessionId)) return null;
   if (!ehTexto(materiaId)) return null;
   if (!ehDataValida(iniciadaEm)) return null;
   if (!ehSegundosValidos(saldoAcumulado)) return null;
 
-  const comum = { sessionId, materiaId, iniciadaEm, saldoAcumulado };
+  // saiuEm (PRD 3.4.1) chegou numa versão nova do app. Sessão salva por uma
+  // versão antiga não tem o campo: vale como "vazio", em vez de descartar.
+  let saida: string | null;
+  if (saiuEm === undefined || saiuEm === null) saida = null;
+  else if (ehDataValida(saiuEm)) saida = saiuEm;
+  else return null;
+
+  const comum = { sessionId, materiaId, iniciadaEm, saldoAcumulado, saiuEm: saida };
 
   if (status === 'rodando' && ehDataValida(horaInicio)) {
     return { ...comum, status: 'rodando', horaInicio };

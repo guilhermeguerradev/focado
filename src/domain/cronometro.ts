@@ -11,11 +11,15 @@ import { formatarMinutos } from './meta';
 // Teto de uma sessão: 12 horas (PRD 3.4).
 export const TETO_SEGUNDOS = 12 * 60 * 60;
 
+// Prazo para voltar ao app com o cronômetro rodando: 1 hora (PRD 3.4.1).
+export const PRAZO_FORA_DO_APP_SEGUNDOS = 60 * 60;
+
 type DadosComuns = {
   sessionId: string; // gerado no celular (idempotência no servidor, Etapa 4)
   materiaId: string;
   iniciadaEm: string; // ISO/UTC do PRIMEIRO início: define o dia da sessão (PRD 3.6)
   saldoAcumulado: number; // segundos já consolidados (trechos antes da última pausa)
+  saiuEm: string | null; // quando o app saiu da tela com o cronômetro rodando (PRD 3.4.1)
 };
 
 export type SessaoRodando = DadosComuns & { status: 'rodando'; horaInicio: string };
@@ -49,14 +53,23 @@ export function iniciarSessao(dados: {
     iniciadaEm: agoraIso,
     horaInicio: agoraIso,
     saldoAcumulado: 0,
+    saiuEm: null,
   };
+}
+
+// O "agora" que vale para a conta. Se o app saiu da tela, o relógio da
+// sessão nunca anda mais que 1h além da saída (PRD 3.4.1).
+function agoraQueConta(sessao: SessaoEmAndamento, agora: Date): Date {
+  if (sessao.saiuEm === null) return agora;
+  const limite = new Date(sessao.saiuEm).getTime() + PRAZO_FORA_DO_APP_SEGUNDOS * 1000;
+  return new Date(Math.min(agora.getTime(), limite));
 }
 
 // Tempo total da sessão, em segundos, já limitado ao teto.
 export function tempoDecorrido(sessao: SessaoEmAndamento, agora: Date): number {
   const total =
     sessao.status === 'rodando'
-      ? sessao.saldoAcumulado + segundosEntre(sessao.horaInicio, agora)
+      ? sessao.saldoAcumulado + segundosEntre(sessao.horaInicio, agoraQueConta(sessao, agora))
       : sessao.saldoAcumulado;
   return Math.min(total, TETO_SEGUNDOS);
 }
@@ -74,6 +87,7 @@ export function pausar(sessao: SessaoEmAndamento, agora: Date): SessaoPausada {
     status: 'pausado',
     horaInicio: null,
     saldoAcumulado: tempoDecorrido(sessao, agora),
+    saiuEm: null,
   };
 }
 
@@ -81,7 +95,7 @@ export function pausar(sessao: SessaoEmAndamento, agora: Date): SessaoPausada {
 // Retomar algo que já está rodando não muda nada.
 export function retomar(sessao: SessaoEmAndamento, agora: Date): SessaoRodando {
   if (sessao.status === 'rodando') return sessao;
-  return { ...sessao, status: 'rodando', horaInicio: agora.toISOString() };
+  return { ...sessao, status: 'rodando', horaInicio: agora.toISOString(), saiuEm: null };
 }
 
 // Finalizar: duração = saldo + trecho em andamento, limitada a 12h, em segundos inteiros.
