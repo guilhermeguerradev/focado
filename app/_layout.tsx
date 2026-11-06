@@ -30,7 +30,7 @@ export default function LayoutRaiz() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Protected guard={logado}>
-        <Stack.Screen name="index" />
+        <Stack.Screen name="(abas)" />
       </Stack.Protected>
       <Stack.Protected guard={!logado}>
         <Stack.Screen name="entrar" />
