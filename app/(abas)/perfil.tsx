@@ -3,6 +3,7 @@ import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BotaoPrincipal } from '@/components/BotaoPrincipal';
+import { formatarMinutos } from '@/domain/meta';
 import { usePerfil } from '@/hooks/usePerfil';
 import { sair } from '@/services/autenticacao';
 import { cores, raio } from '@/theme/cores';
@@ -23,6 +24,12 @@ export default function AbaPerfil() {
       {perfil ? (
         <View style={styles.card}>
           <Text style={styles.nome}>{perfil.nome}</Text>
+          <View style={styles.linha}>
+            <Feather name="target" size={16} color={cores.textoSecundario} />
+            <Text style={styles.detalhe}>
+              Meta diária: {formatarMinutos(perfil.meta_diaria_minutos)}
+            </Text>
+          </View>
           <View style={styles.linha}>
             <Feather name="globe" size={16} color={cores.textoSecundario} />
             <Text style={styles.detalhe}>Fuso: {perfil.fuso}</Text>
