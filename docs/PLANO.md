@@ -24,7 +24,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 **Pronto quando:** o app abre no celular com uma tela "Olá, Focado", e o GitHub mostra o check verde.
 
 ### Etapa 1 — Login e perfil básico
-- [ ] Cadastro e login com e-mail e senha (Supabase Auth), senha mínima de 8 caracteres validada no servidor
+- [x] Cadastro e login com e-mail e senha (Supabase Auth), senha mínima de 8 caracteres validada no servidor
 - [x] Tabela `perfil` (nome, avatar, meta diária padrão 30 min, fuso IANA) criada automaticamente no cadastro
 - [ ] Fuso detectado pelo celular e salvo no perfil
 - [x] RLS: cada um só lê/edita o próprio perfil
