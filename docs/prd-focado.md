@@ -1,6 +1,6 @@
 # PRD — Focado
 
-**Versão:** 1.1 (stack confirmada + regras de fuso, offline e cálculo no servidor)
+**Versão:** 1.2 (cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
 **Objetivo deste documento:** servir como fonte única de verdade sobre o produto para orientar desenvolvimento, modelagem de dados e criação de endpoints em etapas futuras. Este documento descreve o **quê** e o **porquê**; modelagem técnica detalhada (schemas, endpoints, contratos de API) fica para uma etapa posterior.
 
 ---
@@ -32,6 +32,12 @@ Estudantes de qualquer nível (ensino médio, vestibular, concursos, faculdade, 
 - O fuso é detectado automaticamente pelo dispositivo no cadastro e atualizado se mudar (ex.: viagem); pode ser ajustado em Configurações.
 - Usa-se o fuso, e não apenas o país, porque um mesmo país pode ter vários fusos (o Brasil tem 4).
 - **O banco grava todos os horários em UTC.** O fuso do usuário é aplicado apenas para decidir "que dia/semana/mês/ano é" para aquele usuário (estatísticas, ofensiva, ranking).
+
+### 1.4 Cadastro e login
+- Cadastro com **nome, e-mail e senha**. Senha com **no mínimo 8 caracteres** (validada também no servidor).
+- **Sem confirmação de e-mail** no v1: após o cadastro o usuário já entra no app (ver seção 9).
+- Os demais dados do perfil começam com valores iniciais: meta diária de 30 min, fuso detectado pelo celular, avatar escolhido depois.
+- Após o primeiro login, ao chegar na tela inicial, um **pop-up pergunta a meta diária** do usuário.
 
 ---
 
@@ -238,6 +244,7 @@ Se o usuário está acima dos limites do Free ao perder o Premium (ex.: tinha 10
 - Divisão de sessões que atravessam a meia-noite entre dois dias.
 - **Modo Pomodoro** (aparece no design da tela Estudar) — regras a definir. No v1, a tela Estudar tem apenas o cronômetro.
 - **Sistema de nível** (ex.: "Nível 7 · Panda Focado", aparece no design do Perfil) — regras a definir. No v1, o Perfil não exibe nível.
+- **Confirmação de e-mail no cadastro** (link enviado por e-mail antes do primeiro acesso) — adiado; no v1 o usuário entra direto após o cadastro.
 
 ---
 
@@ -272,6 +279,7 @@ Apenas para dar contexto — o schema detalhado fica para a etapa de modelagem:
 
 ## 12. Histórico de versões
 
+- **1.2** — Cadastro e login (1.4): nome + e-mail + senha (mín. 8), sem confirmação de e-mail no v1 (movida para a seção 9), pop-up de meta diária após o primeiro login.
 - **1.1** — Stack confirmada (Expo + TypeScript, Supabase, RevenueCat, `ts-fsrs`); regra de fuso horário por usuário (1.3); fila offline para sessões (3.6); teto de sessão fixado em 12h; meta diária padrão de 30 min; ofensiva, ranking e limites calculados no servidor; Pomodoro e sistema de nível movidos para fora do v1.
 - **1.0** — Rascunho inicial.
 
