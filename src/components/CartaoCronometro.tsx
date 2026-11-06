@@ -1,4 +1,5 @@
 import { Feather } from '@expo/vector-icons';
+import { useEffect } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 
 import { formatarCronometro, formatarDuracaoSessao } from '@/domain/cronometro';
@@ -23,7 +24,18 @@ type Props = {
 // Card do cronômetro, como no design: anel na cor da matéria (enche conforme
 // a meta diária), tempo no meio e botões redondos.
 export function CartaoCronometro({ cronometro, materia, temMaterias, metaMinutos }: Props) {
-  const { sessao, segundos, noTeto, erro } = cronometro;
+  const { sessao, segundos, noTeto, erro, pausadaPorAusencia, dispensarAvisoDeAusencia } =
+    cronometro;
+
+  // Ficou mais de 1h fora do app (PRD 3.4.1): explica por que pausou.
+  useEffect(() => {
+    if (!pausadaPorAusencia) return;
+    Alert.alert(
+      'Sessão pausada ⏸️',
+      'Você ficou mais de 1h fora do app, então pausamos a sessão quando completou 1h fora. Toque ▶ para continuar.',
+    );
+    dispensarAvisoDeAusencia();
+  }, [pausadaPorAusencia, dispensarAvisoDeAusencia]);
   const tom = coresMaterias[materia?.cor ?? 'turquesa'];
   const rodando = sessao?.status === 'rodando';
 
