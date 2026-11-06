@@ -3,7 +3,7 @@ import { router } from 'expo-router';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { LIMITE_MATERIAS_FREE, podeCriarMateria } from '@/domain/materia';
-import { useMaterias } from '@/hooks/useMaterias';
+import type { EstadoMaterias } from '@/hooks/useMaterias';
 import { cores, raio } from '@/theme/cores';
 import { fontes } from '@/theme/fontes';
 
@@ -11,8 +11,8 @@ import { PilulaMateria } from './PilulaMateria';
 
 // Seção "Matérias" da aba Estudar: pílulas coloridas + botão "Nova".
 // Tocar numa pílula abre a edição; "Nova" abre a criação.
-export function SecaoMaterias() {
-  const { materias, carregando, erro } = useMaterias();
+// Recebe a lista pronta (a aba busca uma vez e reparte com o cronômetro).
+export function SecaoMaterias({ materias, carregando, erro }: EstadoMaterias) {
   const cabeMais = podeCriarMateria(materias.length);
 
   return (

@@ -9,25 +9,31 @@ type Props = {
   nome: string;
   cor: CorMateria;
   onPress?: () => void;
+  selecionada?: boolean; // destaque: fundo cheio na cor da matéria
 };
 
 // "Pílula" colorida de matéria, como no design: bolinha + nome.
-export function PilulaMateria({ nome, cor, onPress }: Props) {
+// Selecionada, ganha fundo cheio e texto branco (como a 1ª pílula do design).
+export function PilulaMateria({ nome, cor, onPress, selecionada = false }: Props) {
   const tom = coresMaterias[cor];
+  const fundo = selecionada ? tom.principal : tom.fundo;
+  const corTexto = selecionada ? '#FFFFFF' : tom.texto;
+  const corBolinha = selecionada ? '#FFFFFF' : tom.principal;
 
   return (
     <Pressable
       onPress={onPress}
       accessibilityRole="button"
       accessibilityLabel={`Matéria ${nome}`}
+      accessibilityState={{ selected: selecionada }}
       style={({ pressed }) => [
         styles.pilula,
-        { backgroundColor: tom.fundo },
+        { backgroundColor: fundo },
         pressed && styles.pressionada,
       ]}
     >
-      <View style={[styles.bolinha, { backgroundColor: tom.principal }]} />
-      <Text style={[styles.nome, { color: tom.texto }]} numberOfLines={1}>
+      <View style={[styles.bolinha, { backgroundColor: corBolinha }]} />
+      <Text style={[styles.nome, { color: corTexto }]} numberOfLines={1}>
         {nome}
       </Text>
     </Pressable>

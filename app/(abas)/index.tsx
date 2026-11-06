@@ -1,18 +1,22 @@
 import { ScrollView, StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { CartaoCronometro } from '@/components/CartaoCronometro';
 import { PopupMetaDiaria } from '@/components/PopupMetaDiaria';
 import { SecaoMaterias } from '@/components/SecaoMaterias';
+import { useMaterias } from '@/hooks/useMaterias';
 import { usePerfil } from '@/hooks/usePerfil';
 import { cores } from '@/theme/cores';
 import { fontes } from '@/theme/fontes';
 
 // Aba Estudar (tela inicial).
+// - Cronômetro: escolher matéria, iniciar, pausar, retomar, finalizar (PRD 3).
 // - Seção "Matérias": listar, criar, editar e excluir (PRD 3.5).
-// - O cronômetro chega na Etapa 3.
 // - Aparece, uma única vez, o pop-up da meta diária (PRD 1.4).
 export default function AbaEstudar() {
   const { perfil, responderPopupMeta } = usePerfil();
+  // Busca as matérias UMA vez e reparte com o cronômetro e a seção.
+  const estadoMaterias = useMaterias();
 
   const mostrarPopup = perfil !== null && perfil.meta_escolhida_em === null;
 
@@ -20,8 +24,8 @@ export default function AbaEstudar() {
     <SafeAreaView style={styles.tela} edges={['top']}>
       <ScrollView contentContainerStyle={styles.conteudo}>
         <Text style={styles.titulo}>Estudar</Text>
-        <SecaoMaterias />
-        <Text style={styles.emBreve}>Cronômetro em breve 🐼</Text>
+        <CartaoCronometro materias={estadoMaterias.materias} />
+        <SecaoMaterias {...estadoMaterias} />
       </ScrollView>
       <PopupMetaDiaria visivel={mostrarPopup} aoResponder={responderPopupMeta} />
     </SafeAreaView>
@@ -43,12 +47,5 @@ const styles = StyleSheet.create({
     fontSize: 26,
     color: cores.texto,
     marginTop: 12,
-  },
-  emBreve: {
-    fontFamily: fontes.textoNegrito,
-    fontSize: 15,
-    color: cores.textoApagado,
-    textAlign: 'center',
-    marginTop: 40,
   },
 });
