@@ -30,7 +30,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 - [x] RLS: cada um só lê/edita o próprio perfil
 - [x] Teste de integração: usuário B **não** consegue ler nem editar o perfil do usuário A
 - [x] Tab bar com as 5 abas (telas vazias por enquanto)
-- [ ] Pop-up de meta diária após o primeiro login (15/30/45/60/90/120 min, pode pular, aparece uma vez só — PRD 1.4), gravado por função no servidor
+- [x] Pop-up de meta diária após o primeiro login (15/30/45/60/90/120 min, pode pular, aparece uma vez só — PRD 1.4), gravado por função no servidor
 - Telas de login e cadastro: **simples**, com cores e fontes do design atual. Serão refeitas quando chegar o design final.
 
 **Pronto quando:** você cria conta, sai, entra de novo e vê seu nome; o teste de RLS passa.
