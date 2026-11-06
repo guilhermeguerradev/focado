@@ -1,6 +1,6 @@
 # PRD — Focado
 
-**Versão:** 1.2 (cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
+**Versão:** 1.3 (regras de matérias; v1.2: cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
 **Objetivo deste documento:** servir como fonte única de verdade sobre o produto para orientar desenvolvimento, modelagem de dados e criação de endpoints em etapas futuras. Este documento descreve o **quê** e o **porquê**; modelagem técnica detalhada (schemas, endpoints, contratos de API) fica para uma etapa posterior.
 
 ---
@@ -108,6 +108,10 @@ Se o usuário finalizar uma sessão sem conexão:
 - Usuário cria suas próprias matérias (nome + cor).
 - Cor da matéria é usada de forma consistente em toda a UI (gráficos, listas, etc.).
 - Free: máximo 4 matérias (ver seção 8 — Planos).
+- **Nome:** obrigatório, de 1 a 40 caracteres. Não pode repetir entre as matérias **ativas** do mesmo usuário, ignorando maiúsculas/minúsculas ("Inglês" = "inglês").
+- **Cor:** escolhida numa paleta fixa de 8 cores — roxo, turquesa, laranja, amarelo, verde (as do design), rosa, azul e vermelho. O banco guarda o nome da cor; o tom exato fica no tema do app.
+- **Excluir = arquivar:** a matéria some das listas e libera a vaga no limite, mas as sessões e estatísticas antigas continuam com o nome e a cor dela. No v1 não há "desarquivar".
+- **Onde gerenciar:** na aba Estudar (seção "Matérias", com listar, criar, editar e excluir).
 
 ---
 
@@ -284,6 +288,7 @@ Apenas para dar contexto — o schema detalhado fica para a etapa de modelagem:
 
 ## 12. Histórico de versões
 
+- **1.3** — Matérias (3.5): regras de nome (1–40, sem repetir entre ativas), paleta de 8 cores, excluir = arquivar, gerenciamento na aba Estudar.
 - **1.2** — Cadastro e login (1.4): nome + e-mail + senha (mín. 8), sem confirmação de e-mail no v1 (movida para a seção 9), pop-up de meta diária após o primeiro login (opções, pode pular, vale no mesmo dia), login com Google/Apple planejado para antes da publicação.
 - **1.1** — Stack confirmada (Expo + TypeScript, Supabase, RevenueCat, `ts-fsrs`); regra de fuso horário por usuário (1.3); fila offline para sessões (3.6); teto de sessão fixado em 12h; meta diária padrão de 30 min; ofensiva, ranking e limites calculados no servidor; Pomodoro e sistema de nível movidos para fora do v1.
 - **1.0** — Rascunho inicial.
