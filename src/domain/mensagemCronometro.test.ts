@@ -23,8 +23,8 @@ describe('mensagemDoCronometro', () => {
       );
     });
 
-    it('com matéria escolhida, convida a começar (e NÃO diz "Pausado")', () => {
-      expect(mensagemDoCronometro(base)).toBe('Toque ▶ para começar');
+    it('com matéria escolhida, convida a começar: "Bora estudar" (e NÃO diz "Pausado")', () => {
+      expect(mensagemDoCronometro(base)).toBe('Bora estudar');
     });
   });
 
@@ -33,10 +33,8 @@ describe('mensagemDoCronometro', () => {
       expect(mensagemDoCronometro({ ...base, status: 'rodando' })).toBe('Concentre-se!');
     });
 
-    it('pausado: avisa e diz como retomar', () => {
-      expect(mensagemDoCronometro({ ...base, status: 'pausado' })).toBe(
-        'Pausado · toque ▶ para retomar',
-      );
+    it('pausado: "Pausado"', () => {
+      expect(mensagemDoCronometro({ ...base, status: 'pausado' })).toBe('Pausado');
     });
 
     it('no teto de 12h (rodando ou pausado): pede para finalizar', () => {

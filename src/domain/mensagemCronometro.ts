@@ -15,10 +15,10 @@ export function mensagemDoCronometro(situacao: SituacaoCronometro): string {
   if (status === 'parado') {
     if (!temMaterias) return 'Cadastre uma matéria abaixo';
     if (!temMateriaEscolhida) return 'Escolha uma matéria abaixo';
-    return 'Toque ▶ para começar';
+    return 'Bora estudar';
   }
 
   if (noTeto) return 'Teto de 12h atingido — finalize';
-  if (status === 'pausado') return 'Pausado · toque ▶ para retomar';
+  if (status === 'pausado') return 'Pausado';
   return 'Concentre-se!';
 }
