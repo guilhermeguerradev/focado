@@ -12,7 +12,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 ### Etapa 0 — Preparar a obra
 - [ ] Instalar ferramentas: Node.js (LTS), Git, Docker Desktop, Supabase CLI, app Expo Go no celular
 - [ ] Criar conta no GitHub e no Supabase
-- [ ] Criar o projeto Expo com TypeScript (`strict`) e Expo Router
+- [x] Criar o projeto Expo com TypeScript (`strict`) e Expo Router
 - [ ] Criar a estrutura de pastas do `CLAUDE.md` e mover `prd-focado.md`, `PLANO.md` e o design para `docs/`
 - [ ] Configurar ESLint, Prettier e os scripts `lint`, `typecheck`, `test`
 - [ ] Configurar Vitest com um teste de exemplo passando
