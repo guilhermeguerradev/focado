@@ -1,6 +1,6 @@
 # PRD — Focado
 
-**Versão:** 1.6 (sessões curtas e fila offline; v1.5: nome de matéria até 20 caracteres; v1.4: cronômetro ao atingir 12h; v1.3: regras de matérias; v1.2: cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
+**Versão:** 1.7 (prazo de 1h fora do app; v1.6: sessões curtas e fila offline; v1.5: nome de matéria até 20 caracteres; v1.4: cronômetro ao atingir 12h; v1.3: regras de matérias; v1.2: cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
 **Objetivo deste documento:** servir como fonte única de verdade sobre o produto para orientar desenvolvimento, modelagem de dados e criação de endpoints em etapas futuras. Este documento descreve o **quê** e o **porquê**; modelagem técnica detalhada (schemas, endpoints, contratos de API) fica para uma etapa posterior.
 
 ---
@@ -95,6 +95,14 @@ Para evitar sessões "esquecidas" em background por dias distorcerem as estatís
 - A sessão é **truncada** em 12h ao ser salva (não descartada por completo, para não perder o estudo real feito).
 - O teto é validado **também no servidor**: uma sessão recebida com duração acima de 12h é gravada com 12h.
 - **Na tela:** ao atingir 12h, o cronômetro para em 12:00:00 e avisa "Teto de 12h atingido — finalize a sessão". A sessão **não** é finalizada sozinha: o usuário finaliza quando voltar.
+
+### 3.4.1 Sair do app com o cronômetro rodando
+- Com o app **aberto na tela**, o cronômetro conta normalmente.
+- Se o app **sair da tela** (fechado, em segundo plano ou tela bloqueada) com o cronômetro rodando, o usuário tem **1 hora** para voltar.
+  - Ao sair, uma **notificação local** avisa: "Seu cronômetro continua rodando. Volte em até 1h ou ele será pausado." Aos **55 minutos**, outra avisa que faltam 5 minutos.
+  - Voltou em até 1h: nada muda, o tempo fora conta.
+  - Voltou depois de 1h: a sessão aparece **pausada**, contando só até completar **1h fora** (ex.: saiu 14:00, voltou 16:00 → conta até 15:00). Um aviso explica o que aconteceu.
+- Notificação **local** é agendada pelo próprio celular, sem servidor — diferente das notificações push, que continuam fora do v1 (seção 9). Se o usuário negar a permissão de notificações, a regra de 1h continua valendo; só não há lembrete.
 
 > Nota técnica: além dos campos de 3.3, o estado local guarda `iniciadaEm` (o momento do **primeiro** início). `horaInicio` muda a cada retomada, e a sessão é atribuída ao dia em que **começou** (3.6).
 
@@ -293,6 +301,7 @@ Apenas para dar contexto — o schema detalhado fica para a etapa de modelagem:
 
 ## 12. Histórico de versões
 
+- **1.7** — Sair do app com o cronômetro rodando (3.4.1): prazo de 1h para voltar, notificação local ao sair e aos 55 min, pausa automática contando até 1h fora.
 - **1.6** — Sessões com menos de 1 minuto não são salvas (3.6); sessão recusada por regra sai da fila offline.
 - **1.5** — Nome da matéria: limite reduzido de 40 para 20 caracteres (3.5), para não quebrar o layout das pílulas. Matérias antigas com nome maior continuam existindo; ao editar, é preciso encurtar.
 - **1.4** — Cronômetro na tela ao atingir 12h (3.4): para em 12:00:00 e avisa, sem finalizar sozinho; estado local guarda `iniciadaEm`.
