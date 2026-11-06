@@ -25,7 +25,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 
 ### Etapa 1 — Login e perfil básico
 - [ ] Cadastro e login com e-mail e senha (Supabase Auth), senha mínima de 8 caracteres validada no servidor
-- [ ] Tabela `perfil` (nome, avatar, meta diária padrão 30 min, fuso IANA) criada automaticamente no cadastro
+- [x] Tabela `perfil` (nome, avatar, meta diária padrão 30 min, fuso IANA) criada automaticamente no cadastro
 - [ ] Fuso detectado pelo celular e salvo no perfil
 - [ ] RLS: cada um só lê/edita o próprio perfil
 - [ ] Teste de integração: usuário B **não** consegue ler nem editar o perfil do usuário A
