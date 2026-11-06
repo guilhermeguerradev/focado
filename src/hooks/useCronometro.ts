@@ -81,6 +81,7 @@ export function useCronometro(): EstadoCronometro {
   // Saiu da tela com o cronômetro rodando: anota a hora e agenda os avisos.
   async function aoSair() {
     const atual = sessaoAtual.current;
+    if (__DEV__) console.log('[cronômetro] app saiu da tela; sessão:', atual?.status ?? 'nenhuma');
     if (!atual) return;
     const fora = registrarSaida(atual, new Date());
     if (fora === atual || fora.saiuEm === null) return;
