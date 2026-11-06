@@ -3,7 +3,27 @@
 O cronograma da obra. Uma etapa por vez, na ordem. Cada etapa termina com algo **funcionando e testado**.
 Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" for verdade.
 
-**Etapa atual:** 3
+**Etapa atual:** 4
+
+---
+
+## ⚠️ Decisões pendentes (pensar mais pra frente)
+
+### Anti-fraude de sessões de estudo — "inventar sessões no passado"
+*Anotado em 06/11/2026, ao fechar a Etapa 3. Decidir antes da Etapa 11 (ranking), no máximo.*
+
+**O problema:** como as sessões podem começar **offline** (PRD 3.6), o servidor só fica sabendo de uma sessão quando ela é **finalizada**. Alguém que chame a API direto (com a chave pública) pode **inventar** uma sessão num horário passado livre — ex.: "ontem, das 20h às 22h" — e assim inflar o **ranking** ou "salvar" a **ofensiva**.
+
+**Já resolvido na Etapa 4 (não depende desta decisão):** teto de 12h; duração nunca maior que o tempo real decorrido desde o início (relógio do servidor); proibido sessão no futuro; proibido duas sessões do mesmo usuário com horários sobrepostos (constraint no banco).
+
+**Impossível de resolver em qualquer app:** deixar o cronômetro ligado sem estudar (o teto de 12h só limita o estrago).
+
+**Opções levantadas:**
+1. **Início verificado** — com internet, o play avisa o servidor, que anota o horário dele (sessão "verificada"). Iniciou offline: conta nas estatísticas e na ofensiva, mas **não no ranking**.
+2. **Exigir internet para iniciar** — fecha a fraude em tudo, mas impede começar a estudar sem sinal.
+3. **Offline total + prazo máximo de envio** — mais simples; a fraude continua possível dentro do prazo.
+
+**Também decidir:** prazo máximo para uma sessão da fila offline chegar ao servidor (sugestões: 3, 7 ou 30 dias).
 
 ---
 
@@ -59,6 +79,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 - [ ] Função `finalizar_sessao` no servidor: idempotente, aplica teto de 12h, atribui ao dia de início no fuso do usuário
 - [ ] Fila offline no AsyncStorage: guarda sessões finalizadas sem internet e envia depois; só remove após confirmação
 - [ ] Testes de integração: mesma sessão 2× conta 1×; sessão de 20h vira 12h; usuário não grava sessão em nome de outro
+- [ ] Defesas anti-fraude que não dependem da decisão pendente (ver topo do plano): duração ≤ tempo real decorrido, sem sessão no futuro, sem sessões sobrepostas — com testes de ataque
 
 **Pronto quando:** você finaliza uma sessão em modo avião, liga a internet e ela aparece no banco uma vez só.
 
