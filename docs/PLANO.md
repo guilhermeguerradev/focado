@@ -10,7 +10,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 ## Marco 1 — App pessoal funcionando (só você, sem amigos e sem pagamento)
 
 ### Etapa 0 — Preparar a obra
-- [ ] Instalar ferramentas: Node.js (LTS), Git, Docker Desktop, Supabase CLI, app Expo Go no celular
+- [x] Instalar ferramentas: Node.js (LTS), Git, Docker Desktop, Supabase CLI, app Expo Go no celular
 - [ ] Criar conta no GitHub e no Supabase
 - [x] Criar o projeto Expo com TypeScript (`strict`) e Expo Router
 - [x] Criar a estrutura de pastas do `CLAUDE.md` e mover `prd-focado.md`, `PLANO.md` e o design para `docs/`
@@ -19,7 +19,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 - [x] Subir o Supabase local (`supabase start`) e conectar o app a ele
 - [x] `.env` + `.gitignore` corretos (nenhuma chave no Git)
 - [x] Repositório no GitHub + primeiro commit
-- [ ] GitHub Actions rodando `lint`, `typecheck` e `test` a cada push
+- [x] GitHub Actions rodando `lint`, `typecheck` e `test` a cada push
 
 **Pronto quando:** o app abre no celular com uma tela "Olá, Focado", e o GitHub mostra o check verde.
 
