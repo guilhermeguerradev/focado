@@ -16,7 +16,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 - [x] Criar a estrutura de pastas do `CLAUDE.md` e mover `prd-focado.md`, `PLANO.md` e o design para `docs/`
 - [x] Configurar ESLint, Prettier e os scripts `lint`, `typecheck`, `test`
 - [x] Configurar Vitest com um teste de exemplo passando
-- [ ] Subir o Supabase local (`supabase start`) e conectar o app a ele
+- [x] Subir o Supabase local (`supabase start`) e conectar o app a ele
 - [x] `.env` + `.gitignore` corretos (nenhuma chave no Git)
 - [ ] Repositório no GitHub + primeiro commit
 - [ ] GitHub Actions rodando `lint`, `typecheck` e `test` a cada push
