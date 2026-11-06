@@ -4,7 +4,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 
 import { useSessao } from '@/hooks/useSessao';
-import { arquivosDeFonte } from '@/theme/fontes';
+import { cores } from '@/theme/cores';
+import { arquivosDeFonte, fontes } from '@/theme/fontes';
 
 // Segura a tela de abertura (splash) até as fontes e o login estarem prontos.
 SplashScreen.preventAutoHideAsync();
@@ -31,6 +32,17 @@ export default function LayoutRaiz() {
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Protected guard={logado}>
         <Stack.Screen name="(abas)" />
+        {/* Criar/editar matéria: abre por cima das abas, com cabeçalho e "voltar". */}
+        <Stack.Screen
+          name="materia"
+          options={{
+            headerShown: true,
+            headerTintColor: cores.primaria,
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: cores.fundo },
+            headerTitleStyle: { fontFamily: fontes.titulo, color: cores.texto },
+          }}
+        />
       </Stack.Protected>
       <Stack.Protected guard={!logado}>
         <Stack.Screen name="entrar" />

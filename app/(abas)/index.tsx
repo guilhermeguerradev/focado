@@ -1,18 +1,54 @@
-import { EmBreve } from '@/components/EmBreve';
-import { PopupMetaDiaria } from '@/components/PopupMetaDiaria';
-import { usePerfil } from '@/hooks/usePerfil';
+import { ScrollView, StyleSheet, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-// Aba Estudar (tela inicial). O cronômetro chega na Etapa 3.
-// Aqui também aparece, uma única vez, o pop-up da meta diária (PRD 1.4).
+import { PopupMetaDiaria } from '@/components/PopupMetaDiaria';
+import { SecaoMaterias } from '@/components/SecaoMaterias';
+import { usePerfil } from '@/hooks/usePerfil';
+import { cores } from '@/theme/cores';
+import { fontes } from '@/theme/fontes';
+
+// Aba Estudar (tela inicial).
+// - Seção "Matérias": listar, criar, editar e excluir (PRD 3.5).
+// - O cronômetro chega na Etapa 3.
+// - Aparece, uma única vez, o pop-up da meta diária (PRD 1.4).
 export default function AbaEstudar() {
   const { perfil, responderPopupMeta } = usePerfil();
 
   const mostrarPopup = perfil !== null && perfil.meta_escolhida_em === null;
 
   return (
-    <>
-      <EmBreve titulo="Estudar" />
+    <SafeAreaView style={styles.tela} edges={['top']}>
+      <ScrollView contentContainerStyle={styles.conteudo}>
+        <Text style={styles.titulo}>Estudar</Text>
+        <SecaoMaterias />
+        <Text style={styles.emBreve}>Cronômetro em breve 🐼</Text>
+      </ScrollView>
       <PopupMetaDiaria visivel={mostrarPopup} aoResponder={responderPopupMeta} />
-    </>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  tela: {
+    flex: 1,
+    backgroundColor: cores.fundo,
+  },
+  conteudo: {
+    paddingHorizontal: 20,
+    paddingBottom: 24,
+    gap: 24,
+  },
+  titulo: {
+    fontFamily: fontes.titulo,
+    fontSize: 26,
+    color: cores.texto,
+    marginTop: 12,
+  },
+  emBreve: {
+    fontFamily: fontes.textoNegrito,
+    fontSize: 15,
+    color: cores.textoApagado,
+    textAlign: 'center',
+    marginTop: 40,
+  },
+});
