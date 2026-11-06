@@ -32,7 +32,10 @@ export default function AbaEstudar() {
 
   function selecionarMateria(id: string) {
     if (sessao) {
-      Alert.alert('Sessão em andamento', 'Finalize a sessão atual para trocar de matéria.');
+      Alert.alert(
+        'Sessão em andamento',
+        'Para estudar outra matéria, finalize esta sessão no botão ⏹ ao lado do ▶.',
+      );
       return;
     }
     setEscolhidaId(id);

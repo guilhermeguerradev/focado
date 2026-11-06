@@ -3,6 +3,7 @@ import { Alert, StyleSheet, Text, View } from 'react-native';
 
 import { formatarCronometro, formatarDuracaoSessao } from '@/domain/cronometro';
 import { progressoDaMeta } from '@/domain/inicio';
+import { mensagemDoCronometro } from '@/domain/mensagemCronometro';
 import type { EstadoCronometro } from '@/hooks/useCronometro';
 import type { Materia } from '@/services/materias';
 import { cores, sombraCard } from '@/theme/cores';
@@ -26,11 +27,12 @@ export function CartaoCronometro({ cronometro, materia, temMaterias, metaMinutos
   const tom = coresMaterias[materia?.cor ?? 'turquesa'];
   const rodando = sessao?.status === 'rodando';
 
-  let mensagem = 'Concentre-se!';
-  if (!sessao && !temMaterias) mensagem = 'Cadastre uma matéria abaixo';
-  else if (!sessao && !materia) mensagem = 'Escolha uma matéria abaixo';
-  else if (noTeto) mensagem = 'Teto de 12h atingido — finalize';
-  else if (!rodando) mensagem = 'Pausado';
+  const mensagem = mensagemDoCronometro({
+    temMaterias,
+    temMateriaEscolhida: materia !== null,
+    status: sessao ? sessao.status : 'parado',
+    noTeto,
+  });
 
   function tocarCentral() {
     if (!sessao) {
