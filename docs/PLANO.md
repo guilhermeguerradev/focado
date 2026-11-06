@@ -46,8 +46,8 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 ### Etapa 3 — Cronômetro (só no celular)
 - [x] `src/domain/cronometro.ts`: estados rodando/pausado/finalizado, reconstrução do tempo, teto de 12h
 - [x] Testes unitários do domínio (pausar, retomar, app fechado e reaberto, passar de 12h)
-- [ ] Espelhar o estado em AsyncStorage a cada mudança
-- [ ] Tela Estudar: escolher matéria, iniciar, pausar, retomar, finalizar (seguindo o design)
+- [x] Espelhar o estado em AsyncStorage a cada mudança
+- [x] Tela Estudar: escolher matéria, iniciar, pausar, retomar, finalizar (seguindo o design)
 - Modo Pomodoro: **fora do v1** (ver PRD seção 9). Não implementar; a tela mostra só o cronômetro.
 - Finalizar nesta etapa: **só mostra o resumo** ("Você estudou X de Y"); a sessão não é guardada. Gravar no servidor (com fila offline) é a Etapa 4.
 - `sessionId` gerado no celular com `expo-crypto` (`randomUUID`).
