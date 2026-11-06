@@ -1,0 +1,9 @@
+# Arquivos que o Prettier não deve formatar
+node_modules/
+.expo/
+dist/
+package-lock.json
+
+# Documentos do projeto (escritos à mão, não são código)
+CLAUDE.md
+docs/
