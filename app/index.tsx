@@ -1,22 +1,22 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { useConexaoSupabase, type StatusConexao } from '@/hooks/useConexaoSupabase';
+import { BotaoPrincipal } from '@/components/BotaoPrincipal';
+import { useSessao } from '@/hooks/useSessao';
+import { sair } from '@/services/autenticacao';
+import { cores } from '@/theme/cores';
+import { fontes } from '@/theme/fontes';
 
-const TEXTO_STATUS: Record<StatusConexao, string> = {
-  verificando: 'Verificando banco...',
-  conectado: 'Banco conectado ✅',
-  'sem-conexao': 'Sem conexão com o banco ❌',
-};
-
-// Tela inicial provisória da Etapa 0.
-// Prova que o app abre no celular e consegue falar com o Supabase local.
+// Tela PROVISÓRIA de quem está logado. No passo 7 ela vira a barra de abas.
 export default function TelaInicial() {
-  const status = useConexaoSupabase();
+  const { sessao } = useSessao();
 
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Olá, Focado</Text>
-      <Text style={styles.status}>{TEXTO_STATUS[status]}</Text>
+      <Text style={styles.texto}>Você entrou como {sessao?.user.email}</Text>
+      <View style={styles.botao}>
+        <BotaoPrincipal titulo="Sair" onPress={sair} />
+      </View>
     </View>
   );
 }
@@ -27,12 +27,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 12,
+    padding: 24,
+    backgroundColor: cores.fundo,
   },
   titulo: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontFamily: fontes.titulo,
+    fontSize: 32,
+    color: cores.texto,
   },
-  status: {
+  texto: {
+    fontFamily: fontes.texto,
     fontSize: 16,
+    color: cores.textoSecundario,
+  },
+  botao: {
+    alignSelf: 'stretch',
+    marginTop: 16,
   },
 });

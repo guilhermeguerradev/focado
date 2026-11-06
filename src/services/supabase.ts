@@ -43,16 +43,3 @@ AppState.addEventListener('change', (estado) => {
     supabase.auth.stopAutoRefresh();
   }
 });
-
-// Pergunta ao servidor de autenticação se ele está de pé.
-// Devolve true se respondeu, false se não deu para falar com ele.
-export async function verificarConexao(): Promise<boolean> {
-  try {
-    const resposta = await fetch(`${url}/auth/v1/health`, {
-      headers: { apikey: chavePublica },
-    });
-    return resposta.ok;
-  } catch {
-    return false;
-  }
-}
