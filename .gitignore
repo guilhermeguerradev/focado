@@ -30,8 +30,11 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
-.env*.local
+# Arquivos de ambiente: guardam chaves e endereços. NUNCA vão para o Git.
+.env
+.env.*
+# ...exceto o modelo, que não tem valores reais.
+!.env.example
 
 # typescript
 *.tsbuildinfo
