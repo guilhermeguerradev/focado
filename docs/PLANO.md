@@ -75,11 +75,11 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 **Pronto quando:** você inicia uma sessão, fecha o app à força, reabre e o tempo está certo.
 
 ### Etapa 4 — Salvar sessões no servidor
-- [ ] Tabela `sessao_estudo` com `session_id` UNIQUE e RLS
-- [ ] Função `finalizar_sessao` no servidor: idempotente, aplica teto de 12h, atribui ao dia de início no fuso do usuário
+- [x] Tabela `sessao_estudo` com `session_id` UNIQUE e RLS
+- [x] Função `finalizar_sessao` no servidor: idempotente, aplica teto de 12h, atribui ao dia de início no fuso do usuário
 - [ ] Fila offline no AsyncStorage: guarda sessões finalizadas sem internet e envia depois; só remove após confirmação
-- [ ] Testes de integração: mesma sessão 2× conta 1×; sessão de 20h vira 12h; usuário não grava sessão em nome de outro
-- [ ] Defesas anti-fraude que não dependem da decisão pendente (ver topo do plano): duração ≤ tempo real decorrido, sem sessão no futuro, sem sessões sobrepostas — com testes de ataque
+- [x] Testes de integração: mesma sessão 2× conta 1×; sessão de 20h vira 12h; usuário não grava sessão em nome de outro
+- [x] Defesas anti-fraude que não dependem da decisão pendente (ver topo do plano): duração ≤ tempo real decorrido, sem sessão no futuro, sem sessões sobrepostas — com testes de ataque
 
 **Pronto quando:** você finaliza uma sessão em modo avião, liga a internet e ela aparece no banco uma vez só.
 
