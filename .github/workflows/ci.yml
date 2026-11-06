@@ -1,0 +1,40 @@
+# CI = "integração contínua": um computador do GitHub confere o código a cada envio.
+# Se lint, typecheck ou testes falharem, o GitHub mostra um X vermelho no commit.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Menor privilégio: o robô só pode LER o código, nada mais.
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    name: lint, typecheck e testes
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v5
+
+      - name: Instalar o Node (mesma versão do seu PC)
+        uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          cache: npm
+
+      - name: Instalar dependências (exatamente as do package-lock.json)
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Testes
+        run: npm run test
