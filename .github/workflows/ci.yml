@@ -33,6 +33,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Formatação (Prettier)
+        run: npx prettier --check .
+
       - name: Typecheck
         run: npm run typecheck
 
