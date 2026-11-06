@@ -21,8 +21,10 @@ export function lerSessaoSalva(valor: unknown): SessaoEmAndamento | null {
   if (typeof valor !== 'object' || valor === null) return null;
 
   // Seguro: só diz "objeto com campos de tipo DESCONHECIDO"; cada campo é conferido abaixo.
-  const { sessionId, materiaId, iniciadaEm, saldoAcumulado, status, horaInicio } =
-    valor as Record<string, unknown>;
+  const { sessionId, materiaId, iniciadaEm, saldoAcumulado, status, horaInicio } = valor as Record<
+    string,
+    unknown
+  >;
 
   if (!ehTexto(sessionId)) return null;
   if (!ehTexto(materiaId)) return null;
