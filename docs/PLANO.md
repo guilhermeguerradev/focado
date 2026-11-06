@@ -18,7 +18,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 - [x] Configurar Vitest com um teste de exemplo passando
 - [x] Subir o Supabase local (`supabase start`) e conectar o app a ele
 - [x] `.env` + `.gitignore` corretos (nenhuma chave no Git)
-- [ ] Repositório no GitHub + primeiro commit
+- [x] Repositório no GitHub + primeiro commit
 - [ ] GitHub Actions rodando `lint`, `typecheck` e `test` a cada push
 
 **Pronto quando:** o app abre no celular com uma tela "Olá, Focado", e o GitHub mostra o check verde.
