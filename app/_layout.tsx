@@ -10,6 +10,15 @@ import { arquivosDeFonte, fontes } from '@/theme/fontes';
 // Segura a tela de abertura (splash) até as fontes e o login estarem prontos.
 SplashScreen.preventAutoHideAsync();
 
+// Cabeçalho das telas que abrem por cima das abas (com botão "voltar").
+const opcoesComCabecalho = {
+  headerShown: true,
+  headerTintColor: cores.primaria,
+  headerShadowVisible: false,
+  headerStyle: { backgroundColor: cores.fundo },
+  headerTitleStyle: { fontFamily: fontes.titulo, color: cores.texto },
+};
+
 // Moldura de todas as telas e o "PORTEIRO" do app:
 // - sem login: só deixa ver Entrar e Cadastro;
 // - com login: só deixa ver as telas de dentro do app.
@@ -32,17 +41,12 @@ export default function LayoutRaiz() {
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Protected guard={logado}>
         <Stack.Screen name="(abas)" />
-        {/* Criar/editar matéria: abre por cima das abas, com cabeçalho e "voltar". */}
+        {/* Telas que abrem por cima das abas, com cabeçalho e "voltar". */}
         <Stack.Screen
-          name="materia"
-          options={{
-            headerShown: true,
-            headerTintColor: cores.primaria,
-            headerShadowVisible: false,
-            headerStyle: { backgroundColor: cores.fundo },
-            headerTitleStyle: { fontFamily: fontes.titulo, color: cores.texto },
-          }}
+          name="materias"
+          options={{ ...opcoesComCabecalho, title: 'Minhas matérias' }}
         />
+        <Stack.Screen name="materia" options={opcoesComCabecalho} />
       </Stack.Protected>
       <Stack.Protected guard={!logado}>
         <Stack.Screen name="entrar" />

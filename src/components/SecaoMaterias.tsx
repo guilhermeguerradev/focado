@@ -1,89 +1,87 @@
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { LIMITE_MATERIAS_FREE, podeCriarMateria } from '@/domain/materia';
-import type { EstadoMaterias } from '@/hooks/useMaterias';
+import { podeCriarMateria } from '@/domain/materia';
+import type { Materia } from '@/services/materias';
 import { cores, raio } from '@/theme/cores';
 import { fontes } from '@/theme/fontes';
 
 import { PilulaMateria } from './PilulaMateria';
 
-// Seção "Matérias" da aba Estudar: pílulas coloridas + botão "Nova".
-// Tocar numa pílula abre a edição; "Nova" abre a criação.
-// Recebe a lista pronta (a aba busca uma vez e reparte com o cronômetro).
-export function SecaoMaterias({ materias, carregando, erro }: EstadoMaterias) {
-  const cabeMais = podeCriarMateria(materias.length);
+type Props = {
+  materias: Materia[];
+  carregando: boolean;
+  erro: string | null;
+  selecionadaId: string | null; // pílula cheia = matéria do cronômetro
+  aoSelecionar: (id: string) => void;
+};
 
+// Seção "Matérias" da tela inicial, como no design: título, "Ver todas"
+// e uma linha de pílulas que rola para o lado. Tocar escolhe a matéria
+// do cronômetro. Criar/editar/excluir ficam em "Ver todas".
+export function SecaoMaterias({ materias, carregando, erro, selecionadaId, aoSelecionar }: Props) {
   return (
-    <View style={styles.secao}>
+    <View>
       <View style={styles.cabecalho}>
         <Text style={styles.titulo}>Matérias</Text>
-        <Text style={styles.contador}>
-          {materias.length}/{LIMITE_MATERIAS_FREE}
-        </Text>
+        <Pressable onPress={() => router.push('/materias')} accessibilityRole="link" hitSlop={8}>
+          <Text style={styles.verTodas}>Ver todas</Text>
+        </Pressable>
       </View>
 
       {carregando ? <ActivityIndicator color={cores.primaria} /> : null}
       {erro ? <Text style={styles.erro}>{erro}</Text> : null}
 
-      {!carregando && materias.length === 0 && !erro ? (
-        <Text style={styles.vazio}>Cadastre as matérias que você estuda para começar.</Text>
-      ) : null}
-
-      <View style={styles.pilulas}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.linha}
+      >
         {materias.map((materia) => (
           <PilulaMateria
             key={materia.id}
             nome={materia.nome}
             cor={materia.cor}
-            onPress={() => router.push({ pathname: '/materia', params: { id: materia.id } })}
+            selecionada={materia.id === selecionadaId}
+            onPress={() => aoSelecionar(materia.id)}
           />
         ))}
 
-        {cabeMais && !carregando ? (
+        {!carregando && podeCriarMateria(materias.length) ? (
           <Pressable
             onPress={() => router.push('/materia')}
             accessibilityRole="button"
+            accessibilityLabel="Nova matéria"
             style={({ pressed }) => [styles.nova, pressed && styles.pressionada]}
           >
             <Feather name="plus" size={14} color={cores.primaria} />
-            <Text style={styles.textoNova}>Nova</Text>
+            {materias.length === 0 ? <Text style={styles.textoNova}>Nova matéria</Text> : null}
           </Pressable>
         ) : null}
-      </View>
-
-      {!cabeMais ? (
-        <Text style={styles.aviso}>
-          Limite de {LIMITE_MATERIAS_FREE} matérias do plano gratuito atingido.
-        </Text>
-      ) : null}
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  secao: {
-    gap: 10,
-  },
   cabecalho: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginBottom: 10,
   },
   titulo: {
     fontFamily: fontes.tituloLeve,
-    fontSize: 17,
+    fontSize: 15,
     color: cores.texto,
   },
-  contador: {
+  verTodas: {
     fontFamily: fontes.textoNegrito,
-    fontSize: 13,
-    color: cores.textoApagado,
+    fontSize: 12,
+    color: cores.primaria,
   },
-  pilulas: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+  linha: {
     gap: 9,
   },
   nova: {
@@ -104,16 +102,6 @@ const styles = StyleSheet.create({
     fontFamily: fontes.textoNegrito,
     fontSize: 13,
     color: cores.primaria,
-  },
-  vazio: {
-    fontFamily: fontes.texto,
-    fontSize: 14,
-    color: cores.textoSecundario,
-  },
-  aviso: {
-    fontFamily: fontes.texto,
-    fontSize: 13,
-    color: cores.textoSecundario,
   },
   erro: {
     fontFamily: fontes.textoNegrito,

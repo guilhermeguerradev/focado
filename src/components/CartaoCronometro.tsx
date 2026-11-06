@@ -1,46 +1,47 @@
-import { ActivityIndicator, Alert, StyleSheet, Text, View } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 
 import { formatarCronometro, formatarDuracaoSessao } from '@/domain/cronometro';
-import { useCronometro } from '@/hooks/useCronometro';
+import { progressoDaMeta } from '@/domain/inicio';
+import type { EstadoCronometro } from '@/hooks/useCronometro';
 import type { Materia } from '@/services/materias';
-import { cores } from '@/theme/cores';
+import { cores, sombraCard } from '@/theme/cores';
+import { coresMaterias } from '@/theme/coresMaterias';
 import { fontes } from '@/theme/fontes';
 
-import { BotaoPrincipal } from './BotaoPrincipal';
-import { BotaoSecundario } from './BotaoSecundario';
-import { EscolherMateria } from './EscolherMateria';
-import { PilulaMateria } from './PilulaMateria';
+import { AnelProgresso } from './AnelProgresso';
+import { BotoesCronometro } from './BotoesCronometro';
 
 type Props = {
-  materias: Materia[];
+  cronometro: EstadoCronometro;
+  materia: Materia | null; // matéria da sessão, ou a escolhida nas pílulas
+  temMaterias: boolean;
+  metaMinutos: number;
 };
 
-// Card do cronômetro da aba Estudar (PRD 3).
-// Sem sessão: escolher matéria e iniciar. Com sessão: tempo + pausar/retomar/finalizar.
-export function CartaoCronometro({ materias }: Props) {
-  const cronometro = useCronometro();
-  const { sessao, segundos, noTeto, carregando, erro } = cronometro;
+// Card do cronômetro, como no design: anel na cor da matéria (enche conforme
+// a meta diária), tempo no meio e botões redondos.
+export function CartaoCronometro({ cronometro, materia, temMaterias, metaMinutos }: Props) {
+  const { sessao, segundos, noTeto, erro } = cronometro;
+  const tom = coresMaterias[materia?.cor ?? 'turquesa'];
+  const rodando = sessao?.status === 'rodando';
 
-  if (carregando) {
-    return (
-      <View style={styles.cartao}>
-        <ActivityIndicator color={cores.primaria} />
-      </View>
-    );
+  let mensagem = 'Concentre-se!';
+  if (!sessao && !temMaterias) mensagem = 'Cadastre uma matéria abaixo';
+  else if (!sessao && !materia) mensagem = 'Escolha uma matéria abaixo';
+  else if (!sessao && materia) mensagem = `Bora estudar ${materia.nome}?`;
+  else if (noTeto) mensagem = 'Teto de 12h atingido — finalize';
+  else if (!rodando) mensagem = 'Pausado';
+
+  function tocarCentral() {
+    if (!sessao) {
+      if (materia) cronometro.iniciar(materia.id);
+    } else if (rodando) {
+      cronometro.pausar();
+    } else {
+      cronometro.retomar();
+    }
   }
-
-  if (!sessao) {
-    return (
-      <View style={styles.cartao}>
-        <EscolherMateria materias={materias} aoIniciar={cronometro.iniciar} />
-        {erro ? <Text style={styles.erro}>{erro}</Text> : null}
-      </View>
-    );
-  }
-
-  const materia = materias.find((m) => m.id === sessao.materiaId);
-  const nomeMateria = materia?.nome ?? 'matéria arquivada';
-  const rodando = sessao.status === 'rodando';
 
   function confirmarFinalizar() {
     Alert.alert('Finalizar sessão?', 'Depois de finalizada, a sessão não pode ser retomada.', [
@@ -52,31 +53,45 @@ export function CartaoCronometro({ materias }: Props) {
   async function finalizarEMostrarResumo() {
     const resultado = await cronometro.finalizar();
     if (!resultado) return;
+    const nome = materia?.nome ?? 'uma matéria arquivada';
     Alert.alert(
       'Sessão finalizada 🎉',
-      `Você estudou ${formatarDuracaoSessao(resultado.duracaoSegundos)} de ${nomeMateria}.`,
+      `Você estudou ${formatarDuracaoSessao(resultado.duracaoSegundos)} de ${nome}.`,
     );
   }
 
-  let mensagem = rodando ? 'Concentre-se! 🐼' : 'Pausado';
-  if (noTeto) mensagem = 'Teto de 12h atingido — finalize a sessão.';
-
   return (
-    <View style={styles.cartao}>
-      {materia ? <PilulaMateria nome={materia.nome} cor={materia.cor} selecionada /> : null}
+    <View style={[styles.cartao, sombraCard]}>
+      <AnelProgresso
+        tamanho={210}
+        espessura={19}
+        progresso={progressoDaMeta(segundos, metaMinutos)}
+        cor={tom.principal}
+        corTrilha={tom.fundo}
+      >
+        <View style={styles.miolo}>
+          <View style={[styles.iconeRelogio, { backgroundColor: tom.fundo }]}>
+            <Feather name="clock" size={17} color={tom.principal} />
+          </View>
+          <Text style={styles.tempo} accessibilityRole="timer">
+            {formatarCronometro(segundos)}
+          </Text>
+          <Text
+            style={[styles.mensagem, { color: noTeto ? cores.erro : tom.principal }]}
+            numberOfLines={2}
+          >
+            {mensagem}
+          </Text>
+        </View>
+      </AnelProgresso>
 
-      <Text style={styles.tempo} accessibilityRole="timer">
-        {formatarCronometro(segundos)}
-      </Text>
-      <Text style={[styles.mensagem, noTeto && styles.mensagemTeto]}>{mensagem}</Text>
-
-      <View style={styles.botoes}>
-        {!noTeto && rodando ? <BotaoPrincipal titulo="Pausar" onPress={cronometro.pausar} /> : null}
-        {!noTeto && !rodando ? (
-          <BotaoPrincipal titulo="Retomar" onPress={cronometro.retomar} />
-        ) : null}
-        <BotaoSecundario titulo="Finalizar" onPress={confirmarFinalizar} />
-      </View>
+      <BotoesCronometro
+        cor={tom.principal}
+        mostrarPausa={rodando}
+        centralDesabilitado={noTeto || (!sessao && !materia)}
+        aoTocarCentral={tocarCentral}
+        aoFinalizar={sessao ? confirmarFinalizar : null}
+      />
 
       {erro ? <Text style={styles.erro}>{erro}</Text> : null}
     </View>
@@ -87,29 +102,36 @@ const styles = StyleSheet.create({
   cartao: {
     backgroundColor: cores.superficie,
     borderRadius: 24,
-    padding: 20,
-    gap: 12,
-    alignItems: 'stretch',
+    paddingTop: 22,
+    paddingHorizontal: 20,
+    paddingBottom: 18,
+    alignItems: 'center',
+    gap: 14,
+  },
+  miolo: {
+    width: 172,
+    alignItems: 'center',
+    gap: 3,
+  },
+  iconeRelogio: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 2,
   },
   tempo: {
-    fontFamily: fontes.titulo,
-    fontSize: 64,
+    fontFamily: fontes.tituloLeve,
+    fontSize: 46,
+    letterSpacing: 1,
     color: cores.texto,
-    textAlign: 'center',
     fontVariant: ['tabular-nums'],
   },
   mensagem: {
     fontFamily: fontes.textoNegrito,
-    fontSize: 15,
-    color: cores.textoSecundario,
+    fontSize: 13,
     textAlign: 'center',
-  },
-  mensagemTeto: {
-    color: cores.erro,
-  },
-  botoes: {
-    gap: 10,
-    marginTop: 4,
   },
   erro: {
     fontFamily: fontes.textoNegrito,

@@ -10,9 +10,9 @@ type NomeIcone = ComponentProps<typeof Feather>['name'];
 // Cria a função que desenha o ícone da aba.
 // A cor vem do nosso tema: turquesa se a aba está ativa, cinza se não está.
 function icone(nome: NomeIcone) {
-  return function IconeDaAba({ focused, size }: { focused: boolean; size: number }) {
+  return function IconeDaAba({ focused }: { focused: boolean }) {
     const cor = focused ? cores.primaria : cores.textoApagado;
-    return <Feather name={nome} color={cor} size={size} />;
+    return <Feather name={nome} color={cor} size={24} />; // 24px, como no design
   };
 }
 
@@ -24,8 +24,13 @@ export default function LayoutAbas() {
         headerShown: false,
         tabBarActiveTintColor: cores.primaria,
         tabBarInactiveTintColor: cores.textoApagado,
-        tabBarLabelStyle: { fontFamily: fontes.textoNegrito, fontSize: 11 },
-        tabBarStyle: { backgroundColor: cores.superficie, borderTopColor: cores.borda },
+        // Medidas do design: rótulo Nunito 600 de 10px, linha #EEF1F2 em cima.
+        tabBarLabelStyle: { fontFamily: fontes.texto, fontSize: 10, marginTop: 2 },
+        tabBarStyle: {
+          backgroundColor: cores.superficie,
+          borderTopColor: cores.bordaNavegacao,
+          paddingTop: 8,
+        },
       }}
     >
       <Tabs.Screen name="index" options={{ title: 'Estudar', tabBarIcon: icone('book-open') }} />
