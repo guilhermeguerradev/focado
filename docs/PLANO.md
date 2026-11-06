@@ -24,12 +24,14 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 **Pronto quando:** o app abre no celular com uma tela "Olá, Focado", e o GitHub mostra o check verde.
 
 ### Etapa 1 — Login e perfil básico
-- [ ] Cadastro e login com e-mail e senha (Supabase Auth)
+- [ ] Cadastro e login com e-mail e senha (Supabase Auth), senha mínima de 8 caracteres validada no servidor
 - [ ] Tabela `perfil` (nome, avatar, meta diária padrão 30 min, fuso IANA) criada automaticamente no cadastro
 - [ ] Fuso detectado pelo celular e salvo no perfil
 - [ ] RLS: cada um só lê/edita o próprio perfil
 - [ ] Teste de integração: usuário B **não** consegue ler nem editar o perfil do usuário A
 - [ ] Tab bar com as 5 abas (telas vazias por enquanto)
+- [ ] Pop-up de meta diária após o primeiro login (15/30/45/60/90/120 min, pode pular, aparece uma vez só — PRD 1.4), gravado por função no servidor
+- Telas de login e cadastro: **simples**, com cores e fontes do design atual. Serão refeitas quando chegar o design final.
 
 **Pronto quando:** você cria conta, sai, entra de novo e vê seu nome; o teste de RLS passa.
 
@@ -134,6 +136,8 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 - [ ] Testes de integração com webhook simulado (incluindo evento repetido)
 
 ### Etapa 14 — Publicação
+- [ ] Criar o projeto no Supabase na nuvem e apontar o app para ele
+- [ ] Login social: Entrar com Google + Entrar com Apple (exigido pela App Store quando há login social no iPhone) — PRD 1.4
 - [ ] Revisão geral de segurança (todas as tabelas com RLS, nenhuma chave exposta)
 - [ ] Ícone, splash, nome nas lojas, política de privacidade
 - [ ] Build com EAS, teste fechado com amigos, envio às lojas

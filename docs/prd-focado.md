@@ -37,7 +37,12 @@ Estudantes de qualquer nível (ensino médio, vestibular, concursos, faculdade, 
 - Cadastro com **nome, e-mail e senha**. Senha com **no mínimo 8 caracteres** (validada também no servidor).
 - **Sem confirmação de e-mail** no v1: após o cadastro o usuário já entra no app (ver seção 9).
 - Os demais dados do perfil começam com valores iniciais: meta diária de 30 min, fuso detectado pelo celular, avatar escolhido depois.
-- Após o primeiro login, ao chegar na tela inicial, um **pop-up pergunta a meta diária** do usuário.
+- Após o primeiro login, ao chegar na tela inicial, um **pop-up pergunta a meta diária** do usuário:
+  - Opções: **15, 30, 45, 60, 90 ou 120 minutos**.
+  - Pode ser **pulado**: nesse caso fica o padrão de 30 min.
+  - Aparece **uma única vez** (respondido ou pulado, não volta).
+  - É a **primeira definição** da meta, não uma mudança: vale **já no dia do cadastro**. Mudanças posteriores (Configurações) seguem a regra de 7.3 (valem a partir do dia seguinte).
+- **Entrar com Google** (e **Entrar com Apple**, exigido pela App Store quando há login social no iPhone): planejado para antes da publicação, quando o Supabase na nuvem existir. No v1 inicial, só e-mail e senha.
 
 ---
 
@@ -279,7 +284,7 @@ Apenas para dar contexto — o schema detalhado fica para a etapa de modelagem:
 
 ## 12. Histórico de versões
 
-- **1.2** — Cadastro e login (1.4): nome + e-mail + senha (mín. 8), sem confirmação de e-mail no v1 (movida para a seção 9), pop-up de meta diária após o primeiro login.
+- **1.2** — Cadastro e login (1.4): nome + e-mail + senha (mín. 8), sem confirmação de e-mail no v1 (movida para a seção 9), pop-up de meta diária após o primeiro login (opções, pode pular, vale no mesmo dia), login com Google/Apple planejado para antes da publicação.
 - **1.1** — Stack confirmada (Expo + TypeScript, Supabase, RevenueCat, `ts-fsrs`); regra de fuso horário por usuário (1.3); fila offline para sessões (3.6); teto de sessão fixado em 12h; meta diária padrão de 30 min; ofensiva, ranking e limites calculados no servidor; Pomodoro e sistema de nível movidos para fora do v1.
 - **1.0** — Rascunho inicial.
 
