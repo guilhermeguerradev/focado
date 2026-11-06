@@ -36,10 +36,10 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 **Pronto quando:** você cria conta, sai, entra de novo e vê seu nome; o teste de RLS passa.
 
 ### Etapa 2 — Matérias
-- [ ] Tabela `materia` (nome, cor, dono) com RLS
-- [ ] Função no servidor para criar matéria com limite Free de 4 (checagem + inserção na mesma transação)
+- [x] Tabela `materia` (nome, cor, dono) com RLS
+- [x] Função no servidor para criar matéria com limite Free de 4 (checagem + inserção na mesma transação)
 - [ ] Telas: listar, criar, editar e excluir matéria, com seletor de cor
-- [ ] Testes de integração: 5ª matéria recusada; duas criações simultâneas não furam o limite; usuário B não vê matérias de A
+- [x] Testes de integração: 5ª matéria recusada; duas criações simultâneas não furam o limite; usuário B não vê matérias de A
 
 **Pronto quando:** você cadastra suas matérias com cores e o limite funciona mesmo tentando burlar.
 
