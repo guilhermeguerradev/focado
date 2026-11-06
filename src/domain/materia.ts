@@ -14,7 +14,8 @@ export const CORES_MATERIA = [
 
 export type CorMateria = (typeof CORES_MATERIA)[number];
 
-export const NOME_MATERIA_MAXIMO = 40;
+// PRD 3.5 (v1.5): 20 caracteres, para caber na pílula da tela inicial.
+export const NOME_MATERIA_MAXIMO = 20;
 
 // Limite do plano gratuito. Quem decide de verdade é o servidor;
 // aqui serve só para a tela avisar antes (ex.: esconder o "+ Nova").

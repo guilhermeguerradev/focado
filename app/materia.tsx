@@ -5,7 +5,7 @@ import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-nati
 import { BotaoPrincipal } from '@/components/BotaoPrincipal';
 import { CampoTexto } from '@/components/CampoTexto';
 import { SeletorDeCor } from '@/components/SeletorDeCor';
-import { validarNomeMateria, type CorMateria } from '@/domain/materia';
+import { NOME_MATERIA_MAXIMO, validarNomeMateria, type CorMateria } from '@/domain/materia';
 import { arquivarMateria, buscarMateria, criarMateria, editarMateria } from '@/services/materias';
 import { cores } from '@/theme/cores';
 import { fontes } from '@/theme/fontes';
@@ -84,7 +84,7 @@ export default function TelaMateria() {
         erro={erroNome}
         placeholder="Ex.: Inglês, Cálculo, Direito Penal"
         autoCapitalize="sentences"
-        maxLength={60}
+        maxLength={NOME_MATERIA_MAXIMO}
       />
 
       <View style={styles.bloco}>

@@ -11,13 +11,13 @@ describe('validarNomeMateria', () => {
     expect(validarNomeMateria('   ')).toBe('Dê um nome para a matéria.');
   });
 
-  it('aceita 40 caracteres e recusa 41', () => {
-    expect(validarNomeMateria('a'.repeat(40))).toBeUndefined();
-    expect(validarNomeMateria('a'.repeat(41))).toBeDefined();
+  it('aceita 20 caracteres e recusa 21', () => {
+    expect(validarNomeMateria('a'.repeat(20))).toBeUndefined();
+    expect(validarNomeMateria('a'.repeat(21))).toBe('O nome pode ter no máximo 20 caracteres.');
   });
 
   it('não conta espaços das pontas no tamanho', () => {
-    expect(validarNomeMateria(`  ${'a'.repeat(40)}  `)).toBeUndefined();
+    expect(validarNomeMateria(`  ${'a'.repeat(20)}  `)).toBeUndefined();
   });
 });
 

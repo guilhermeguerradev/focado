@@ -55,14 +55,28 @@ describe('matérias: criar', () => {
     expect(error?.code).toBe(NOME_REPETIDO);
   });
 
-  it('recusa cor fora da paleta e nome com mais de 40 caracteres', async () => {
+  it('recusa cor fora da paleta e nome com mais de 20 caracteres', async () => {
     const usuario = await novoUsuario('Caio');
 
     const corInvalida = await criarMateria(usuario, 'Física', 'dourado');
-    const nomeLongo = await criarMateria(usuario, 'a'.repeat(41));
+    const nomeLongo = await criarMateria(usuario, 'a'.repeat(21));
+    const nomeNoLimite = await criarMateria(usuario, 'a'.repeat(20));
 
     expect(corInvalida.error?.code).toBe(REGRA_VIOLADA);
     expect(nomeLongo.error?.code).toBe(REGRA_VIOLADA);
+    expect(nomeNoLimite.error).toBeNull();
+  });
+
+  it('recusa EDITAR o nome para mais de 20 caracteres', async () => {
+    const usuario = await novoUsuario('Caio 2');
+    const { data } = await criarMateria(usuario, 'Física');
+
+    const { error } = await usuario.cliente
+      .from('materia')
+      .update({ nome: 'a'.repeat(21) })
+      .eq('id', data.id);
+
+    expect(error?.code).toBe(REGRA_VIOLADA);
   });
 });
 

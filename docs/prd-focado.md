@@ -1,6 +1,6 @@
 # PRD — Focado
 
-**Versão:** 1.4 (cronômetro ao atingir 12h; v1.3: regras de matérias; v1.2: cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
+**Versão:** 1.5 (nome de matéria até 20 caracteres; v1.4: cronômetro ao atingir 12h; v1.3: regras de matérias; v1.2: cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
 **Objetivo deste documento:** servir como fonte única de verdade sobre o produto para orientar desenvolvimento, modelagem de dados e criação de endpoints em etapas futuras. Este documento descreve o **quê** e o **porquê**; modelagem técnica detalhada (schemas, endpoints, contratos de API) fica para uma etapa posterior.
 
 ---
@@ -111,7 +111,7 @@ Se o usuário finalizar uma sessão sem conexão:
 - Usuário cria suas próprias matérias (nome + cor).
 - Cor da matéria é usada de forma consistente em toda a UI (gráficos, listas, etc.).
 - Free: máximo 4 matérias (ver seção 8 — Planos).
-- **Nome:** obrigatório, de 1 a 40 caracteres. Não pode repetir entre as matérias **ativas** do mesmo usuário, ignorando maiúsculas/minúsculas ("Inglês" = "inglês").
+- **Nome:** obrigatório, de 1 a 20 caracteres (para caber na pílula da tela inicial). Não pode repetir entre as matérias **ativas** do mesmo usuário, ignorando maiúsculas/minúsculas ("Inglês" = "inglês").
 - **Cor:** escolhida numa paleta fixa de 8 cores — roxo, turquesa, laranja, amarelo, verde (as do design), rosa, azul e vermelho. O banco guarda o nome da cor; o tom exato fica no tema do app.
 - **Excluir = arquivar:** a matéria some das listas e libera a vaga no limite, mas as sessões e estatísticas antigas continuam com o nome e a cor dela. No v1 não há "desarquivar".
 - **Onde gerenciar:** na aba Estudar (seção "Matérias", com listar, criar, editar e excluir).
@@ -291,6 +291,7 @@ Apenas para dar contexto — o schema detalhado fica para a etapa de modelagem:
 
 ## 12. Histórico de versões
 
+- **1.5** — Nome da matéria: limite reduzido de 40 para 20 caracteres (3.5), para não quebrar o layout das pílulas. Matérias antigas com nome maior continuam existindo; ao editar, é preciso encurtar.
 - **1.4** — Cronômetro na tela ao atingir 12h (3.4): para em 12:00:00 e avisa, sem finalizar sozinho; estado local guarda `iniciadaEm`.
 - **1.3** — Matérias (3.5): regras de nome (1–40, sem repetir entre ativas), paleta de 8 cores, excluir = arquivar, gerenciamento na aba Estudar.
 - **1.2** — Cadastro e login (1.4): nome + e-mail + senha (mín. 8), sem confirmação de e-mail no v1 (movida para a seção 9), pop-up de meta diária após o primeiro login (opções, pode pular, vale no mesmo dia), login com Google/Apple planejado para antes da publicação.
