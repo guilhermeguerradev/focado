@@ -3,6 +3,7 @@ import type { AuthError } from '@supabase/supabase-js';
 import type { DadosCadastro, DadosLogin } from '@/domain/validacaoCadastro';
 
 import { detectarFuso } from './fuso';
+import { limparSessaoLocal } from './sessaoLocal';
 import { supabase } from './supabase';
 
 // Cadastro, login e saída, conversando com o Supabase Auth.
@@ -48,5 +49,8 @@ export async function entrar(dados: DadosLogin): Promise<ResultadoAutenticacao> 
 }
 
 export async function sair(): Promise<void> {
+  // Apaga o cronômetro guardado no celular: outra pessoa pode entrar
+  // neste mesmo aparelho e não deve herdar a sessão de quem saiu.
+  await limparSessaoLocal();
   await supabase.auth.signOut();
 }

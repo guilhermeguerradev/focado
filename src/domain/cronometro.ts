@@ -6,6 +6,8 @@
 // a partir de horários guardados. Assim, se o app for fechado à força,
 // basta ler o último estado salvo e recalcular.
 
+import { formatarMinutos } from './meta';
+
 // Teto de uma sessão: 12 horas (PRD 3.4).
 export const TETO_SEGUNDOS = 12 * 60 * 60;
 
@@ -90,6 +92,13 @@ export function finalizar(sessao: SessaoEmAndamento, agora: Date): SessaoFinaliz
     iniciadaEm: sessao.iniciadaEm,
     duracaoSegundos: Math.floor(tempoDecorrido(sessao, agora)),
   };
+}
+
+// Duração para o resumo ao finalizar: "menos de 1 min", "25 min", "1h30".
+export function formatarDuracaoSessao(segundos: number): string {
+  const minutos = Math.floor(segundos / 60);
+  if (minutos < 1) return 'menos de 1 min';
+  return formatarMinutos(minutos);
 }
 
 // Relógio da tela: "24:35" abaixo de 1 hora, "1:05:09" a partir de 1 hora.

@@ -4,6 +4,7 @@ import {
   atingiuTeto,
   finalizar,
   formatarCronometro,
+  formatarDuracaoSessao,
   iniciarSessao,
   pausar,
   retomar,
@@ -124,6 +125,19 @@ describe('finalizar', () => {
       iniciadaEm: '2026-07-22T14:00:00.000Z',
       duracaoSegundos: 1500,
     });
+  });
+});
+
+describe('formatarDuracaoSessao (resumo ao finalizar)', () => {
+  it('menos de 1 minuto vira "menos de 1 min"', () => {
+    expect(formatarDuracaoSessao(0)).toBe('menos de 1 min');
+    expect(formatarDuracaoSessao(59)).toBe('menos de 1 min');
+  });
+
+  it('arredonda para baixo em minutos e mostra horas quando passa de 60', () => {
+    expect(formatarDuracaoSessao(25 * 60 + 40)).toBe('25 min');
+    expect(formatarDuracaoSessao(90 * 60)).toBe('1h30');
+    expect(formatarDuracaoSessao(TETO_SEGUNDOS)).toBe('12h');
   });
 });
 
