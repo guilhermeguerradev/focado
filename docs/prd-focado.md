@@ -1,6 +1,6 @@
 # PRD — Focado
 
-**Versão:** 1.5 (nome de matéria até 20 caracteres; v1.4: cronômetro ao atingir 12h; v1.3: regras de matérias; v1.2: cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
+**Versão:** 1.6 (sessões curtas e fila offline; v1.5: nome de matéria até 20 caracteres; v1.4: cronômetro ao atingir 12h; v1.3: regras de matérias; v1.2: cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
 **Objetivo deste documento:** servir como fonte única de verdade sobre o produto para orientar desenvolvimento, modelagem de dados e criação de endpoints em etapas futuras. Este documento descreve o **quê** e o **porquê**; modelagem técnica detalhada (schemas, endpoints, contratos de API) fica para uma etapa posterior.
 
 ---
@@ -106,6 +106,8 @@ Se o usuário finalizar uma sessão sem conexão:
 - Uma sessão só é removida da fila depois que o servidor confirmar o recebimento.
 - Enquanto houver sessões pendentes, estatísticas locais podem mostrar o tempo dessas sessões, mas ranking e ofensiva oficiais só as consideram após chegarem ao servidor.
 - A sessão é atribuída ao dia em que **começou** (no fuso do usuário), não ao dia em que foi enviada.
+- **Sessões com menos de 1 minuto não são salvas** (ex.: deu play e finalizou sem querer). O resumo avisa "Sessão muito curta, não foi salva". O servidor também recusa.
+- Se o servidor **recusar** uma sessão por regra (curta demais, matéria inválida etc.), ela sai da fila — não fica tentando para sempre. Só falhas de conexão fazem a sessão esperar na fila.
 
 ### 3.5 Matérias
 - Usuário cria suas próprias matérias (nome + cor).
@@ -291,6 +293,7 @@ Apenas para dar contexto — o schema detalhado fica para a etapa de modelagem:
 
 ## 12. Histórico de versões
 
+- **1.6** — Sessões com menos de 1 minuto não são salvas (3.6); sessão recusada por regra sai da fila offline.
 - **1.5** — Nome da matéria: limite reduzido de 40 para 20 caracteres (3.5), para não quebrar o layout das pílulas. Matérias antigas com nome maior continuam existindo; ao editar, é preciso encurtar.
 - **1.4** — Cronômetro na tela ao atingir 12h (3.4): para em 12:00:00 e avisa, sem finalizar sozinho; estado local guarda `iniciadaEm`.
 - **1.3** — Matérias (3.5): regras de nome (1–40, sem repetir entre ativas), paleta de 8 cores, excluir = arquivar, gerenciamento na aba Estudar.
