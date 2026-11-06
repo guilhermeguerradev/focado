@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     paddingHorizontal: 15,
     borderRadius: raio,
-    maxWidth: '100%',
+    // Nome comprido não estica a pílula: passou disso, vira "…".
+    maxWidth: 170,
   },
   pressionada: {
     opacity: 0.7,

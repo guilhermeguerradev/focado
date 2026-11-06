@@ -29,7 +29,6 @@ export function CartaoCronometro({ cronometro, materia, temMaterias, metaMinutos
   let mensagem = 'Concentre-se!';
   if (!sessao && !temMaterias) mensagem = 'Cadastre uma matéria abaixo';
   else if (!sessao && !materia) mensagem = 'Escolha uma matéria abaixo';
-  else if (!sessao && materia) mensagem = `Bora estudar ${materia.nome}?`;
   else if (noTeto) mensagem = 'Teto de 12h atingido — finalize';
   else if (!rodando) mensagem = 'Pausado';
 
