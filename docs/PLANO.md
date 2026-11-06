@@ -38,7 +38,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 ### Etapa 2 — Matérias
 - [x] Tabela `materia` (nome, cor, dono) com RLS
 - [x] Função no servidor para criar matéria com limite Free de 4 (checagem + inserção na mesma transação)
-- [ ] Telas: listar, criar, editar e excluir matéria, com seletor de cor
+- [x] Telas: listar, criar, editar e excluir matéria, com seletor de cor
 - [x] Testes de integração: 5ª matéria recusada; duas criações simultâneas não furam o limite; usuário B não vê matérias de A
 
 **Pronto quando:** você cadastra suas matérias com cores e o limite funciona mesmo tentando burlar.
