@@ -36,5 +36,10 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Testes
+      # Liga um Supabase local só para os testes de integração (aplica as migrations).
+      # -x desliga serviços que os testes não usam, para ficar mais rápido.
+      - name: Ligar Supabase local
+        run: npx supabase start -x realtime,storage-api,imgproxy,mailpit,postgres-meta,studio,edge-runtime,logflare,vector,supavisor
+
+      - name: Testes (unidade + integração)
         run: npm run test
