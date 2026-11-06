@@ -1,0 +1,8 @@
+# Todos os arquivos de texto usam fim de linha LF (padrão do Mac/Linux e do Prettier).
+# Evita diferenças entre Windows e o GitHub Actions.
+* text=auto eol=lf
+
+# Arquivos binários: o Git não deve mexer neles.
+*.png binary
+*.jpg binary
+*.jpeg binary
