@@ -98,6 +98,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 - [ ] Ofensiva calculada no servidor a partir das sessões
 - [ ] Barra "Tempo estudado hoje" e foguinho 🔥 na Home
 - [ ] Testes de integração: bater a meta soma; dia sem meta zera; mudar a hora do celular não altera nada
+- [ ] Segurança: **trocar o fuso** não pode ser usado para mexer na ofensiva (hoje, mudar o fuso muda em que "dia" as próximas sessões caem). Definir a regra (ex.: limite de trocas, ou ofensiva usa o fuso da época da sessão) + teste de ataque. *(Anotado na auditoria de 06/11/2026.)*
 
 **Pronto quando:** a ofensiva sobe e zera corretamente nos testes.
 
@@ -163,6 +164,13 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 - [ ] Criar o projeto no Supabase na nuvem e apontar o app para ele
 - [ ] Login social: Entrar com Google + Entrar com Apple (exigido pela App Store quando há login social no iPhone) — PRD 1.4
 - [ ] Revisão geral de segurança (todas as tabelas com RLS, nenhuma chave exposta)
+- Pontos da auditoria de 06/11/2026 (nenhum é buraco aberto hoje, com banco local; resolver antes de publicar):
+  - [ ] **Limite de chamadas (rate limit)** nas funções do servidor (`criar_materia`, `finalizar_sessao` etc.), contra abuso — risco médio
+  - [ ] **Vulnerabilidades do `npm audit`** (5 moderadas, vindas de dependências do Expo): revisar e atualizar — risco baixo
+  - [ ] **Crachá de login no AsyncStorage** sem criptografia (legível em celular rooteado): avaliar `expo-secure-store` — risco baixo
+  - [ ] **Senhas vazadas**: ligar a proteção de senha vazada do Supabase na nuvem (hoje só exige 8 caracteres) — risco baixo
+  - [ ] **GitHub Actions**: fixar as ações pela "impressão digital" (SHA) em vez da versão `@v5` — risco baixo
+- [ ] **Testes E2E (Maestro)** dos fluxos principais (cadastro/login, cronômetro, fila offline, matérias): hoje serviços, hooks e telas só são verificados no teste manual no celular
 - [ ] Ícone, splash, nome nas lojas, política de privacidade
 - [ ] Build com EAS, teste fechado com amigos, envio às lojas
 
