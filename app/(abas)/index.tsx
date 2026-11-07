@@ -11,6 +11,7 @@ import { META_PADRAO_MINUTOS } from '@/domain/meta';
 import { useCronometro } from '@/hooks/useCronometro';
 import { useMaterias } from '@/hooks/useMaterias';
 import { usePerfil } from '@/hooks/usePerfil';
+import { useTempoHoje } from '@/hooks/useTempoHoje';
 import { cores } from '@/theme/cores';
 
 // Aba Estudar (tela inicial), na ordem do design:
@@ -20,6 +21,7 @@ export default function AbaEstudar() {
   const { perfil, responderPopupMeta } = usePerfil();
   const { materias, carregando, erro } = useMaterias();
   const cronometro = useCronometro();
+  const tempoHoje = useTempoHoje(); // também envia a fila offline (PRD 3.6)
   const [escolhidaId, setEscolhidaId] = useState<string | null>(null);
 
   // Matéria do cronômetro: a da sessão em andamento; senão a escolhida nas
@@ -41,6 +43,9 @@ export default function AbaEstudar() {
     setEscolhidaId(id);
   }
 
+  // Hoje = sessões já salvas (servidor + fila offline) + a sessão em andamento.
+  const segundosHoje = tempoHoje.segundosSalvos + cronometro.segundos;
+
   const metaMinutos = perfil?.meta_diaria_minutos ?? META_PADRAO_MINUTOS;
   const mostrarPopup = perfil !== null && perfil.meta_escolhida_em === null;
 
@@ -54,9 +59,10 @@ export default function AbaEstudar() {
           materia={materiaDaVez}
           temMaterias={materias.length > 0}
           metaMinutos={metaMinutos}
+          segundosHoje={segundosHoje}
+          aoFinalizarSessao={tempoHoje.sincronizar}
         />
-        {/* Etapa 3: "hoje" = sessão em andamento. Etapa 4 soma o dia inteiro. */}
-        <CartaoTempoHoje segundosHoje={cronometro.segundos} metaMinutos={metaMinutos} />
+        <CartaoTempoHoje segundosHoje={segundosHoje} metaMinutos={metaMinutos} />
         <SecaoMaterias
           materias={materias}
           carregando={carregando}

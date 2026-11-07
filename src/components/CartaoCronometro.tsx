@@ -4,7 +4,7 @@ import { Alert, StyleSheet, Text, View } from 'react-native';
 
 import { formatarCronometro, formatarDuracaoSessao } from '@/domain/cronometro';
 import { voltasDaMeta } from '@/domain/inicio';
-import { mensagemDoCronometro } from '@/domain/mensagemCronometro';
+import { mensagemDoCronometro, resumoAoFinalizar } from '@/domain/mensagemCronometro';
 import type { EstadoCronometro } from '@/hooks/useCronometro';
 import type { Materia } from '@/services/materias';
 import { cores, sombraCard } from '@/theme/cores';
@@ -19,11 +19,20 @@ type Props = {
   materia: Materia | null; // matéria da sessão, ou a escolhida nas pílulas
   temMaterias: boolean;
   metaMinutos: number;
+  segundosHoje: number; // dia inteiro (salvas + em andamento): enche o anel da meta
+  aoFinalizarSessao: () => void;
 };
 
 // Card do cronômetro, como no design: anel na cor da matéria (enche conforme
 // a meta diária), tempo no meio e botões redondos.
-export function CartaoCronometro({ cronometro, materia, temMaterias, metaMinutos }: Props) {
+export function CartaoCronometro({
+  cronometro,
+  materia,
+  temMaterias,
+  metaMinutos,
+  segundosHoje,
+  aoFinalizarSessao,
+}: Props) {
   const { sessao, segundos, noTeto, erro, pausadaPorAusencia, dispensarAvisoDeAusencia } =
     cronometro;
 
@@ -66,16 +75,19 @@ export function CartaoCronometro({ cronometro, materia, temMaterias, metaMinutos
   async function finalizarEMostrarResumo() {
     const resultado = await cronometro.finalizar();
     if (!resultado) return;
-    const nome = materia?.nome ?? 'uma matéria arquivada';
-    Alert.alert(
-      'Sessão finalizada 🎉',
-      `Você estudou ${formatarDuracaoSessao(resultado.duracaoSegundos)} de ${nome}.`,
+    const { titulo, mensagem: texto } = resumoAoFinalizar(
+      resultado.destino,
+      formatarDuracaoSessao(resultado.sessao.duracaoSegundos),
+      materia?.nome ?? 'uma matéria arquivada',
     );
+    Alert.alert(titulo, texto);
+    aoFinalizarSessao(); // atualiza o "Tempo estudado hoje"
   }
 
   // Anel: cada volta = uma meta diária. A volta atual enche por cima da
   // anterior, alternando tom principal (1ª, 3ª...) e tom escuro (2ª, 4ª...).
-  const { voltasCompletas, progressoDaVolta } = voltasDaMeta(segundos, metaMinutos);
+  // O anel soma o DIA inteiro (meta é diária); o número no meio é só desta sessão.
+  const { voltasCompletas, progressoDaVolta } = voltasDaMeta(segundosHoje, metaMinutos);
   const corDaVolta = (indice: number) => (indice % 2 === 0 ? tom.principal : tom.escuro);
   const corPorBaixo = voltasCompletas > 0 ? corDaVolta(voltasCompletas - 1) : tom.fundo;
 

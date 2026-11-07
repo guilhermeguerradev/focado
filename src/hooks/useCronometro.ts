@@ -13,6 +13,9 @@ import {
   type SessaoEmAndamento,
   type SessaoFinalizada,
 } from '@/domain/cronometro';
+import { ehCurtaDemais } from '@/domain/filaOffline';
+import type { DestinoDaSessao } from '@/domain/mensagemCronometro';
+import { enviarPendentes, guardarNaFila } from '@/services/filaSessoes';
 import { gerarId } from '@/services/identificador';
 import {
   agendarAvisosDeSaida,
@@ -32,7 +35,12 @@ export type EstadoCronometro = {
   iniciar: (materiaId: string) => Promise<void>;
   pausar: () => Promise<void>;
   retomar: () => Promise<void>;
-  finalizar: () => Promise<SessaoFinalizada | null>;
+  finalizar: () => Promise<SessaoFinalizadaComDestino | null>;
+};
+
+export type SessaoFinalizadaComDestino = {
+  sessao: SessaoFinalizada;
+  destino: DestinoDaSessao; // salva, na fila, curta ou recusada
 };
 
 // Cola entre a tela e as regras do cronômetro.
@@ -134,12 +142,27 @@ export function useCronometro(): EstadoCronometro {
     if (sessao) await trocarSessao(retomarSessao(sessao, new Date()));
   }
 
-  async function finalizar(): Promise<SessaoFinalizada | null> {
+  // Finalizar (PRD 3.6): curta demais → não salva. Senão: guarda na FILA
+  // (antes de apagar o cronômetro, para nada se perder) e tenta enviar.
+  async function finalizar(): Promise<SessaoFinalizadaComDestino | null> {
     if (!sessao) return null;
     const resultado = finalizarSessao(sessao, new Date());
+
+    if (ehCurtaDemais(resultado)) {
+      await limparSessaoLocal();
+      mostrar(null);
+      return { sessao: resultado, destino: 'curta' };
+    }
+
+    await guardarNaFila(resultado);
     await limparSessaoLocal();
     mostrar(null);
-    return resultado;
+
+    const envio = await enviarPendentes();
+    let destino: DestinoDaSessao = 'na_fila';
+    if (envio.confirmadas.includes(resultado.sessionId)) destino = 'salva';
+    if (envio.recusadas.includes(resultado.sessionId)) destino = 'recusada';
+    return { sessao: resultado, destino };
   }
 
   return {
