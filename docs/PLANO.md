@@ -77,7 +77,7 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 ### Etapa 4 — Salvar sessões no servidor
 - [x] Tabela `sessao_estudo` com `session_id` UNIQUE e RLS
 - [x] Função `finalizar_sessao` no servidor: idempotente, aplica teto de 12h, atribui ao dia de início no fuso do usuário
-- [ ] Prazo de 1h fora do app (PRD 3.4.1): notificação local ao sair e aos 55 min; voltou depois de 1h → sessão pausada contando até 1h fora. Regra no domínio do cronômetro, com testes.
+- [x] Prazo de 1h fora do app (PRD 3.4.1): notificação local ao sair e aos 55 min; voltou depois de 1h → sessão pausada contando até 1h fora. Regra no domínio do cronômetro, com testes.
 - [x] Fila offline no AsyncStorage: guarda sessões finalizadas sem internet e envia depois; só remove após confirmação
 - [x] Testes de integração: mesma sessão 2× conta 1×; sessão de 20h vira 12h; usuário não grava sessão em nome de outro
 - [x] Defesas anti-fraude que não dependem da decisão pendente (ver topo do plano): duração ≤ tempo real decorrido, sem sessão no futuro, sem sessões sobrepostas — com testes de ataque
