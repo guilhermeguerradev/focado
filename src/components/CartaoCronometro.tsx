@@ -19,7 +19,6 @@ type Props = {
   materia: Materia | null; // matéria da sessão, ou a escolhida nas pílulas
   temMaterias: boolean;
   metaMinutos: number;
-  segundosHoje: number; // dia inteiro (salvas + em andamento): enche o anel da meta
   aoFinalizarSessao: () => void;
 };
 
@@ -30,7 +29,6 @@ export function CartaoCronometro({
   materia,
   temMaterias,
   metaMinutos,
-  segundosHoje,
   aoFinalizarSessao,
 }: Props) {
   const { sessao, segundos, noTeto, erro, pausadaPorAusencia, dispensarAvisoDeAusencia } =
@@ -86,8 +84,8 @@ export function CartaoCronometro({
 
   // Anel: cada volta = uma meta diária. A volta atual enche por cima da
   // anterior, alternando tom principal (1ª, 3ª...) e tom escuro (2ª, 4ª...).
-  // O anel soma o DIA inteiro (meta é diária); o número no meio é só desta sessão.
-  const { voltasCompletas, progressoDaVolta } = voltasDaMeta(segundosHoje, metaMinutos);
+  // O anel começa do ZERO a cada sessão (o dia inteiro fica no card "Tempo estudado hoje").
+  const { voltasCompletas, progressoDaVolta } = voltasDaMeta(segundos, metaMinutos);
   const corDaVolta = (indice: number) => (indice % 2 === 0 ? tom.principal : tom.escuro);
   const corPorBaixo = voltasCompletas > 0 ? corDaVolta(voltasCompletas - 1) : tom.fundo;
 

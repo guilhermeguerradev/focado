@@ -59,7 +59,6 @@ export default function AbaEstudar() {
           materia={materiaDaVez}
           temMaterias={materias.length > 0}
           metaMinutos={metaMinutos}
-          segundosHoje={segundosHoje}
           aoFinalizarSessao={tempoHoje.sincronizar}
         />
         <CartaoTempoHoje segundosHoje={segundosHoje} metaMinutos={metaMinutos} />
