@@ -1,7 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import type { SessaoFinalizada } from '@/domain/cronometro';
-import { adicionarNaFila, lerFilaSalva, removerDaFila } from '@/domain/filaOffline';
+import { adicionarNaFila, ehCurtaDemais, lerFilaSalva, removerDaFila } from '@/domain/filaOffline';
+import type { DestinoDaSessao } from '@/domain/mensagemCronometro';
 
 import { enviarSessao } from './sessoes';
 import { supabase } from './supabase';
@@ -95,4 +96,27 @@ async function enviarEmOrdem(): Promise<ResumoDoEnvio> {
 
   resumo.pendentes = (await carregarFila()).length;
   return resumo;
+}
+
+// O que fazer com uma sessão recém-finalizada (PRD 3.6), NESTA ordem:
+// 1) curta demais (< 1 min)? → apaga o cronômetro e não salva;
+// 2) senão: guarda na fila ANTES de apagar o cronômetro (para nada se perder),
+//    apaga o cronômetro e tenta enviar;
+// 3) devolve o destino: salva, na fila (sem internet) ou recusada.
+export async function salvarSessaoFinalizada(
+  sessao: SessaoFinalizada,
+  apagarCronometro: () => Promise<void>,
+): Promise<DestinoDaSessao> {
+  if (ehCurtaDemais(sessao)) {
+    await apagarCronometro();
+    return 'curta';
+  }
+
+  await guardarNaFila(sessao);
+  await apagarCronometro();
+
+  const envio = await enviarPendentes();
+  if (envio.confirmadas.includes(sessao.sessionId)) return 'salva';
+  if (envio.recusadas.includes(sessao.sessionId)) return 'recusada';
+  return 'na_fila';
 }

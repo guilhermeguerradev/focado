@@ -1,28 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
-import { AppState } from 'react-native';
 
-import { registrarSaida, registrarVolta } from '@/domain/ausencia';
 import {
   atingiuTeto,
   finalizar as finalizarSessao,
   iniciarSessao,
   pausar as pausarSessao,
-  PRAZO_FORA_DO_APP_SEGUNDOS,
   retomar as retomarSessao,
   tempoDecorrido,
   type SessaoEmAndamento,
   type SessaoFinalizada,
 } from '@/domain/cronometro';
-import { ehCurtaDemais } from '@/domain/filaOffline';
 import type { DestinoDaSessao } from '@/domain/mensagemCronometro';
-import { enviarPendentes, guardarNaFila } from '@/services/filaSessoes';
+import { salvarSessaoFinalizada } from '@/services/filaSessoes';
 import { gerarId } from '@/services/identificador';
-import {
-  agendarAvisosDeSaida,
-  cancelarAvisosDeSaida,
-  prepararNotificacoes,
-} from '@/services/notificacoes';
+import { prepararNotificacoes } from '@/services/notificacoes';
 import { carregarSessaoLocal, limparSessaoLocal, salvarSessaoLocal } from '@/services/sessaoLocal';
+
+import { useAusenciaDoApp } from './useAusenciaDoApp';
 
 export type EstadoCronometro = {
   sessao: SessaoEmAndamento | null; // null = nenhuma sessão em andamento
@@ -47,12 +41,13 @@ export type SessaoFinalizadaComDestino = {
 // - As REGRAS ficam em src/domain (cronometro.ts e ausencia.ts), testadas.
 // - Cada mudança é SALVA no celular antes de aparecer na tela.
 // - O "tique" de 1s só redesenha a tela: o tempo é sempre calculado.
+// - Sair/voltar do app (regra de 1h): useAusenciaDoApp.
+// - O que fazer com a sessão finalizada (fila/envio): salvarSessaoFinalizada.
 export function useCronometro(): EstadoCronometro {
   const [sessao, setSessao] = useState<SessaoEmAndamento | null>(null);
   const [agora, setAgora] = useState(() => new Date());
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
-  const [pausadaPorAusencia, setPausadaPorAusencia] = useState(false);
 
   // "Caixinha" com a sessão ATUAL, para o ouvinte do AppState (criado uma
   // vez só) não enxergar uma versão velha da sessão.
@@ -75,35 +70,20 @@ export function useCronometro(): EstadoCronometro {
     }
   }
 
-  // Voltou para a tela (ou o app foi reaberto): aplica a regra de 1h fora.
-  async function aoVoltar() {
-    await cancelarAvisosDeSaida();
-    const atual = sessaoAtual.current;
-    if (!atual) return;
-    const volta = registrarVolta(atual, new Date());
-    if (volta.sessao !== atual) await trocarSessao(volta.sessao);
-    if (volta.pausadaPorAusencia) setPausadaPorAusencia(true);
-    setAgora(new Date());
-  }
-
-  // Saiu da tela com o cronômetro rodando: anota a hora e agenda os avisos.
-  async function aoSair() {
-    const atual = sessaoAtual.current;
-    if (__DEV__) console.log('[cronômetro] app saiu da tela; sessão:', atual?.status ?? 'nenhuma');
-    if (!atual) return;
-    const fora = registrarSaida(atual, new Date());
-    if (fora === atual || fora.saiuEm === null) return;
-    await trocarSessao(fora);
-    await agendarAvisosDeSaida(new Date(fora.saiuEm), PRAZO_FORA_DO_APP_SEGUNDOS);
-  }
+  const ausencia = useAusenciaDoApp({
+    sessaoAtual,
+    trocarSessao,
+    atualizarRelogio: () => setAgora(new Date()),
+  });
 
   // Ao abrir: existe sessão guardada? (app fechado à força, celular reiniciado...)
+  // Se existir, aplica a regra de 1h fora antes de mostrar.
   useEffect(() => {
     carregarSessaoLocal()
       .then((salva) => {
         sessaoAtual.current = salva;
         setSessao(salva);
-        return aoVoltar();
+        return ausencia.aoVoltar();
       })
       .catch(() => setErro('Não consegui ler o cronômetro salvo.'))
       .finally(() => setCarregando(false));
@@ -117,16 +97,6 @@ export function useCronometro(): EstadoCronometro {
     const tique = setInterval(() => setAgora(new Date()), 1000);
     return () => clearInterval(tique);
   }, [rodando]);
-
-  // Saiu da tela / voltou para a tela.
-  useEffect(() => {
-    const assinatura = AppState.addEventListener('change', (estado) => {
-      if (estado === 'background') aoSair();
-      if (estado === 'active') aoVoltar();
-    });
-    return () => assinatura.remove();
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- ouvinte criado uma vez; usa a "caixinha"
-  }, []);
 
   async function iniciar(materiaId: string) {
     await trocarSessao(iniciarSessao({ sessionId: gerarId(), materiaId, agora: new Date() }));
@@ -142,26 +112,13 @@ export function useCronometro(): EstadoCronometro {
     if (sessao) await trocarSessao(retomarSessao(sessao, new Date()));
   }
 
-  // Finalizar (PRD 3.6): curta demais → não salva. Senão: guarda na FILA
-  // (antes de apagar o cronômetro, para nada se perder) e tenta enviar.
   async function finalizar(): Promise<SessaoFinalizadaComDestino | null> {
     if (!sessao) return null;
     const resultado = finalizarSessao(sessao, new Date());
-
-    if (ehCurtaDemais(resultado)) {
+    const destino = await salvarSessaoFinalizada(resultado, async () => {
       await limparSessaoLocal();
       mostrar(null);
-      return { sessao: resultado, destino: 'curta' };
-    }
-
-    await guardarNaFila(resultado);
-    await limparSessaoLocal();
-    mostrar(null);
-
-    const envio = await enviarPendentes();
-    let destino: DestinoDaSessao = 'na_fila';
-    if (envio.confirmadas.includes(resultado.sessionId)) destino = 'salva';
-    if (envio.recusadas.includes(resultado.sessionId)) destino = 'recusada';
+    });
     return { sessao: resultado, destino };
   }
 
@@ -171,8 +128,8 @@ export function useCronometro(): EstadoCronometro {
     noTeto: sessao ? atingiuTeto(sessao, agora) : false,
     carregando,
     erro,
-    pausadaPorAusencia,
-    dispensarAvisoDeAusencia: () => setPausadaPorAusencia(false),
+    pausadaPorAusencia: ausencia.pausadaPorAusencia,
+    dispensarAvisoDeAusencia: ausencia.dispensarAvisoDeAusencia,
     iniciar,
     pausar,
     retomar,
