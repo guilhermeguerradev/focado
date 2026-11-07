@@ -22,3 +22,37 @@ export function mensagemDoCronometro(situacao: SituacaoCronometro): string {
   if (status === 'pausado') return 'Pausado';
   return 'Concentre-se!';
 }
+
+// O que aconteceu com a sessão ao finalizar (PRD 3.6):
+// - salva: chegou ao servidor
+// - na_fila: sem internet, vai ser enviada depois
+// - curta: menos de 1 minuto, não é salva
+// - recusada: o servidor recusou por regra (ex.: horário sobreposto)
+export type DestinoDaSessao = 'salva' | 'na_fila' | 'curta' | 'recusada';
+
+export function resumoAoFinalizar(
+  destino: DestinoDaSessao,
+  duracaoTexto: string, // ex.: "25 min"
+  nomeMateria: string,
+): { titulo: string; mensagem: string } {
+  const estudou = `Você estudou ${duracaoTexto} de ${nomeMateria}.`;
+  switch (destino) {
+    case 'salva':
+      return { titulo: 'Sessão salva 🎉', mensagem: estudou };
+    case 'na_fila':
+      return {
+        titulo: 'Sessão finalizada 🎉',
+        mensagem: `${estudou} Sem internet agora: vamos enviar quando a conexão voltar.`,
+      };
+    case 'curta':
+      return {
+        titulo: 'Sessão muito curta',
+        mensagem: 'Sessões com menos de 1 minuto não são salvas.',
+      };
+    case 'recusada':
+      return {
+        titulo: 'Sessão não salva',
+        mensagem: 'O servidor recusou esta sessão (ex.: horário sobreposto a outra sessão).',
+      };
+  }
+}

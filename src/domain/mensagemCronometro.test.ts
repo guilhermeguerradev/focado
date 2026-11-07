@@ -1,6 +1,36 @@
 import { describe, expect, it } from 'vitest';
 
-import { mensagemDoCronometro, type SituacaoCronometro } from './mensagemCronometro';
+import {
+  mensagemDoCronometro,
+  resumoAoFinalizar,
+  type SituacaoCronometro,
+} from './mensagemCronometro';
+
+describe('resumoAoFinalizar (PRD 3.6)', () => {
+  it('salva: comemora e diz quanto estudou', () => {
+    expect(resumoAoFinalizar('salva', '25 min', 'Inglês')).toEqual({
+      titulo: 'Sessão salva 🎉',
+      mensagem: 'Você estudou 25 min de Inglês.',
+    });
+  });
+
+  it('na fila: comemora e avisa que será enviada quando a internet voltar', () => {
+    const { mensagem } = resumoAoFinalizar('na_fila', '25 min', 'Inglês');
+
+    expect(mensagem).toContain('Você estudou 25 min de Inglês.');
+    expect(mensagem).toContain('quando a conexão voltar');
+  });
+
+  it('curta: avisa que menos de 1 minuto não é salvo', () => {
+    expect(resumoAoFinalizar('curta', 'menos de 1 min', 'Inglês').titulo).toBe(
+      'Sessão muito curta',
+    );
+  });
+
+  it('recusada: avisa que não foi salva', () => {
+    expect(resumoAoFinalizar('recusada', '25 min', 'Inglês').titulo).toBe('Sessão não salva');
+  });
+});
 
 const base: SituacaoCronometro = {
   temMaterias: true,
