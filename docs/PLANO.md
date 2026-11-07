@@ -90,11 +90,11 @@ Hoje, se o relógio do celular voltar para trás com a sessão rodando (ex.: ini
 **Pronto quando:** você finaliza uma sessão em modo avião, liga a internet e ela aparece no banco uma vez só.
 
 ### Etapa 5 — Estatísticas
-- [ ] `src/domain/periodos.ts`: cortes de dia/semana (domingo)/mês/ano no fuso do usuário + testes unitários (incluindo virada de semana e fusos diferentes)
-- [ ] Função no servidor que devolve as métricas do período: total, sessões, média, matéria mais estudada, tempo por matéria
+- [x] `src/domain/periodos.ts`: cortes de dia/semana (domingo)/mês/ano no fuso do usuário + testes unitários (incluindo virada de semana e fusos diferentes)
+- [x] Função no servidor que devolve as métricas do período: total, sessões, média, matéria mais estudada, tempo por matéria
 - [ ] Tela Estatísticas: abas Diário/Semanal/Mensal/Anual, navegação entre períodos, gráfico de barras e pizza com as cores das matérias
 - [ ] Comparação com o período anterior + mensagem motivacional
-- [ ] Testes de integração das métricas
+- [x] Testes de integração das métricas
 
 **Pronto quando:** os números da tela batem com as sessões que você fez.
 
