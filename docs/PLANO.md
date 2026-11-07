@@ -3,7 +3,7 @@
 O cronograma da obra. Uma etapa por vez, na ordem. Cada etapa termina com algo **funcionando e testado**.
 Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" for verdade.
 
-**Etapa atual:** 4
+**Etapa atual:** 5
 
 ---
 
@@ -24,6 +24,11 @@ Marque `[x]` ao concluir cada item. A etapa só fecha quando o "Pronto quando" f
 3. **Offline total + prazo máximo de envio** — mais simples; a fraude continua possível dentro do prazo.
 
 **Também decidir:** prazo máximo para uma sessão da fila offline chegar ao servidor (sugestões: 3, 7 ou 30 dias).
+
+### Cronômetro com relógio do celular voltado para trás
+*Anotado em 06/11/2026, ao validar a refatoração do useCronometro.*
+
+Hoje, se o relógio do celular voltar para trás com a sessão rodando (ex.: iniciou com o relógio adiantado e depois corrigiu), o trecho atual conta 0 e o cronômetro fica **travado em 00:00** até o relógio "alcançar" o horário de início — a proteção funciona, mas parece que o tempo sumiu. **Proposta:** ao detectar isso, recomeçar o trecho atual a partir de "agora" (mantém o tempo acumulado, não dá tempo extra a ninguém). Muda regra do cronômetro: precisa de ok, teste novo e registro no PRD.
 
 ---
 
