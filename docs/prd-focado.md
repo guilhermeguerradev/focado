@@ -1,6 +1,6 @@
 # PRD — Focado
 
-**Versão:** 1.7 (prazo de 1h fora do app; v1.6: sessões curtas e fila offline; v1.5: nome de matéria até 20 caracteres; v1.4: cronômetro ao atingir 12h; v1.3: regras de matérias; v1.2: cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
+**Versão:** 1.8 (regras das estatísticas; v1.7: prazo de 1h fora do app; v1.6: sessões curtas e fila offline; v1.5: nome de matéria até 20 caracteres; v1.4: cronômetro ao atingir 12h; v1.3: regras de matérias; v1.2: cadastro e login definidos; v1.1: stack confirmada + regras de fuso, offline e cálculo no servidor)
 **Objetivo deste documento:** servir como fonte única de verdade sobre o produto para orientar desenvolvimento, modelagem de dados e criação de endpoints em etapas futuras. Este documento descreve o **quê** e o **porquê**; modelagem técnica detalhada (schemas, endpoints, contratos de API) fica para uma etapa posterior.
 
 ---
@@ -158,6 +158,14 @@ Ou seja, todos os períodos são **calendário fixo**, não janelas deslizantes.
 - **Gráfico de colunas/barras**: tempo de estudo por matéria, cada matéria com sua cor definida.
 - **Gráfico de setores (pizza)**: distribuição percentual do tempo total entre matérias.
 - **Mini feedback comparativo**: comparação do período atual vs. período anterior equivalente (ex.: essa semana vs. semana passada), com mensagem motivacional dinâmica (estudou mais → parabenização; estudou menos → incentivo).
+  - Regras (o texto acompanha o período: "ontem", "semana passada", "mês passado", "ano passado"):
+    - **Mais** (≥ 5% acima): "Você focou X% mais que na semana passada!" / "Continue nesse ritmo 🐼".
+    - **Menos** (≥ 5% abaixo): "X% menos que na semana passada" / "Bora recuperar? Você consegue 💪".
+    - **Igual** (diferença menor que 5%): "Mesmo ritmo da semana passada" / "Constância é tudo 🐼".
+    - **Período anterior zerado** (e o atual não): "Primeira semana com estudo registrado! 🎉" (sem porcentagem).
+    - **Período atual zerado**: "Nenhum estudo ainda nesta semana" / "Que tal começar agora?" (num período já passado: "Nenhum estudo registrado nesta semana").
+- **Muitas matérias** no período (ex.: arquivadas com sessões antigas): gráficos mostram as **4 mais estudadas** e juntam o resto em **"Outras"** (cinza).
+- **Fonte dos números:** só o que o **servidor** já confirmou. Se houver sessões na fila offline, a tela avisa "N sessões aguardando envio".
 
 ---
 
@@ -301,6 +309,7 @@ Apenas para dar contexto — o schema detalhado fica para a etapa de modelagem:
 
 ## 12. Histórico de versões
 
+- **1.8** — Estatísticas (4.4): regras do card de comparação, top 4 + "Outras" nos gráficos, números só do servidor (aviso de sessões na fila).
 - **1.7** — Sair do app com o cronômetro rodando (3.4.1): prazo de 1h para voltar, notificação local ao sair e aos 55 min, pausa automática contando até 1h fora.
 - **1.6** — Sessões com menos de 1 minuto não são salvas (3.6); sessão recusada por regra sai da fila offline.
 - **1.5** — Nome da matéria: limite reduzido de 40 para 20 caracteres (3.5), para não quebrar o layout das pílulas. Matérias antigas com nome maior continuam existindo; ao editar, é preciso encurtar.
