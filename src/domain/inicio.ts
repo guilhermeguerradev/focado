@@ -15,6 +15,19 @@ export function progressoDaMeta(segundosEstudados: number, metaMinutos: number):
   return Math.min(1, Math.max(0, progresso));
 }
 
+// Voltas do anel do cronômetro: cada volta completa = uma meta diária.
+// Ex.: meta 30 min e 45 min estudados → 1 volta completa + metade da 2ª.
+// O anel desenha a volta atual por cima das que já fechou (quantas forem).
+export function voltasDaMeta(
+  segundosEstudados: number,
+  metaMinutos: number,
+): { voltasCompletas: number; progressoDaVolta: number } {
+  if (metaMinutos <= 0) return { voltasCompletas: 0, progressoDaVolta: 0 };
+  const voltas = Math.max(0, segundosEstudados) / (metaMinutos * 60);
+  const voltasCompletas = Math.floor(voltas);
+  return { voltasCompletas, progressoDaVolta: voltas - voltasCompletas };
+}
+
 // Formato do card "Tempo estudado hoje": "0min", "25min", "2h", "2h 10min".
 export function formatarHorasMinutos(segundos: number): string {
   const totalMinutos = Math.floor(Math.max(0, segundos) / 60);

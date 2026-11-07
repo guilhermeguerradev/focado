@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 
 import { formatarCronometro, formatarDuracaoSessao } from '@/domain/cronometro';
-import { progressoDaMeta } from '@/domain/inicio';
+import { voltasDaMeta } from '@/domain/inicio';
 import { mensagemDoCronometro } from '@/domain/mensagemCronometro';
 import type { EstadoCronometro } from '@/hooks/useCronometro';
 import type { Materia } from '@/services/materias';
@@ -73,14 +73,20 @@ export function CartaoCronometro({ cronometro, materia, temMaterias, metaMinutos
     );
   }
 
+  // Anel: cada volta = uma meta diária. A volta atual enche por cima da
+  // anterior, alternando tom principal (1ª, 3ª...) e tom escuro (2ª, 4ª...).
+  const { voltasCompletas, progressoDaVolta } = voltasDaMeta(segundos, metaMinutos);
+  const corDaVolta = (indice: number) => (indice % 2 === 0 ? tom.principal : tom.escuro);
+  const corPorBaixo = voltasCompletas > 0 ? corDaVolta(voltasCompletas - 1) : tom.fundo;
+
   return (
     <View style={[styles.cartao, sombraCard]}>
       <AnelProgresso
         tamanho={210}
         espessura={19}
-        progresso={progressoDaMeta(segundos, metaMinutos)}
-        cor={tom.principal}
-        corTrilha={tom.fundo}
+        progresso={progressoDaVolta}
+        cor={corDaVolta(voltasCompletas)}
+        corTrilha={corPorBaixo}
       >
         <View style={styles.miolo}>
           <View style={[styles.iconeRelogio, { backgroundColor: tom.fundo }]}>

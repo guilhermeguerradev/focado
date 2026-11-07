@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { formatarHorasMinutos, progressoDaMeta, saudacao } from './inicio';
+import { formatarHorasMinutos, progressoDaMeta, saudacao, voltasDaMeta } from './inicio';
 
 describe('saudacao', () => {
   it('bom dia das 5h às 11h59', () => {
@@ -35,6 +35,28 @@ describe('progressoDaMeta', () => {
 
   it('meta inválida (0) não quebra: devolve 0', () => {
     expect(progressoDaMeta(600, 0)).toBe(0);
+  });
+});
+
+describe('voltasDaMeta (anel do cronômetro)', () => {
+  it('antes da meta: nenhuma volta completa, enchendo a 1ª', () => {
+    expect(voltasDaMeta(15 * 60, 30)).toEqual({ voltasCompletas: 0, progressoDaVolta: 0.5 });
+  });
+
+  it('exatamente na meta: 1 volta completa e a 2ª ainda vazia', () => {
+    expect(voltasDaMeta(30 * 60, 30)).toEqual({ voltasCompletas: 1, progressoDaVolta: 0 });
+  });
+
+  it('passou da meta: segunda volta enchendo por cima', () => {
+    expect(voltasDaMeta(45 * 60, 30)).toEqual({ voltasCompletas: 1, progressoDaVolta: 0.5 });
+  });
+
+  it('quantas voltas forem necessárias: 75 min com meta 30 = 2 voltas + metade', () => {
+    expect(voltasDaMeta(75 * 60, 30)).toEqual({ voltasCompletas: 2, progressoDaVolta: 0.5 });
+  });
+
+  it('meta inválida (0) não quebra', () => {
+    expect(voltasDaMeta(600, 0)).toEqual({ voltasCompletas: 0, progressoDaVolta: 0 });
   });
 });
 
