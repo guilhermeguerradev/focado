@@ -17,16 +17,29 @@ function registrar(mensagem: string, detalhe?: unknown) {
   if (__DEV__) console.log(`[notificações] ${mensagem}`, detalhe ?? '');
 }
 
-// Android exige um "canal" para notificações; e o usuário precisa permitir.
+// O canal próprio foi criado? Se não (ex.: falha no Expo Go), as notificações
+// vão pelo canal padrão do Expo — basta não informar o channelId.
+let canalCriado = false;
+
+// Android usa "canais" de notificação; e o usuário precisa permitir.
+// São DUAS etapas independentes: se a 1ª falhar, a 2ª acontece mesmo assim.
 // Devolve true se as notificações estão permitidas.
 export async function prepararNotificacoes(): Promise<boolean> {
-  try {
-    if (Platform.OS === 'android') {
+  // Etapa 1: canal próprio (opcional).
+  if (Platform.OS === 'android') {
+    try {
       await Notifications.setNotificationChannelAsync(CANAL, {
         name: 'Cronômetro',
         importance: AndroidImportance.HIGH,
       });
+      canalCriado = true;
+    } catch (erro) {
+      registrar('canal próprio indisponível; usando o canal padrão', erro);
     }
+  }
+
+  // Etapa 2: permissão (no Android 10, é concedida sem pergunta, mas precisa ser pedida).
+  try {
     const atual = await Notifications.getPermissionsAsync();
     registrar('permissão atual', { status: atual.status, podePerguntar: atual.canAskAgain });
     if (atual.granted) return true;
@@ -35,7 +48,7 @@ export async function prepararNotificacoes(): Promise<boolean> {
     registrar('resposta ao pedido de permissão', { status: pedido.status });
     return pedido.granted;
   } catch (erro) {
-    registrar('ERRO ao preparar', erro);
+    registrar('ERRO ao pedir permissão', erro);
     return false; // sem notificação, a regra de 1h continua valendo
   }
 }
@@ -56,7 +69,7 @@ export async function agendarAvisosDeSaida(saiuEm: Date, prazoSegundos: number):
         title: 'Seu cronômetro continua rodando ⏱️',
         body: 'Volte em até 1h ou ele será pausado.',
       },
-      trigger: { channelId: CANAL }, // "agora"
+      trigger: canalCriado ? { channelId: CANAL } : null, // null = "agora"
     });
 
     const lembreteEm = saiuEm.getTime() + (prazoSegundos - MINUTOS_ANTES_DO_FIM * 60) * 1000;
@@ -69,7 +82,7 @@ export async function agendarAvisosDeSaida(saiuEm: Date, prazoSegundos: number):
       trigger: {
         type: SchedulableTriggerInputTypes.DATE,
         date: lembreteEm,
-        channelId: CANAL,
+        channelId: canalCriado ? CANAL : undefined, // sem canal próprio = canal padrão
       },
     });
     registrar('avisos agendados', { lembreteEm: new Date(lembreteEm).toISOString() });
